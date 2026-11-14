@@ -1,0 +1,98 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IClientAction 'PrettyFormatCurrency' ***/
+    var prettyFormatCurrency = eSpace.CreateClientAction("PrettyFormatCurrency");
+    prettyFormatCurrency.Description = null; // default value
+    prettyFormatCurrency.Folder = null; // default value
+    prettyFormatCurrency.Function = true;
+    prettyFormatCurrency.Icon = null; // default value
+    prettyFormatCurrency.Public = false; // default value
+    prettyFormatCurrency.Shareable = false; // default value
+    
+    var number = prettyFormatCurrency.CreateInputParameter("Number");
+    number.DataType = eSpace.DecimalType;
+    number.Description = null; // default value
+    number.IsMandatory = true; // default value
+    
+    var decimalDigits = prettyFormatCurrency.CreateInputParameter("DecimalDigits");
+    decimalDigits.DataType = eSpace.DecimalType;
+    decimalDigits.Description = null; // default value
+    decimalDigits.IsMandatory = true; // default value
+    
+    var unit = prettyFormatCurrency.CreateInputParameter("Unit");
+    unit.DataType = eSpace.TextType;
+    unit.SetDefaultValue(null); // default value
+    unit.Description = null; // default value
+    unit.IsMandatory = false;
+    
+    var groupSeparator = prettyFormatCurrency.CreateInputParameter("GroupSeparator");
+    groupSeparator.DataType = eSpace.TextType;
+    groupSeparator.Description = null; // default value
+    groupSeparator.IsMandatory = true; // default value
+    
+    var decimalSeparator = prettyFormatCurrency.CreateInputParameter("DecimalSeparator");
+    decimalSeparator.DataType = eSpace.TextType;
+    decimalSeparator.Description = null; // default value
+    decimalSeparator.IsMandatory = true; // default value
+    
+    var startNode = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var assignNode = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>();
+    assignNode.HorizontalPosition = 3199;
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = null; // default value
+    assignNode.VerticalPosition = 2285;
+    
+    var assignment = assignNode.CreateAssignment("Representation", "Unit");
+    startNode.Target = assignNode;
+    
+    var ifNode = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(assignNode, 1370);
+    ifNode.SetCondition("Number < 1000");
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = null; // default value
+    
+    var ifNode2 = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode, 1828);
+    ifNode2.SetCondition("Number < 1000000000");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = null; // default value
+    ifNode.FalseTarget = ifNode2;
+    
+    var assignNode2 = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ToTheRightOf(ifNode, 1600);
+    assignNode2.IsDisabled = false; // default value
+    assignNode2.Label = null; // default value
+    
+    var assignment2 = assignNode2.CreateAssignment("Representation", "Representation + FormatDecimal(Number, decimal_digits: DecimalDigits, DecimalSeparator, GroupSeparator)");
+    ifNode.TrueTarget = assignNode2;
+    
+    var assignNode3 = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().Below(ifNode2, 1601);
+    assignNode3.IsDisabled = false; // default value
+    assignNode3.Label = null; // default value
+    
+    var assignment3 = assignNode3.CreateAssignment("Representation", "Representation + FormatDecimal(Number/1000000, decimal_digits: DecimalDigits, DecimalSeparator, GroupSeparator) + \"M\"\n");
+    ifNode2.FalseTarget = assignNode3;
+    
+    var assignNode4 = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ToTheRightOf(ifNode2, 1600);
+    assignNode4.IsDisabled = false; // default value
+    assignNode4.Label = null; // default value
+    
+    var assignment4 = assignNode4.CreateAssignment("Representation", "Representation + FormatDecimal(Number/1000, DecimalDigits, DecimalSeparator, GroupSeparator) + \"k\"");
+    ifNode2.TrueTarget = assignNode4;
+    
+    var endNode = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedToTheRightOf(assignNode2, 1600);
+    endNode.IsDisabled = false; // default value
+    
+    var endNode2 = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedBelow(assignNode3, 1372);
+    endNode2.IsDisabled = false; // default value
+    
+    var endNode3 = prettyFormatCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedToTheRightOf(assignNode4, 1600);
+    endNode3.IsDisabled = false; // default value
+    
+    var representation = prettyFormatCurrency.CreateOutputParameter("Representation");
+    representation.DataType = eSpace.TextType;
+    representation.SetDefaultValue(null); // default value
+    representation.Description = null; // default value
+}
+
+```

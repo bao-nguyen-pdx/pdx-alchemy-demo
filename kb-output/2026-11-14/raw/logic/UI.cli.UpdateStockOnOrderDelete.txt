@@ -1,0 +1,43 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IClientAction 'UpdateStockOnOrderDelete' ***/
+    var updateStockOnOrderDelete = eSpace.CreateClientAction("UpdateStockOnOrderDelete");
+    updateStockOnOrderDelete.Description = null; // default value
+    var orders = eSpace.Folders.Named("Orders");
+    updateStockOnOrderDelete.Folder = orders;
+    updateStockOnOrderDelete.Function = false; // default value
+    updateStockOnOrderDelete.Icon = null; // default value
+    updateStockOnOrderDelete.Public = false; // default value
+    updateStockOnOrderDelete.Shareable = false; // default value
+    
+    var orderId = updateStockOnOrderDelete.CreateInputParameter("OrderId");
+    var orderManagement_CS = eSpace.References.Named("OrderManagement_CS");
+    var order = orderManagement_CS.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("Order");
+    orderId.DataType = order.IdentifierType;
+    orderId.Description = null; // default value
+    orderId.IsMandatory = true; // default value
+    
+    var startNode = updateStockOnOrderDelete.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var updateStockOnOrderDelete2 = updateStockOnOrderDelete.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("UpdateStockOnOrderDelete");
+    var updateStockOnOrderDelete3 = eSpace.ServerActions.Named("UpdateStockOnOrderDelete");
+    updateStockOnOrderDelete2.Action = updateStockOnOrderDelete3;
+    updateStockOnOrderDelete2.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    updateStockOnOrderDelete2.HorizontalPosition = 3192;
+    updateStockOnOrderDelete2.IsDisabled = false; // default value
+    updateStockOnOrderDelete2.ServerRequestTimeout = null; // default value
+    updateStockOnOrderDelete2.VerticalPosition = 2742;
+    var orderId2 = updateStockOnOrderDelete3.InputParameters.Named("OrderId");
+    updateStockOnOrderDelete2.SetArgumentValue(orderId2, "OrderId");
+    startNode.Target = updateStockOnOrderDelete2;
+    
+    var endNode = updateStockOnOrderDelete.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3196;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 4571;
+    updateStockOnOrderDelete2.Target = endNode;
+}
+
+```

@@ -1,0 +1,82 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'UpdateOrderAmount' ***/
+    var updateOrderAmount = eSpace.CreateServerAction("UpdateOrderAmount");
+    updateOrderAmount.CacheInMinutes = null; // default value
+    updateOrderAmount.Description = null; // default value
+    updateOrderAmount.Folder = null; // default value
+    updateOrderAmount.Function = false; // default value
+    updateOrderAmount.Icon = null; // default value
+    updateOrderAmount.Public = false; // default value
+    updateOrderAmount.Shareable = false; // default value
+    
+    var orderId = updateOrderAmount.CreateInputParameter("OrderId");
+    var orderManagement_CS = eSpace.References.Named("OrderManagement_CS");
+    var order = orderManagement_CS.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("Order");
+    orderId.DataType = order.IdentifierType;
+    orderId.Description = null; // default value
+    orderId.IsMandatory = true; // default value
+    
+    var startNode = updateOrderAmount.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var getOrderById = updateOrderAmount.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetOrderById");
+    getOrderById.CacheInMinutes = null; // default value
+    getOrderById.Description = null; // default value
+    getOrderById.HorizontalPosition = 3192;
+    getOrderById.IsDisabled = false; // default value
+    getOrderById.SetMaxRecords("1");
+    getOrderById.SetStartIndex(null); // default value
+    getOrderById.Timeout = null; // default value
+    getOrderById.VerticalPosition = 2286;
+    var order2 = getOrderById.AsDatabaseAggregate.CreateSource(order);
+    getOrderById.AsDatabaseAggregate.CreateFilter("Order.Id = OrderId");
+    
+    startNode.Target = getOrderById;
+    
+    var totalAmount = updateOrderAmount.CreateNode<OutSystems.Model.Logic.Nodes.ISQLNode>("TotalAmount").ConnectedBelow(getOrderById, 1373);
+    totalAmount.CacheInMinutes = null; // default value
+    totalAmount.Description = null; // default value
+    totalAmount.IsDisabled = false; // default value
+    totalAmount.SetMaxRecords(null); // default value
+    totalAmount.Statement = "select \n    SUM({Product}.[Price] * {OrderItem}.[Quantity] * ((100 - {OrderItem}.[Discount])/100)) Amount\nfrom \n    {OrderItem} \n    INNER JOIN {Product} ON {OrderItem}.[ProductId] = {Product}.[Id]\nwhere \n    {OrderItem}.[OrderId] = @OrderId \n\n";
+    totalAmount.Timeout = null; // default value
+    
+    var orderId2 = totalAmount.CreateInputParameter("OrderId");
+    orderId2.DataType = order.IdentifierType;
+    orderId2.SetDefaultValue(null); // default value
+    orderId2.Description = null; // default value
+    orderId2.ExpandInline = false; // default value
+    
+    var decimal = eSpace.Structures.Named("Decimal");
+    var decimal2 = totalAmount.CreateOutput(decimal, "Decimal");
+    
+    var assignNode = updateOrderAmount.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(totalAmount, 1357);
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = "Total Amount Cache";
+    
+    var assignment = assignNode.CreateAssignment("GetOrderById.List.Current.Order.TotalAmount", "TotalAmount.List.Current.Decimal.Decimal");
+    
+    var assignment2 = assignNode.CreateAssignment("GetOrderById.List.Current.Order.UpdatedOn", "CurrDateTime()");
+    totalAmount.SetArgumentValue(orderId2, "OrderId");
+    
+    var order_Save = updateOrderAmount.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Order_Save").ConnectedBelow(assignNode, 1368);
+    var order_Save2 = orderManagement_CS.ServerActions.Named("Order_Save");
+    order_Save.Action = order_Save2;
+    order_Save.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    order_Save.IsDisabled = false; // default value
+    order_Save.ServerRequestTimeout = null; // default value
+    var orderRecord = order_Save2.InputParameters.Named("OrderRecord");
+    order_Save.SetArgumentValue(orderRecord, "GetOrderById.List.Current");
+    var invoker = order_Save2.InputParameters.Named("Invoker");
+    order_Save.SetArgumentValue(invoker, "GetUserId()");
+    
+    var endNode = updateOrderAmount.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3199;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 7752;
+    order_Save.Target = endNode;
+}
+
+```

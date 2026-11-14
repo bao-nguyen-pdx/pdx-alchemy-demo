@@ -1,0 +1,56 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Model_Validate' ***/
+    var model_Validate = eSpace.CreateServerAction("Model_Validate");
+    model_Validate.CacheInMinutes = null; // default value
+    model_Validate.Description = null; // default value
+    var model = eSpace.Folders.Named("Model");
+    model_Validate.Folder = model;
+    model_Validate.Function = false; // default value
+    model_Validate.Icon = null; // default value
+    model_Validate.Public = false; // default value
+    model_Validate.Shareable = false; // default value
+    
+    var modelRecord = model_Validate.CreateInputParameter("ModelRecord");
+    var model2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Model");
+    modelRecord.DataType = model2;
+    modelRecord.Description = null; // default value
+    modelRecord.IsMandatory = true; // default value
+    
+    var startNode = model_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var ifNode = model_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("ModelRecord.Name = NullTextIdentifier()");
+    ifNode.HorizontalPosition = 3200;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Name is empty?";
+    ifNode.VerticalPosition = 2286;
+    startNode.Target = ifNode;
+    
+    var ifNode2 = model_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode, 1371);
+    ifNode2.SetCondition("ModelRecord.BrandId = NullIdentifier()");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = "Brand Id null?";
+    ifNode.FalseTarget = ifNode2;
+    
+    var raiseExceptionNode = model_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    var invalidArgumentsException = eSpace.UserExceptions.Named("InvalidArgumentsException");
+    raiseExceptionNode.Exception = invalidArgumentsException;
+    raiseExceptionNode.SetExceptionMessage("\"Name is required\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.TrueTarget = raiseExceptionNode;
+    
+    var endNode = model_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().Below(ifNode2, 1600);
+    endNode.IsDisabled = false; // default value
+    ifNode2.FalseTarget = endNode;
+    
+    var raiseExceptionNode2 = model_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode2, 1600);
+    raiseExceptionNode2.Exception = invalidArgumentsException;
+    raiseExceptionNode2.SetExceptionMessage("\"Brand identifier is required\"");
+    raiseExceptionNode2.IsDisabled = false; // default value
+    ifNode2.TrueTarget = raiseExceptionNode2;
+}
+
+```

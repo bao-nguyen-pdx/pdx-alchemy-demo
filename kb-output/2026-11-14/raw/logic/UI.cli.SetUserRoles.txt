@@ -1,0 +1,41 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IClientAction 'SetUserRoles' ***/
+    var setUserRoles = eSpace.CreateClientAction("SetUserRoles");
+    setUserRoles.Description = null; // default value
+    setUserRoles.Folder = null; // default value
+    setUserRoles.Function = false; // default value
+    setUserRoles.Icon = null; // default value
+    setUserRoles.Public = false; // default value
+    setUserRoles.Shareable = false; // default value
+    
+    var startNode = setUserRoles.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var user_GetRoles = setUserRoles.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("User_GetRoles");
+    var user_GetRoles2 = eSpace.ServerActions.Named("User_GetRoles");
+    user_GetRoles.Action = user_GetRoles2;
+    user_GetRoles.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    user_GetRoles.HorizontalPosition = 3192;
+    user_GetRoles.IsDisabled = false; // default value
+    user_GetRoles.ServerRequestTimeout = null; // default value
+    user_GetRoles.VerticalPosition = 2280;
+    startNode.Target = user_GetRoles;
+    
+    var assignNode = setUserRoles.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>();
+    assignNode.HorizontalPosition = 3196;
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = "Set Roles";
+    assignNode.VerticalPosition = 3648;
+    
+    var assignment = assignNode.CreateAssignment("Client.IsOrderEntrySpecialist", "User_GetRoles.IsOrderEntrySpecialist");
+    
+    var assignment2 = assignNode.CreateAssignment("Client.IsOrderManager", "User_GetRoles.IsOrderManager");
+    user_GetRoles.Target = assignNode;
+    
+    var endNode = setUserRoles.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedBelow(assignNode, 1368);
+    endNode.IsDisabled = false; // default value
+}
+
+```

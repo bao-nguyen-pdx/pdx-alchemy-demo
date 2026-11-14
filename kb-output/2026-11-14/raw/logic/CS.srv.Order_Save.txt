@@ -1,0 +1,174 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Order_Save' ***/
+    var order_Save = eSpace.CreateServerAction("Order_Save");
+    order_Save.CacheInMinutes = null; // default value
+    order_Save.Description = "Saves an order record";
+    var order = eSpace.Folders.Named("Order");
+    order_Save.Folder = order;
+    order_Save.Function = false; // default value
+    order_Save.Icon = null; // default value
+    order_Save.Public = true;
+    order_Save.Shareable = true;
+    
+    var invoker = order_Save.CreateInputParameter("Invoker");
+    var _System_ = eSpace.References.Named("(System)");
+    var user = _System_.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("User");
+    invoker.DataType = user.IdentifierType;
+    invoker.Description = null; // default value
+    invoker.IsMandatory = true; // default value
+    
+    var orderRecord = order_Save.CreateInputParameter("OrderRecord");
+    var order2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Order");
+    orderRecord.DataType = order2;
+    orderRecord.Description = null; // default value
+    orderRecord.IsMandatory = true; // default value
+    
+    var startNode = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var ifNode = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("CheckOrderManagerRole() or \nCheckOrderRepresentativeRole()");
+    ifNode.HorizontalPosition = 3200;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Has the necessary roles?";
+    ifNode.VerticalPosition = 2743;
+    startNode.Target = ifNode;
+    
+    var raiseExceptionNode = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    var roleException = eSpace.RoleExceptions.Single(e => e.Role.Name == "OrderRepresentative");
+    raiseExceptionNode.Exception = roleException;
+    raiseExceptionNode.SetExceptionMessage("\"You don\'t have permissions to execute this action.\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.FalseTarget = raiseExceptionNode;
+    
+    var assignNode = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().Below(ifNode, 1371);
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = "Trim";
+    
+    var assignment = assignNode.CreateAssignment("OrderRecord.Code", "Trim(OrderRecord.Code)");
+    ifNode.TrueTarget = assignNode;
+    
+    var order_Validate = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Order_Validate").ConnectedBelow(assignNode, 1372);
+    var order_Validate2 = eSpace.ServerActions.Named("Order_Validate");
+    order_Validate.Action = order_Validate2;
+    order_Validate.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    order_Validate.IsDisabled = false; // default value
+    order_Validate.ServerRequestTimeout = null; // default value
+    var orderRecord2 = order_Validate2.InputParameters.Named("OrderRecord");
+    order_Validate.SetArgumentValue(orderRecord2, "OrderRecord");
+    
+    var ifNode2 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(order_Validate, 1371);
+    ifNode2.SetCondition("OrderRecord.Id = NullIdentifier()");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = "Is New?";
+    
+    var getOrderById = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetOrderById").Below(ifNode2, 1372);
+    getOrderById.CacheInMinutes = null; // default value
+    getOrderById.Description = null; // default value
+    getOrderById.IsDisabled = false; // default value
+    getOrderById.SetMaxRecords("1");
+    getOrderById.SetStartIndex(null); // default value
+    getOrderById.Timeout = null; // default value
+    var order3 = getOrderById.AsDatabaseAggregate.CreateSource(order2);
+    getOrderById.AsDatabaseAggregate.CreateFilter("OrderRecord.Id = Order.Id");
+    getOrderById.AsDatabaseAggregate.CreateSort().SetAttribute("Order.Code");
+    
+    ifNode2.FalseTarget = getOrderById;
+    
+    var order_GenerateCode = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Order_GenerateCode").ToTheRightOf(ifNode2, 1829);
+    var order_GenerateCode2 = eSpace.ServerActions.Named("Order_GenerateCode");
+    order_GenerateCode.Action = order_GenerateCode2;
+    order_GenerateCode.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    order_GenerateCode.IsDisabled = false; // default value
+    order_GenerateCode.ServerRequestTimeout = null; // default value
+    ifNode2.TrueTarget = order_GenerateCode;
+    
+    var ifNode3 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(getOrderById, 1371);
+    ifNode3.SetCondition("OrderRecord.OrderStatusId = GetOrderById.List.Current.Order.OrderStatusId or \nCheckOrderManagerRole() ");
+    ifNode3.IsDisabled = false; // default value
+    ifNode3.Label = "Can Change Status?";
+    
+    var assignNode2 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(order_GenerateCode, 3657);
+    assignNode2.IsDisabled = false; // default value
+    assignNode2.Label = "Code and Status";
+    
+    var assignment2 = assignNode2.CreateAssignment("OrderRecord.Code", "Order_GenerateCode.Code");
+    
+    var assignment3 = assignNode2.CreateAssignment("OrderRecord.OrderStatusId", "Entities.OrderStatus.Draft");
+    
+    var raiseExceptionNode2 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheLeftOf(ifNode3, 1829);
+    var roleException2 = eSpace.RoleExceptions.Single(e => e.Role.Name == "OrderManager");
+    raiseExceptionNode2.Exception = roleException2;
+    raiseExceptionNode2.SetExceptionMessage("\"You don\'t have permissions to execute this action.\"");
+    raiseExceptionNode2.IsDisabled = false; // default value
+    ifNode3.FalseTarget = raiseExceptionNode2;
+    
+    var getOrderItemsByOrderId = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetOrderItemsByOrderId").Below(ifNode3, 1600);
+    getOrderItemsByOrderId.CacheInMinutes = null; // default value
+    getOrderItemsByOrderId.Description = null; // default value
+    getOrderItemsByOrderId.IsDisabled = false; // default value
+    getOrderItemsByOrderId.SetMaxRecords(null); // default value
+    getOrderItemsByOrderId.SetStartIndex(null); // default value
+    getOrderItemsByOrderId.Timeout = null; // default value
+    var orderItem2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("OrderItem");
+    var orderItem = getOrderItemsByOrderId.AsDatabaseAggregate.CreateSource(orderItem2);
+    getOrderItemsByOrderId.AsDatabaseAggregate.CreateFilter("OrderItem.IsActive = True");
+    getOrderItemsByOrderId.AsDatabaseAggregate.CreateFilter("OrderItem.OrderId = OrderRecord.Id");
+    var amountSum = getOrderItemsByOrderId.AsDatabaseAggregate.CreateAggregatedAttribute("AmountSum");
+    amountSum.SetAttribute("OrderItem.Amount");
+    amountSum.AggregationType = AggregationType.Sum;
+    
+    ifNode3.TrueTarget = getOrderItemsByOrderId;
+    
+    var assignNode3 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(assignNode2, 1600);
+    assignNode3.IsDisabled = false; // default value
+    assignNode3.Label = "CreatedBy, CreatedOn, IsActive";
+    
+    var assignment4 = assignNode3.CreateAssignment("OrderRecord.CreatedBy", "Invoker");
+    
+    var assignment5 = assignNode3.CreateAssignment("OrderRecord.CreatedOn", "CurrDateTime()");
+    
+    var assignment6 = assignNode3.CreateAssignment("OrderRecord.IsActive", "True");
+    
+    var assignNode4 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(getOrderItemsByOrderId, 1371);
+    assignNode4.IsDisabled = false; // default value
+    assignNode4.Label = "TotalAmount";
+    
+    var assignment7 = assignNode4.CreateAssignment("OrderRecord.TotalAmount", "GetOrderItemsByOrderId.List.Current.AmountSum");
+    
+    var assignNode5 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(assignNode4, 2286);
+    assignNode5.IsDisabled = false; // default value
+    assignNode5.Label = "UpdatedBy, UpdatedOn";
+    
+    var assignment8 = assignNode5.CreateAssignment("OrderRecord.UpdatedBy", "Invoker");
+    
+    var assignment9 = assignNode5.CreateAssignment("OrderRecord.UpdatedOn", "CurrDateTime()");
+    assignNode3.Target = assignNode5;
+    
+    var createOrUpdateOrder = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("CreateOrUpdateOrder").ConnectedBelow(assignNode5, 1372);
+    createOrUpdateOrder.Action = order2.CreateOrUpdateAction;
+    createOrUpdateOrder.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    createOrUpdateOrder.IsDisabled = false; // default value
+    createOrUpdateOrder.ServerRequestTimeout = null; // default value
+    var createOrUpdateOrder2 = order2.CreateOrUpdateAction;
+    var source = createOrUpdateOrder2.InputParameters.Named("Source");
+    createOrUpdateOrder.SetArgumentValue(source, "OrderRecord");
+    
+    var assignNode6 = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(createOrUpdateOrder, 1371);
+    assignNode6.IsDisabled = false; // default value
+    assignNode6.Label = null; // default value
+    
+    var assignment10 = assignNode6.CreateAssignment("OrderId", "CreateOrUpdateOrder.Id");
+    
+    var endNode = order_Save.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedBelow(assignNode6, 1371);
+    endNode.IsDisabled = false; // default value
+    
+    var orderId = order_Save.CreateOutputParameter("OrderId");
+    orderId.DataType = order2.IdentifierType;
+    orderId.SetDefaultValue(null); // default value
+    orderId.Description = null; // default value
+}
+
+```

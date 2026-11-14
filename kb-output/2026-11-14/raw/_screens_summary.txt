@@ -1,0 +1,130 @@
+
+## AccountEdit
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetAccount | GetCountry
+- screen actions: OnAfterFetch_GetAccount | OnChange_Country | OnInitialize | OnSave
+- server calls: Account_GenerateCode | Account_Save | Input_FocusFirstInvalid
+- filters: Account.Id = AccountId
+- conditions: Account.CountryId = Country.Id | AccountId <> NullIdentifier() | Form1.Valid | GetAccount.List.Empty | GetAccount.List.Empty = False 
+- messages: AllExceptions.ExceptionMessage
+- title: \"Order Management - Account Detail\"
+
+## AccountShow
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetAccountById
+- filters: Account.Id = AccountId
+- conditions: Account.CountryId = Country.Id
+- title: \"Order Management - Account Detail\"
+
+## Accounts
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetAccounts
+- screen actions: OnChange_Filters | OnSort
+- conditions: Account.CountryId = Country.Id | GetAccounts.List.Empty and GetAccounts.IsDataFetched | TableSort = SortBy_Out
+- title: \"Order Management - Accounts\"
+
+## Dashboard
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetUser
+- data actions: GetDashboardByCategory | GetDashboardHistory
+- screen actions: OnInitialize
+- server calls: Dashboard_GetByCategory | Dashboard_GetHistory
+- filters: User.Id = GetUserId() | User.Is_Active = True
+- conditions: Client.IsOrderManager
+- title: \"Order Management - Dashboard\"
+
+## DashboardManager
+- roles: OrderManager
+- aggregates: GetUserById
+- data actions: GetDashboardByCategory | GetDashboardHistory
+- screen actions: OnInitialize
+- server calls: Dashboard_GetByCategory | Dashboard_GetHistory
+- filters: User.Id = GetUserId() | User.Is_Active = True
+- title: \"Order Management - Dashboard\"
+
+## InvalidPermissions
+- roles: OrderManager | OrderRepresentative
+- title: \"Invalid Permissions\"
+
+## Invoices
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetOrdersByEmployeeId
+- data actions: GetEmployees
+- screen actions: DropdownSearchOnSelect | OnNavigate | OnRefreshTable | OnSort
+- filters: Order.IsActive=True | Order.OrderStatusId=Entities.OrderStatus.Closed
+- conditions: GetOrdersByEmployeeId.IsDataFetched or GetOrdersByEmployeeId.List.Empty | GetOrdersByEmployeeId.List.Empty and GetOrdersByEmployeeId.IsDataFetched | Order.AccountId = Account.Id | Order.CreatedBy = User.Id | Order.OrderStatusId = OrderStatus.Id | ResetFilters | ResetPagination | TableSort = SortBy
+- title: \"Order Management - Invoices\"
+
+## Login
+- roles: OrderManager | OrderRepresentative
+- inputs: UserId
+- data actions: GetSampleUsers
+- screen actions: ClosePopup | ForgotPassword | Login | LoginWithSampleUser | OnInitialize | OnReady | OpenPopup
+- server calls: DoLogin | Login_SampleUser | SampleUsers_Get
+- client calls: InitClientVars
+- conditions: not IsExecuting
+- messages: AllExceptions.ExceptionMessage
+- title: \"Login\"
+
+## Opportunities
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetOpportunities
+- screen actions: OnChange_Filters | OnSort
+- filters: Opportunity.IsActive = True | Opportunity.OpportunityStageId = Entities.OpportunityStage.Prospecting
+- conditions: GetOpportunities.List.Empty and GetOpportunities.IsDataFetched | Opportunity.AccountId = Account.Id | Opportunity.OpportunityStageId = OpportunityStage.Id | TableSort = SortBy
+- title: \"Order Management - Opportunities\"
+
+## OpportunityDetail
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetOpportunity | GetOrdersByOpportunityId
+- screen actions: OnNavigate | OnSort
+- filters: Opportunity.Id = OpportunityId | Order.OpportunityId = OpportunityId
+- conditions: GetOpportunity.List.Current.OpportunityStage.Id = Entities.OpportunityStage.ClosedWon | GetOrdersByOpportunityId.IsDataFetched or GetOrdersByOpportunityId.List.Empty | GetOrdersByOpportunityId.List.Empty and GetOrdersByOpportunityId.IsDataFetched | Opportunity.AccountId = Account.Id | Opportunity.OpportunityStageId = OpportunityStage.Id | Order.AccountId = Account.Id | Order.CreatedBy = User.Id | Order.OpportunityId = Opportunity.Id | Order.OrderStatusId = OrderStatus.Id | TableSort = SortBy
+- title: \"Order Management - Opportunity Detail\"
+
+## OrderDetail
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetAccounts | GetOrder | GetOrderItemsByOrderId | GetProducts
+- screen actions: OnAfterFetch_GetOrder | OrderCancelEditing | OrderItem_OnChange | OrderToggleEditing | Order_Delete | Order_Save | Order_SetStatus | Product_Delete | Product_Save | Product_ToggleEdit | ToggleDeleteOrderPopup
+- server calls: OrderItem_Save | Order_GenerateCode | Order_Save | Product_GetAmountAndStock | SaveOrderItemandUpdateStock
+- client calls: SidebarClose | SidebarOpen | UpdateOrderAmount | UpdateProductStock | UpdateStockOnOrderDelete
+- filters: Order.Id = OrderId | OrderItem.IsActive = True  | OrderItem.OrderId = OrderId | Product.IsActive = True 
+- conditions: Client.IsOrderManager | Client.IsOrderManager\nand not GetOrder.List.Empty \nand GetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Draft | FormOrder.Valid and\nFormOrderAddress.Valid | GetOrder.IsDataFetched | GetOrder.List.Current.Order.AccountId <> NullIdentifier() | GetOrder.List.Current.Order.OpportunityId <> NullIdentifier() | GetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Draft or \nGetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Rejected | GetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Draft or\nGetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Rejected | GetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Draft or\nGetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Rejected\n | GetOrder.List.Current.Order.OrderStatusId = Entities.OrderStatus.Submitted | GetOrder.List.Curr
+- messages: \"Order deleted succefully\" | \"The order status was changed.\" | \"The order was successfully saved.\"
+- title: \"Order Management - Order Detail\"
+
+## Orders
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetMinMax | GetOrdersByEmployeeId
+- data actions: GetEmployees
+- screen actions: DropdownSearchOnSelect | GetAccountsWithOrdersOnAfterFetch | GetOrdersByEmployeeIdOnAfterFetch | OrderTableOnSort | PaginationOnNavigate | RangeSliderIntervalOnChange | RefreshOrderTable | TabsOnTabChange
+- server calls: GetCeilingandFloor
+- filters: (Order.OrderStatusId = SearchByStatusId or SearchByStatusId = NullIdentifier() )  | (SearchByEmployee.Value = \"\") or (Order.CreatedBy = LongIntegerToIdentifier(TextToLongInteger(SearchByEmployee.Value))) | Account.Code like \"%\" + SearchKeyword + \"%\" or\nAccount.Company like \"%\" + SearchKeyword + \"%\" or\nOrder.Code like \"%\" + SearchKeyword + \"%\" | Order.IsActive=True | Order.TotalAmount >= Min and Order.TotalAmount <= Max
+- conditions: IsOrdersDataFetched | Order.AccountId = Account.Id | Order.CreatedBy = User.Id | Order.OrderStatusId = OrderStatus.Id | ResetFilters | ResetPagination | TableSort = SortBy | not GetOrdersByEmployeeId.List.Empty
+- title: \"Order Management - Orders\"
+
+## ProductDetail
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetModelsByBrand
+- data actions: GetProductInfo
+- screen actions: Clear_DeleteList | Feature_OnDelete | Feature_OnEdit | Feature_OnNew | Feature_ToggleEdit | GetProductInfoOnAfterFetch | OnInitialize | OnSelectBrand | OnSelectModel | ProductImage_OnDelete | ProductImage_OnEdit | ProductImage_OnNew | Product_GenericInfoFormValidation | Product_OnCancel | Product_OnSave | Product_ToggleEdit | Product_UpdateFinalPrice
+- server calls: ListAppend | Product_Edit
+- client calls: ListAny | ListAppend | ListClear | ListDuplicate | ListFilter | ListInsert | ListRemove
+- filters: Brand.IsActive = True or \nBrand.Id = GetProductDetails.List.Current.Model.BrandId | Model.BrandId = GetProductInfo.ProductDetails.Model.BrandId | Model.IsActive = True | Product.Id = ProductId | ProductCategory.IsActive or \nProductCategory.Id = GetProductDetails.List.Current.Product.CategoryId | ProductFeature.ProductId = ProductId | ProductPicture.IsActive and ProductPicture.ProductId = ProductId
+- conditions: GetProductInfo.IsDataFetched | GetProductInfo.ProductDetails.Product.CategoryId <> NullIdentifier() | GetProductInfo.ProductDetails.Product.Discount >= 0 and\nGetProductInfo.ProductDetails.Product.Discount <= 100 | GetProductInfo.ProductDetails.Product.Price > 0 | GetProductInfo.ProductDetails.Product.Price >= 0 | GetProductInfo.ProductDetails.Product.Stock >= 0 | GetProductInfo.ProductFeatures.Current.Id = NullIdentifier() | GetProductInfo.ProductPictures.Current.ProductPicture.Id = NullIdentifier() | GetProductInfo.ProductPictures.CurrentRowNumber = 0 | IsDesktop() | IsEditingMode | ListFilterNonPlaceholders.FilteredList.Length = GetProductInfo.ProductPictures.CurrentRowNumber | NumberFeaturesToAdd < 4 | NumberImagesUpload < 6 | Product.ModelId = Model.Id | ProductDetail_SpecificationsInfoForm.Valid and\nProductDetail_GeneralInfoForm.Valid and\nListAny.Result | ProductFeatures.Length <
+- messages: \"An unexpected error occurred. Please try again later.\" | \"Image deleted successfully!\" | \"Please upload at least one image for the cover of the product\" | \"Product updated successfully.\"
+- title: \"Product Detail\"
+
+## Products
+- roles: OrderManager | OrderRepresentative
+- aggregates: GetCategories | GetProductSorts | GetProductSortsById | GetProductsByProductName
+- screen actions: DropdownSearchOnSelect | LoadMoreOnClick | OnFiltersChange | SortDropdownOnChange
+- client calls: ScrollToElement
+- filters: Product.Name like \"%\" + SearchKeyword + \"%\" | ProductCategory.Name <> \"\" | ProductSort.Id = ProductSortId | ProductSort.IsActive = True
+- conditions: GetProductsByProductName.IsDataFetched | GetProductsByProductName.List.Length < GetProductsByProductName.Count | Product.CategoryId = ProductCategory.Id | Product.Id = ProductPicture.ProductId and ProductPicture.IsCover | not GetProductsByProductName.List.Empty
+- title: \"Order Management - Products\"
+
+## Splash
+- roles: OrderManager | OrderRepresentative
+- inputs: Completed | Total
+- screen actions: Navigate | OnComplete | OnUpgradeProgress

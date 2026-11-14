@@ -1,0 +1,59 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating ISiteProperty 'Currency' ***/
+    var currency = eSpace.CreateSiteProperty(false, "Currency");
+    currency.DataType = eSpace.TextType;
+    currency.SetDefaultValue("\"€\"");
+    currency.Description = "Currency symbol for number formatting";
+    currency.Folder = null; // default value
+    currency.IsMultiTenant = OutSystems.Model.Enumerations.BooleanWithInheritance.Inherited; // default value
+    currency.IsSecret = false; // default value
+    
+    /*** creating ISiteProperty 'Dashboard_PersonalGoal' ***/
+    var dashboard_PersonalGoal = eSpace.CreateSiteProperty(false, "Dashboard_PersonalGoal");
+    dashboard_PersonalGoal.DataType = eSpace.CurrencyType;
+    dashboard_PersonalGoal.SetDefaultValue("50000");
+    dashboard_PersonalGoal.Description = null; // default value
+    dashboard_PersonalGoal.Folder = null; // default value
+    dashboard_PersonalGoal.IsMultiTenant = OutSystems.Model.Enumerations.BooleanWithInheritance.Inherited; // default value
+    dashboard_PersonalGoal.IsSecret = false; // default value
+    
+    /*** creating ISiteProperty 'Dashboard_TargetValue' ***/
+    var dashboard_TargetValue = eSpace.CreateSiteProperty(false, "Dashboard_TargetValue");
+    dashboard_TargetValue.DataType = eSpace.CurrencyType;
+    dashboard_TargetValue.SetDefaultValue("10000");
+    dashboard_TargetValue.Description = "Target value to be shown on dashboard";
+    dashboard_TargetValue.Folder = null; // default value
+    dashboard_TargetValue.IsMultiTenant = OutSystems.Model.Enumerations.BooleanWithInheritance.Inherited; // default value
+    dashboard_TargetValue.IsSecret = false; // default value
+    
+    /*** creating ISiteProperty 'Dashboard_TeamGoalPercent' ***/
+    var dashboard_TeamGoalPercent = eSpace.CreateSiteProperty(false, "Dashboard_TeamGoalPercent");
+    dashboard_TeamGoalPercent.DataType = eSpace.IntegerType;
+    dashboard_TeamGoalPercent.SetDefaultValue("54");
+    dashboard_TeamGoalPercent.Description = "Percent of company goal for team goal";
+    dashboard_TeamGoalPercent.Folder = null; // default value
+    dashboard_TeamGoalPercent.IsMultiTenant = OutSystems.Model.Enumerations.BooleanWithInheritance.Inherited; // default value
+    dashboard_TeamGoalPercent.IsSecret = false; // default value
+    
+    /*** creating ISiteProperty 'DecimalSeparator' ***/
+    var decimalSeparator = eSpace.CreateSiteProperty(false, "DecimalSeparator");
+    decimalSeparator.DataType = eSpace.TextType;
+    decimalSeparator.SetDefaultValue("\".\"");
+    decimalSeparator.Description = "Decimal separator for number formatting";
+    decimalSeparator.Folder = null; // default value
+    decimalSeparator.IsMultiTenant = OutSystems.Model.Enumerations.BooleanWithInheritance.Inherited; // default value
+    decimalSeparator.IsSecret = false; // default value
+    
+    /*** creating ISiteProperty 'GroupSeparator' ***/
+    var groupSeparator = eSpace.CreateSiteProperty(false, "GroupSeparator");
+    groupSeparator.DataType = eSpace.TextType;
+    groupSeparator.SetDefaultValue("\",\"");
+    groupSeparator.Description = "Group separator for number formatting";
+    groupSeparator.Folder = null; // default value
+    groupSeparator.IsMultiTenant = OutSystems.Model.Enumerations.BooleanWithInheritance.Inherited; // default value
+    groupSeparator.IsSecret = false; // default value
+}
+
+```

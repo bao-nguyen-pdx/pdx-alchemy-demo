@@ -1,0 +1,50 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IClientAction 'UpdateProductStock' ***/
+    var updateProductStock = eSpace.CreateClientAction("UpdateProductStock");
+    updateProductStock.Description = null; // default value
+    var products = eSpace.Folders.Named("Products");
+    updateProductStock.Folder = products;
+    updateProductStock.Function = false; // default value
+    updateProductStock.Icon = null; // default value
+    updateProductStock.Public = false; // default value
+    updateProductStock.Shareable = false; // default value
+    
+    var productId = updateProductStock.CreateInputParameter("ProductId");
+    var orderManagement_CS = eSpace.References.Named("OrderManagement_CS");
+    var product = orderManagement_CS.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("Product");
+    productId.DataType = product.IdentifierType;
+    productId.Description = null; // default value
+    productId.IsMandatory = true; // default value
+    
+    var quantity = updateProductStock.CreateInputParameter("Quantity");
+    quantity.DataType = eSpace.IntegerType;
+    quantity.Description = null; // default value
+    quantity.IsMandatory = true; // default value
+    
+    var startNode = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var updateProductStock2 = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("UpdateProductStock");
+    var updateProductStock3 = eSpace.ServerActions.Named("UpdateProductStock");
+    updateProductStock2.Action = updateProductStock3;
+    updateProductStock2.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    updateProductStock2.HorizontalPosition = 3192;
+    updateProductStock2.IsDisabled = false; // default value
+    updateProductStock2.ServerRequestTimeout = null; // default value
+    updateProductStock2.VerticalPosition = 2742;
+    var productId2 = updateProductStock3.InputParameters.Named("ProductId");
+    updateProductStock2.SetArgumentValue(productId2, "ProductId");
+    var quantity2 = updateProductStock3.InputParameters.Named("Quantity");
+    updateProductStock2.SetArgumentValue(quantity2, "Quantity");
+    startNode.Target = updateProductStock2;
+    
+    var endNode = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3196;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 4799;
+    updateProductStock2.Target = endNode;
+}
+
+```

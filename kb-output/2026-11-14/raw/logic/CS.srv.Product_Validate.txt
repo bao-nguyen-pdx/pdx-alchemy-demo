@@ -1,0 +1,86 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Product_Validate' ***/
+    var product_Validate = eSpace.CreateServerAction("Product_Validate");
+    product_Validate.CacheInMinutes = null; // default value
+    product_Validate.Description = "Validates an product record";
+    var product = eSpace.Folders.Named("Product");
+    product_Validate.Folder = product;
+    product_Validate.Function = false; // default value
+    product_Validate.Icon = null; // default value
+    product_Validate.Public = false; // default value
+    product_Validate.Shareable = false; // default value
+    
+    var productRecord = product_Validate.CreateInputParameter("ProductRecord");
+    var product2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Product");
+    productRecord.DataType = product2;
+    productRecord.Description = null; // default value
+    productRecord.IsMandatory = true; // default value
+    
+    var startNode = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var ifNode = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("ProductRecord.Name = \"\"");
+    ifNode.HorizontalPosition = 3199;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Name is empty?";
+    ifNode.VerticalPosition = 2285;
+    startNode.Target = ifNode;
+    
+    var ifNode2 = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode, 1600);
+    ifNode2.SetCondition("ProductRecord.CategoryId = NullIdentifier()");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = "Category is null?";
+    ifNode.FalseTarget = ifNode2;
+    
+    var raiseExceptionNode = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    var invalidArgumentsException = eSpace.UserExceptions.Named("InvalidArgumentsException");
+    raiseExceptionNode.Exception = invalidArgumentsException;
+    raiseExceptionNode.SetExceptionMessage("\"Name is required\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.TrueTarget = raiseExceptionNode;
+    
+    var ifNode3 = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode2, 1372);
+    ifNode3.SetCondition("ProductRecord.Price < 0");
+    ifNode3.IsDisabled = false; // default value
+    ifNode3.Label = "Price < 0?";
+    ifNode2.FalseTarget = ifNode3;
+    
+    var raiseExceptionNode2 = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode2, 1600);
+    raiseExceptionNode2.Exception = invalidArgumentsException;
+    raiseExceptionNode2.SetExceptionMessage("\"Category is required\"");
+    raiseExceptionNode2.IsDisabled = false; // default value
+    ifNode2.TrueTarget = raiseExceptionNode2;
+    
+    var ifNode4 = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode4.SetCondition("ProductRecord.Stock < 0");
+    ifNode4.HorizontalPosition = 3192;
+    ifNode4.IsDisabled = false; // default value
+    ifNode4.Label = "Stock < 0";
+    ifNode4.VerticalPosition = 6840;
+    ifNode3.FalseTarget = ifNode4;
+    
+    var raiseExceptionNode3 = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode3, 1600);
+    raiseExceptionNode3.Exception = invalidArgumentsException;
+    raiseExceptionNode3.SetExceptionMessage("\"Price must be greater or equal to zero\"");
+    raiseExceptionNode3.IsDisabled = false; // default value
+    ifNode3.TrueTarget = raiseExceptionNode3;
+    
+    var endNode = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3200;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 8686;
+    ifNode4.FalseTarget = endNode;
+    
+    var raiseExceptionNode4 = product_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>();
+    raiseExceptionNode4.Exception = invalidArgumentsException;
+    raiseExceptionNode4.SetExceptionMessage("\"Stock must be greater or equal to zero\"");
+    raiseExceptionNode4.HorizontalPosition = 4686;
+    raiseExceptionNode4.IsDisabled = false; // default value
+    raiseExceptionNode4.VerticalPosition = 6884;
+    ifNode4.TrueTarget = raiseExceptionNode4;
+}
+
+```

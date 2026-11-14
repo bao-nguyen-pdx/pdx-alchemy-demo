@@ -1,0 +1,53 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'SiteProperty_GetCurrency' ***/
+    var siteProperty_GetCurrency = eSpace.CreateServerAction("SiteProperty_GetCurrency");
+    siteProperty_GetCurrency.CacheInMinutes = null; // default value
+    siteProperty_GetCurrency.Description = "Returns the site property currency, decimal and group separators";
+    var siteProperties = eSpace.Folders.Named("SiteProperties");
+    siteProperty_GetCurrency.Folder = siteProperties;
+    siteProperty_GetCurrency.Function = false; // default value
+    siteProperty_GetCurrency.Icon = null; // default value
+    siteProperty_GetCurrency.Public = false; // default value
+    siteProperty_GetCurrency.Shareable = false; // default value
+    
+    var startNode = siteProperty_GetCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var assignNode = siteProperty_GetCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>();
+    assignNode.HorizontalPosition = 3199;
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = "Site Properties";
+    assignNode.VerticalPosition = 2742;
+    
+    var assignment = assignNode.CreateAssignment("Currency", "Site.Currency");
+    
+    var assignment2 = assignNode.CreateAssignment("DecimalSeparator", "Site.DecimalSeparator");
+    
+    var assignment3 = assignNode.CreateAssignment("GroupSeparator", "Site.GroupSeparator");
+    startNode.Target = assignNode;
+    
+    var endNode = siteProperty_GetCurrency.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3196;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 4664;
+    assignNode.Target = endNode;
+    
+    var currency = siteProperty_GetCurrency.CreateOutputParameter("Currency");
+    currency.DataType = eSpace.TextType;
+    currency.SetDefaultValue("\"$\"");
+    currency.Description = "Currency symbol for number formatting";
+    
+    var decimalSeparator = siteProperty_GetCurrency.CreateOutputParameter("DecimalSeparator");
+    decimalSeparator.DataType = eSpace.TextType;
+    decimalSeparator.SetDefaultValue(null); // default value
+    decimalSeparator.Description = "Decimal separator for number formatting";
+    
+    var groupSeparator = siteProperty_GetCurrency.CreateOutputParameter("GroupSeparator");
+    groupSeparator.DataType = eSpace.TextType;
+    groupSeparator.SetDefaultValue("\",\"");
+    groupSeparator.Description = "Group separator for number formatting";
+}
+
+```

@@ -1,0 +1,75 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'GetCeilingandFloor' ***/
+    var getCeilingandFloor = eSpace.CreateServerAction("GetCeilingandFloor");
+    getCeilingandFloor.CacheInMinutes = null; // default value
+    getCeilingandFloor.Description = null; // default value
+    var order = eSpace.Folders.Named("Order");
+    getCeilingandFloor.Folder = order;
+    getCeilingandFloor.Function = false; // default value
+    getCeilingandFloor.Icon = null; // default value
+    getCeilingandFloor.Public = false; // default value
+    getCeilingandFloor.Shareable = false; // default value
+    
+    var totalAmountCacheMin = getCeilingandFloor.CreateInputParameter("TotalAmountCacheMin");
+    totalAmountCacheMin.DataType = eSpace.IntegerType;
+    totalAmountCacheMin.Description = null; // default value
+    totalAmountCacheMin.IsMandatory = true; // default value
+    
+    var totalAmountCacheMax = getCeilingandFloor.CreateInputParameter("TotalAmountCacheMax");
+    totalAmountCacheMax.DataType = eSpace.IntegerType;
+    totalAmountCacheMax.Description = null; // default value
+    totalAmountCacheMax.IsMandatory = true; // default value
+    
+    var startNode = getCeilingandFloor.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var floor = getCeilingandFloor.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Floor");
+    var orderManagement_CS = eSpace.References.Named("OrderManagement_CS");
+    var floor2 = orderManagement_CS.ServerActions.Named("Floor");
+    floor.Action = floor2;
+    floor.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    floor.HorizontalPosition = 3192;
+    floor.IsDisabled = false; // default value
+    floor.ServerRequestTimeout = null; // default value
+    floor.VerticalPosition = 2280;
+    var in = floor2.InputParameters.Named("In");
+    floor.SetArgumentValue(in, "TotalAmountCacheMin");
+    startNode.Target = floor;
+    
+    var ceiling = getCeilingandFloor.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Ceiling").ConnectedBelow(floor, 1378);
+    var ceiling2 = orderManagement_CS.ServerActions.Named("Ceiling");
+    ceiling.Action = ceiling2;
+    ceiling.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    ceiling.IsDisabled = false; // default value
+    ceiling.ServerRequestTimeout = null; // default value
+    var in2 = ceiling2.InputParameters.Named("In");
+    ceiling.SetArgumentValue(in2, "TotalAmountCacheMax");
+    
+    var assignNode = getCeilingandFloor.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ConnectedBelow(ceiling, 1373);
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = "Output";
+    
+    var assignment = assignNode.CreateAssignment("Min", "Floor.Out");
+    
+    var assignment2 = assignNode.CreateAssignment("Max", "Ceiling.Out");
+    
+    var endNode = getCeilingandFloor.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3196;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 6405;
+    assignNode.Target = endNode;
+    
+    var min = getCeilingandFloor.CreateOutputParameter("Min");
+    min.DataType = eSpace.IntegerType;
+    min.SetDefaultValue(null); // default value
+    min.Description = null; // default value
+    
+    var max = getCeilingandFloor.CreateOutputParameter("Max");
+    max.DataType = eSpace.IntegerType;
+    max.SetDefaultValue(null); // default value
+    max.Description = null; // default value
+}
+
+```

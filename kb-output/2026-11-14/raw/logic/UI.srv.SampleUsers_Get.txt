@@ -1,0 +1,103 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'SampleUsers_Get' ***/
+    var sampleUsers_Get = eSpace.CreateServerAction("SampleUsers_Get");
+    sampleUsers_Get.CacheInMinutes = null; // default value
+    sampleUsers_Get.Description = null; // default value
+    sampleUsers_Get.Folder = null; // default value
+    sampleUsers_Get.Function = false; // default value
+    sampleUsers_Get.Icon = null; // default value
+    sampleUsers_Get.Public = false; // default value
+    sampleUsers_Get.Shareable = false; // default value
+    
+    var startNode = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var getUser_OrderEntrySpecialist = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetUser_OrderEntrySpecialist").ConnectedBelow(startNode, 1772);
+    getUser_OrderEntrySpecialist.CacheInMinutes = null; // default value
+    getUser_OrderEntrySpecialist.Description = null; // default value
+    getUser_OrderEntrySpecialist.IsDisabled = false; // default value
+    getUser_OrderEntrySpecialist.SetMaxRecords("1");
+    getUser_OrderEntrySpecialist.SetStartIndex(null); // default value
+    getUser_OrderEntrySpecialist.Timeout = null; // default value
+    var _System_ = eSpace.References.Named("(System)");
+    var user2 = _System_.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("User");
+    var user = getUser_OrderEntrySpecialist.AsDatabaseAggregate.CreateSource(user2);
+    getUser_OrderEntrySpecialist.AsDatabaseAggregate.CreateFilter("User.Is_Active = True");
+    getUser_OrderEntrySpecialist.AsDatabaseAggregate.CreateFilter("User.Username = \"manuel.luis@observeverything.example\"");
+    
+    
+    var orderEntrySpecialist_Add = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("OrderEntrySpecialist_Add").ConnectedBelow(getUser_OrderEntrySpecialist, 1368);
+    var listAppend = _System_.ServerActions.Named("ListAppend");
+    orderEntrySpecialist_Add.Action = listAppend;
+    orderEntrySpecialist_Add.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    orderEntrySpecialist_Add.IsDisabled = false; // default value
+    orderEntrySpecialist_Add.ServerRequestTimeout = null; // default value
+    var element = listAppend.InputParameters.Named("Element");
+    orderEntrySpecialist_Add.SetArgumentValue(element, "GetUser_OrderEntrySpecialist.List.Current.User mapTo { Role: \"Sales representative\", User.Id: Id, User.Name: Name, User.Username: Username, User.Password: Password, User.Email: Email, User.MobilePhone: MobilePhone, User.External_Id: External_Id, User.Creation_Date: Creation_Date, User.Last_Login: Last_Login, User.Is_Active: Is_Active }");
+    var list = listAppend.InputParameters.Named("List");
+    orderEntrySpecialist_Add.SetArgumentValue(list, "UserList");
+    
+    var getUser_OrderManager = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetUser_OrderManager");
+    getUser_OrderManager.CacheInMinutes = null; // default value
+    getUser_OrderManager.Description = null; // default value
+    getUser_OrderManager.HorizontalPosition = 3202;
+    getUser_OrderManager.IsDisabled = false; // default value
+    getUser_OrderManager.SetMaxRecords("1");
+    getUser_OrderManager.SetStartIndex(null); // default value
+    getUser_OrderManager.Timeout = null; // default value
+    getUser_OrderManager.VerticalPosition = 5320;
+    var user3 = getUser_OrderManager.AsDatabaseAggregate.CreateSource(user2);
+    getUser_OrderManager.AsDatabaseAggregate.CreateFilter("User.Is_Active = True");
+    getUser_OrderManager.AsDatabaseAggregate.CreateFilter("User.Username = \"ana.martins@observeverything.example\"");
+    
+    orderEntrySpecialist_Add.Target = getUser_OrderManager;
+    
+    var orderManager_Add = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("OrderManager_Add").ConnectedBelow(getUser_OrderManager, 1371);
+    orderManager_Add.Action = listAppend;
+    orderManager_Add.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    orderManager_Add.IsDisabled = false; // default value
+    orderManager_Add.ServerRequestTimeout = null; // default value
+    orderManager_Add.SetArgumentValue(element, "GetUser_OrderManager.List.Current.User mapTo { Role: \"Sales representative\", User.Id: Id, User.Name: Name, User.Username: Username, User.Password: Password, User.Email: Email, User.MobilePhone: MobilePhone, User.External_Id: External_Id, User.Creation_Date: Creation_Date, User.Last_Login: Last_Login, User.Is_Active: Is_Active }");
+    orderManager_Add.SetArgumentValue(list, "UserList");
+    
+    var getUser_OrderAdmin = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetUser_OrderAdmin").ConnectedBelow(orderManager_Add, 1371);
+    getUser_OrderAdmin.CacheInMinutes = null; // default value
+    getUser_OrderAdmin.Description = null; // default value
+    getUser_OrderAdmin.IsDisabled = false; // default value
+    getUser_OrderAdmin.SetMaxRecords("1");
+    getUser_OrderAdmin.SetStartIndex(null); // default value
+    getUser_OrderAdmin.Timeout = null; // default value
+    var user4 = getUser_OrderAdmin.AsDatabaseAggregate.CreateSource(user2);
+    getUser_OrderAdmin.AsDatabaseAggregate.CreateFilter("User.Is_Active = True");
+    getUser_OrderAdmin.AsDatabaseAggregate.CreateFilter("User.Username = \"jose.felix@observeverything.example\"");
+    
+    
+    var orderAdmin_Add = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("OrderAdmin_Add").ConnectedBelow(getUser_OrderAdmin, 1372);
+    orderAdmin_Add.Action = listAppend;
+    orderAdmin_Add.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    orderAdmin_Add.IsDisabled = false; // default value
+    orderAdmin_Add.ServerRequestTimeout = null; // default value
+    orderAdmin_Add.SetArgumentValue(element, "GetUser_OrderAdmin.List.Current.User mapTo { Role: \"Sales manager\", User.Id: Id, User.Name: Name, User.Username: Username, User.Password: Password, User.Email: Email, User.MobilePhone: MobilePhone, User.External_Id: External_Id, User.Creation_Date: Creation_Date, User.Last_Login: Last_Login, User.Is_Active: Is_Active }");
+    orderAdmin_Add.SetArgumentValue(list, "UserList");
+    
+    var endNode = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3196;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 11206;
+    orderAdmin_Add.Target = endNode;
+    
+    var commentNode = sampleUsers_Get.CreateNode<OutSystems.Model.Logic.Nodes.ICommentNode>();
+    commentNode.HorizontalPosition = 4968;
+    commentNode.IsDisabled = false; // default value
+    commentNode.IsReminder = false; // default value
+    commentNode.Text = "This Action was automatically generated\nfrom \'GetSampleUsers\',\nusing \'Extract To Action\'.";
+    commentNode.VerticalPosition = 800;
+    
+    var userList = sampleUsers_Get.CreateOutputParameter("UserList");
+    userList.DataType = eSpace.GetOrCreateListType(eSpace.GetOrCreateAnonymousStructure(Tuple.Create<string, ITypeSignature>("Role", eSpace.TextType), Tuple.Create<string, ITypeSignature>("User", user2)));
+    userList.Description = null; // default value
+}
+
+```

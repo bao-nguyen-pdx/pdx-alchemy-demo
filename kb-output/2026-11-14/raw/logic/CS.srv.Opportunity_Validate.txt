@@ -1,0 +1,154 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Opportunity_Validate' ***/
+    var opportunity_Validate = eSpace.CreateServerAction("Opportunity_Validate");
+    opportunity_Validate.CacheInMinutes = null; // default value
+    opportunity_Validate.Description = "Validates an opportunity record";
+    var opportunity = eSpace.Folders.Named("Opportunity");
+    opportunity_Validate.Folder = opportunity;
+    opportunity_Validate.Function = false; // default value
+    opportunity_Validate.Icon = null; // default value
+    opportunity_Validate.Public = false; // default value
+    opportunity_Validate.Shareable = false; // default value
+    
+    var opportunityRecord = opportunity_Validate.CreateInputParameter("OpportunityRecord");
+    var opportunity2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Opportunity");
+    opportunityRecord.DataType = opportunity2;
+    opportunityRecord.Description = null; // default value
+    opportunityRecord.IsMandatory = true; // default value
+    
+    var startNode = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var ifNode = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("OpportunityRecord.Name = \"\"");
+    ifNode.HorizontalPosition = 3192;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Code is empty?";
+    ifNode.VerticalPosition = 2280;
+    startNode.Target = ifNode;
+    
+    var getOpportunity_ByName = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetOpportunity_ByName").Below(ifNode, 1368);
+    getOpportunity_ByName.CacheInMinutes = null; // default value
+    getOpportunity_ByName.Description = null; // default value
+    getOpportunity_ByName.IsDisabled = false; // default value
+    getOpportunity_ByName.SetMaxRecords("1");
+    getOpportunity_ByName.SetStartIndex(null); // default value
+    getOpportunity_ByName.Timeout = null; // default value
+    var opportunity3 = getOpportunity_ByName.AsDatabaseAggregate.CreateSource(opportunity2);
+    getOpportunity_ByName.AsDatabaseAggregate.CreateFilter("Opportunity.Id <> OpportunityRecord.Id");
+    getOpportunity_ByName.AsDatabaseAggregate.CreateFilter("Opportunity.Name = OpportunityRecord.Name");
+    
+    ifNode.FalseTarget = getOpportunity_ByName;
+    
+    var raiseExceptionNode = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1596);
+    var invalidArgumentsException = eSpace.UserExceptions.Named("InvalidArgumentsException");
+    raiseExceptionNode.Exception = invalidArgumentsException;
+    raiseExceptionNode.SetExceptionMessage("\"Name is required\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.TrueTarget = raiseExceptionNode;
+    
+    var ifNode2 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(getOpportunity_ByName, 1368);
+    ifNode2.SetCondition("GetOpportunity_ByName.List.Empty = False ");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = "Has records?";
+    
+    var ifNode3 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode3.SetCondition("OpportunityRecord.OpportunityTypeId = NullIdentifier()");
+    ifNode3.HorizontalPosition = 3199;
+    ifNode3.IsDisabled = false; // default value
+    ifNode3.Label = "Type is null?";
+    ifNode3.VerticalPosition = 6393;
+    ifNode2.FalseTarget = ifNode3;
+    
+    var raiseExceptionNode2 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>();
+    raiseExceptionNode2.Exception = invalidArgumentsException;
+    raiseExceptionNode2.SetExceptionMessage("\"Name must be unique\"");
+    raiseExceptionNode2.HorizontalPosition = 4799;
+    raiseExceptionNode2.IsDisabled = false; // default value
+    raiseExceptionNode2.VerticalPosition = 5028;
+    ifNode2.TrueTarget = raiseExceptionNode2;
+    
+    var ifNode4 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode3, 1378);
+    ifNode4.SetCondition("OpportunityRecord.OpportunityStageId = NullIdentifier()");
+    ifNode4.IsDisabled = false; // default value
+    ifNode4.Label = "Stage is null?";
+    ifNode3.FalseTarget = ifNode4;
+    
+    var raiseExceptionNode3 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode3, 1600);
+    raiseExceptionNode3.Exception = invalidArgumentsException;
+    raiseExceptionNode3.SetExceptionMessage("\"Type is required\"");
+    raiseExceptionNode3.IsDisabled = false; // default value
+    ifNode3.TrueTarget = raiseExceptionNode3;
+    
+    var ifNode5 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode5.SetCondition("OpportunityRecord.Amount < 0");
+    ifNode5.HorizontalPosition = 3192;
+    ifNode5.IsDisabled = false; // default value
+    ifNode5.Label = "Amount < 0?";
+    ifNode5.VerticalPosition = 9348;
+    ifNode4.FalseTarget = ifNode5;
+    
+    var raiseExceptionNode4 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode4, 1600);
+    raiseExceptionNode4.Exception = invalidArgumentsException;
+    raiseExceptionNode4.SetExceptionMessage("\"Stage is required\"");
+    raiseExceptionNode4.IsDisabled = false; // default value
+    ifNode4.TrueTarget = raiseExceptionNode4;
+    
+    var ifNode6 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode6.SetCondition("OpportunityRecord.Probability < 0");
+    ifNode6.HorizontalPosition = 3199;
+    ifNode6.IsDisabled = false; // default value
+    ifNode6.Label = "Probability < 0?";
+    ifNode6.VerticalPosition = 10742;
+    ifNode5.FalseTarget = ifNode6;
+    
+    var raiseExceptionNode5 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>();
+    raiseExceptionNode5.Exception = invalidArgumentsException;
+    raiseExceptionNode5.SetExceptionMessage("\"Amount revenue must be greater or equal to zero\"");
+    raiseExceptionNode5.HorizontalPosition = 4799;
+    raiseExceptionNode5.IsDisabled = false; // default value
+    raiseExceptionNode5.VerticalPosition = 9371;
+    ifNode5.TrueTarget = raiseExceptionNode5;
+    
+    var ifNode7 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode6, 1372);
+    ifNode7.SetCondition("OpportunityRecord.Probability > 100");
+    ifNode7.IsDisabled = false; // default value
+    ifNode7.Label = "Probability > 100?";
+    ifNode6.FalseTarget = ifNode7;
+    
+    var raiseExceptionNode6 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode6, 1600);
+    raiseExceptionNode6.Exception = invalidArgumentsException;
+    raiseExceptionNode6.SetExceptionMessage("\"Probability must be greater or equal to zero\"");
+    raiseExceptionNode6.IsDisabled = false; // default value
+    ifNode6.TrueTarget = raiseExceptionNode6;
+    
+    var ifNode8 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode7, 1599);
+    ifNode8.SetCondition("OpportunityRecord.ExpectedRevenue < 0");
+    ifNode8.IsDisabled = false; // default value
+    ifNode8.Label = "ExpectedRevenue < 0?";
+    ifNode7.FalseTarget = ifNode8;
+    
+    var raiseExceptionNode7 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode7, 1600);
+    raiseExceptionNode7.Exception = invalidArgumentsException;
+    raiseExceptionNode7.SetExceptionMessage("\"Probability must be leaser or equal to one hundred\"");
+    raiseExceptionNode7.IsDisabled = false; // default value
+    ifNode7.TrueTarget = raiseExceptionNode7;
+    
+    var endNode = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3196;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 15152;
+    ifNode8.FalseTarget = endNode;
+    
+    var raiseExceptionNode8 = opportunity_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>();
+    raiseExceptionNode8.Exception = invalidArgumentsException;
+    raiseExceptionNode8.SetExceptionMessage("\"Expected revenue must be greater or equal to zero\"");
+    raiseExceptionNode8.HorizontalPosition = 4799;
+    raiseExceptionNode8.IsDisabled = false; // default value
+    raiseExceptionNode8.VerticalPosition = 13714;
+    ifNode8.TrueTarget = raiseExceptionNode8;
+}
+
+```

@@ -1,0 +1,83 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Login_SampleUser' ***/
+    var login_SampleUser = eSpace.CreateServerAction("Login_SampleUser");
+    login_SampleUser.CacheInMinutes = null; // default value
+    login_SampleUser.Description = null; // default value
+    login_SampleUser.Folder = null; // default value
+    login_SampleUser.Function = false; // default value
+    login_SampleUser.Icon = null; // default value
+    login_SampleUser.Public = false; // default value
+    login_SampleUser.Shareable = false; // default value
+    
+    var userId = login_SampleUser.CreateInputParameter("UserId");
+    var _System_ = eSpace.References.Named("(System)");
+    var user = _System_.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("User");
+    userId.DataType = user.IdentifierType;
+    userId.Description = null; // default value
+    userId.IsMandatory = true; // default value
+    
+    var startNode = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var sampleUsers_Get = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("SampleUsers_Get");
+    var sampleUsers_Get2 = eSpace.ServerActions.Named("SampleUsers_Get");
+    sampleUsers_Get.Action = sampleUsers_Get2;
+    sampleUsers_Get.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    sampleUsers_Get.HorizontalPosition = 3200;
+    sampleUsers_Get.IsDisabled = false; // default value
+    sampleUsers_Get.ServerRequestTimeout = null; // default value
+    sampleUsers_Get.VerticalPosition = 2743;
+    startNode.Target = sampleUsers_Get;
+    
+    var listAny = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("ListAny");
+    var listAny2 = _System_.ServerActions.Named("ListAny");
+    listAny.Action = listAny2;
+    listAny.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    listAny.HorizontalPosition = 3192;
+    listAny.IsDisabled = false; // default value
+    listAny.ServerRequestTimeout = null; // default value
+    listAny.VerticalPosition = 4332;
+    var list = listAny2.InputParameters.Named("List");
+    listAny.SetArgumentValue(list, "SampleUsers_Get.UserList");
+    var condition = listAny2.InputParameters.Named("Condition");
+    listAny.SetArgumentValue(condition, "SampleUsers_Get.UserList.Current.User.Id = UserId");
+    sampleUsers_Get.Target = listAny;
+    
+    var ifNode = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("ListAny.Result");
+    ifNode.HorizontalPosition = 3199;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Sample User?";
+    ifNode.VerticalPosition = 5942;
+    listAny.Target = ifNode;
+    
+    var raiseExceptionNode = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    raiseExceptionNode.Exception = eSpace.NotRegistered;
+    raiseExceptionNode.SetExceptionMessage("\"Invalid Sample User to login\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.FalseTarget = raiseExceptionNode;
+    
+    var login = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Login");
+    var login2 = _System_.ServerActions.Named("Login");
+    login.Action = login2;
+    login.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    login.HorizontalPosition = 3196;
+    login.IsDisabled = false; // default value
+    login.ServerRequestTimeout = null; // default value
+    login.VerticalPosition = 7542;
+    var userId2 = login2.InputParameters.Named("UserId");
+    login.SetArgumentValue(userId2, "UserId");
+    var persistent = login2.InputParameters.Named("Persistent");
+    login.SetArgumentValue(persistent, "False");
+    ifNode.TrueTarget = login;
+    
+    var endNode = login_SampleUser.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3192;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 9599;
+    login.Target = endNode;
+}
+
+```

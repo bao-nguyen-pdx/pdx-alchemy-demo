@@ -1,0 +1,157 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'OrderItem_Validate' ***/
+    var orderItem_Validate = eSpace.CreateServerAction("OrderItem_Validate");
+    orderItem_Validate.CacheInMinutes = null; // default value
+    orderItem_Validate.Description = "Validates an order item record";
+    var orderItem = eSpace.Folders.Named("OrderItem");
+    orderItem_Validate.Folder = orderItem;
+    orderItem_Validate.Function = false; // default value
+    orderItem_Validate.Icon = null; // default value
+    orderItem_Validate.Public = false; // default value
+    orderItem_Validate.Shareable = false; // default value
+    
+    var orderItemRecord = orderItem_Validate.CreateInputParameter("OrderItemRecord");
+    var orderItem2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("OrderItem");
+    orderItemRecord.DataType = orderItem2;
+    orderItemRecord.Description = null; // default value
+    orderItemRecord.IsMandatory = true; // default value
+    
+    var startNode = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var ifNode = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("OrderItemRecord.OrderId = NullIdentifier()");
+    ifNode.HorizontalPosition = 3200;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "OrderId is null?";
+    ifNode.VerticalPosition = 2286;
+    startNode.Target = ifNode;
+    
+    var ifNode2 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode, 1371);
+    ifNode2.SetCondition("OrderItemRecord.ProductId = NullIdentifier()");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = "ProductId is null?";
+    ifNode.FalseTarget = ifNode2;
+    
+    var raiseExceptionNode = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    var invalidArgumentsException = eSpace.UserExceptions.Named("InvalidArgumentsException");
+    raiseExceptionNode.Exception = invalidArgumentsException;
+    raiseExceptionNode.SetExceptionMessage("\"Order is required\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.TrueTarget = raiseExceptionNode;
+    
+    var ifNode3 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode2, 1372);
+    ifNode3.SetCondition("OrderItemRecord.Quantity <= 0");
+    ifNode3.IsDisabled = false; // default value
+    ifNode3.Label = "Quantity <= 0?";
+    ifNode2.FalseTarget = ifNode3;
+    
+    var raiseExceptionNode2 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode2, 1600);
+    raiseExceptionNode2.Exception = invalidArgumentsException;
+    raiseExceptionNode2.SetExceptionMessage("\"Product is required\"");
+    raiseExceptionNode2.IsDisabled = false; // default value
+    ifNode2.TrueTarget = raiseExceptionNode2;
+    
+    var ifNode4 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode3, 1371);
+    ifNode4.SetCondition("OrderItemRecord.Discount < 0");
+    ifNode4.IsDisabled = false; // default value
+    ifNode4.Label = "Discount < 0?";
+    ifNode3.FalseTarget = ifNode4;
+    
+    var raiseExceptionNode3 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode3, 1600);
+    raiseExceptionNode3.Exception = invalidArgumentsException;
+    raiseExceptionNode3.SetExceptionMessage("\"Quantity must be greater than zero\"");
+    raiseExceptionNode3.IsDisabled = false; // default value
+    ifNode3.TrueTarget = raiseExceptionNode3;
+    
+    var ifNode5 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode5.SetCondition("OrderItemRecord.IsActive");
+    ifNode5.HorizontalPosition = 3192;
+    ifNode5.IsDisabled = false; // default value
+    ifNode5.Label = "OrderItem active?";
+    ifNode5.VerticalPosition = 7980;
+    ifNode4.FalseTarget = ifNode5;
+    
+    var raiseExceptionNode4 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode4, 1600);
+    raiseExceptionNode4.Exception = invalidArgumentsException;
+    raiseExceptionNode4.SetExceptionMessage("\"Discount must be greater or equal to zero\"");
+    raiseExceptionNode4.IsDisabled = false; // default value
+    ifNode4.TrueTarget = raiseExceptionNode4;
+    
+    var endNode = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode.HorizontalPosition = 3200;
+    endNode.IsDisabled = false; // default value
+    endNode.VerticalPosition = 10971;
+    ifNode5.FalseTarget = endNode;
+    
+    var ifNode6 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ToTheRightOf(ifNode5, 1824);
+    ifNode6.SetCondition("OrderItemRecord.Id = NullIdentifier()");
+    ifNode6.IsDisabled = false; // default value
+    ifNode6.Label = "New OrderItem?";
+    ifNode5.TrueTarget = ifNode6;
+    
+    var getProductById = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetProductById");
+    getProductById.CacheInMinutes = null; // default value
+    getProductById.Description = null; // default value
+    getProductById.HorizontalPosition = 6840;
+    getProductById.IsDisabled = false; // default value
+    getProductById.SetMaxRecords("1");
+    getProductById.SetStartIndex(null); // default value
+    getProductById.Timeout = null; // default value
+    getProductById.VerticalPosition = 8000;
+    var product2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Product");
+    var product = getProductById.AsDatabaseAggregate.CreateSource(product2);
+    var orderItem3 = getProductById.AsDatabaseAggregate.CreateSource(orderItem2);
+    var join = getProductById.AsDatabaseAggregate.CreateJoin();
+    join.LeftSource = product;
+    join.RightSource = orderItem3;
+    join.JoinType = OutSystems.Model.Enumerations.JoinType.Inner;
+    join.SetCondition("Product.Id = OrderItem.ProductId");
+    getProductById.AsDatabaseAggregate.CreateCalculatedAttribute("FinalStock").SetValue("Product.Stock + OrderItem.Quantity");
+    getProductById.AsDatabaseAggregate.CreateFilter("Product.IsActive = True");
+    getProductById.AsDatabaseAggregate.CreateFilter("Product.Id = OrderItemRecord.ProductId");
+    getProductById.AsDatabaseAggregate.CreateFilter("OrderItemRecord.Id = OrderItem.Id");
+    
+    ifNode6.FalseTarget = getProductById;
+    
+    var getProductById2 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetProductById2");
+    getProductById2.CacheInMinutes = null; // default value
+    getProductById2.Description = null; // default value
+    getProductById2.HorizontalPosition = 5029;
+    getProductById2.IsDisabled = false; // default value
+    getProductById2.SetMaxRecords("1");
+    getProductById2.SetStartIndex(null); // default value
+    getProductById2.Timeout = null; // default value
+    getProductById2.VerticalPosition = 9371;
+    var product3 = getProductById2.AsDatabaseAggregate.CreateSource(product2);
+    getProductById2.AsDatabaseAggregate.CreateFilter("Product.IsActive = True");
+    getProductById2.AsDatabaseAggregate.CreateFilter("Product.Id = OrderItemRecord.ProductId");
+    
+    ifNode6.TrueTarget = getProductById2;
+    
+    var ifNode7 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedToTheRightOf(getProductById, 1617);
+    ifNode7.SetCondition("GetProductById.List.Current.FinalStock <  OrderItemRecord.Quantity\n\n");
+    ifNode7.IsDisabled = false; // default value
+    ifNode7.Label = "Stock < Quantity?";
+    
+    var ifNode8 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(getProductById2, 1600);
+    ifNode8.SetCondition("GetProductById2.List.Current.Product.Stock < OrderItemRecord.Quantity\n");
+    ifNode8.FalseTarget = endNode;
+    ifNode8.IsDisabled = false; // default value
+    ifNode8.Label = "No stock?";
+    
+    var endNode2 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ToTheRightOf(ifNode7, 1600);
+    endNode2.IsDisabled = false; // default value
+    ifNode7.FalseTarget = endNode2;
+    
+    var raiseExceptionNode5 = orderItem_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().Below(ifNode7, 2971);
+    raiseExceptionNode5.Exception = invalidArgumentsException;
+    raiseExceptionNode5.SetExceptionMessage("\"Insufficient stock to fulfill your order\"");
+    raiseExceptionNode5.IsDisabled = false; // default value
+    ifNode7.TrueTarget = raiseExceptionNode5;
+    ifNode8.TrueTarget = raiseExceptionNode5;
+}
+
+```

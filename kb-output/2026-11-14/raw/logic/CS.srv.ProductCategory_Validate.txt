@@ -1,0 +1,43 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'ProductCategory_Validate' ***/
+    var productCategory_Validate = eSpace.CreateServerAction("ProductCategory_Validate");
+    productCategory_Validate.CacheInMinutes = null; // default value
+    productCategory_Validate.Description = "Validates an product category record";
+    var productCategory = eSpace.Folders.Named("ProductCategory");
+    productCategory_Validate.Folder = productCategory;
+    productCategory_Validate.Function = false; // default value
+    productCategory_Validate.Icon = null; // default value
+    productCategory_Validate.Public = false; // default value
+    productCategory_Validate.Shareable = false; // default value
+    
+    var productCategoryRecord = productCategory_Validate.CreateInputParameter("ProductCategoryRecord");
+    var productCategory2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("ProductCategory");
+    productCategoryRecord.DataType = productCategory2;
+    productCategoryRecord.Description = null; // default value
+    productCategoryRecord.IsMandatory = true; // default value
+    
+    var startNode = productCategory_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.HorizontalPosition = 4114;
+    startNode.IsDisabled = false; // default value
+    startNode.VerticalPosition = 914;
+    
+    var ifNode = productCategory_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(startNode, 1371);
+    ifNode.SetCondition("ProductCategoryRecord.Name = \"\"");
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Name is empty?";
+    
+    var endNode = productCategory_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().Below(ifNode, 1600);
+    endNode.IsDisabled = false; // default value
+    ifNode.FalseTarget = endNode;
+    
+    var raiseExceptionNode = productCategory_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    var invalidArgumentsException = eSpace.UserExceptions.Named("InvalidArgumentsException");
+    raiseExceptionNode.Exception = invalidArgumentsException;
+    raiseExceptionNode.SetExceptionMessage("\"Name is required\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.TrueTarget = raiseExceptionNode;
+}
+
+```

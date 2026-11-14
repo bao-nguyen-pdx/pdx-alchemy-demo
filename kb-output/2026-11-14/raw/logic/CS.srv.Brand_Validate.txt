@@ -1,0 +1,44 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Brand_Validate' ***/
+    var brand_Validate = eSpace.CreateServerAction("Brand_Validate");
+    brand_Validate.CacheInMinutes = null; // default value
+    brand_Validate.Description = null; // default value
+    var brand = eSpace.Folders.Named("Brand");
+    brand_Validate.Folder = brand;
+    brand_Validate.Function = false; // default value
+    brand_Validate.Icon = null; // default value
+    brand_Validate.Public = false; // default value
+    brand_Validate.Shareable = false; // default value
+    
+    var brandRecord = brand_Validate.CreateInputParameter("BrandRecord");
+    var brand2 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Brand");
+    brandRecord.DataType = brand2;
+    brandRecord.Description = null; // default value
+    brandRecord.IsMandatory = true; // default value
+    
+    var startNode = brand_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var ifNode = brand_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode.SetCondition("BrandRecord.Name = NullTextIdentifier()");
+    ifNode.HorizontalPosition = 3200;
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Name is empty?";
+    ifNode.VerticalPosition = 2514;
+    startNode.Target = ifNode;
+    
+    var endNode = brand_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().Below(ifNode, 1600);
+    endNode.IsDisabled = false; // default value
+    ifNode.FalseTarget = endNode;
+    
+    var raiseExceptionNode = brand_Validate.CreateNode<OutSystems.Model.Logic.Nodes.IRaiseExceptionNode>().ToTheRightOf(ifNode, 1600);
+    var invalidArgumentsException = eSpace.UserExceptions.Named("InvalidArgumentsException");
+    raiseExceptionNode.Exception = invalidArgumentsException;
+    raiseExceptionNode.SetExceptionMessage("\"Name is required\"");
+    raiseExceptionNode.IsDisabled = false; // default value
+    ifNode.TrueTarget = raiseExceptionNode;
+}
+
+```

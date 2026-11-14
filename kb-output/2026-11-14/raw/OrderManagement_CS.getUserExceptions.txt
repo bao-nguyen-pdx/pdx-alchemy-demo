@@ -1,0 +1,1 @@
+{"result":"\u0060\u0060\u0060csharp\n(OutSystems.Model.IESpace eSpace) =\u003E {\n    \n    /*** creating IUserException \u0027InvalidArgumentsException\u0027 ***/\n    var invalidArgumentsException = eSpace.CreateUserException(\u0022InvalidArgumentsException\u0022);\n}\n\n\u0060\u0060\u0060"}

@@ -1,0 +1,132 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'Account_GenerateCode' ***/
+    var account_GenerateCode = eSpace.CreateServerAction("Account_GenerateCode");
+    account_GenerateCode.CacheInMinutes = null; // default value
+    account_GenerateCode.Description = "Generates the next account code";
+    var account = eSpace.Folders.Named("Account");
+    account_GenerateCode.Folder = account;
+    account_GenerateCode.Function = false; // default value
+    account_GenerateCode.Icon = null; // default value
+    account_GenerateCode.Public = true;
+    account_GenerateCode.Shareable = true;
+    
+    var nextNumber = account_GenerateCode.CreateLocalVariable("NextNumber");
+    nextNumber.DataType = eSpace.IntegerType;
+    nextNumber.SetDefaultValue(null); // default value
+    nextNumber.Description = null; // default value
+    
+    var startNode = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var getAccount = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetAccount");
+    getAccount.CacheInMinutes = null; // default value
+    getAccount.Description = null; // default value
+    getAccount.HorizontalPosition = 3192;
+    getAccount.IsDisabled = false; // default value
+    getAccount.SetMaxRecords("1");
+    getAccount.SetStartIndex(null); // default value
+    getAccount.Timeout = null; // default value
+    getAccount.VerticalPosition = 2280;
+    var account3 = eSpace.Entities.OfType<OutSystems.Model.Data.IServerEntity>().Named("Account");
+    var account2 = getAccount.AsDatabaseAggregate.CreateSource(account3);
+    getAccount.AsDatabaseAggregate.CreateSort().SetAttribute("Account.Code");
+    
+    startNode.Target = getAccount;
+    
+    var ifNode = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(getAccount, 1596);
+    ifNode.SetCondition("GetAccount.List.Empty");
+    ifNode.IsDisabled = false; // default value
+    ifNode.Label = "Empty?";
+    
+    var assignNode = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().Below(ifNode, 1368);
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = null; // default value
+    
+    var assignment = assignNode.CreateAssignment("NextNumber", "TextToInteger(Substr(GetAccount.List.Current.Account.Code, 1, 4)) + 1");
+    ifNode.FalseTarget = assignNode;
+    
+    var assignNode2 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ToTheRightOf(ifNode, 1596);
+    assignNode2.IsDisabled = false; // default value
+    assignNode2.Label = null; // default value
+    
+    var assignment2 = assignNode2.CreateAssignment("Code", "\"A0001\"");
+    ifNode.TrueTarget = assignNode2;
+    
+    var ifNode2 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().ConnectedBelow(assignNode, 1368);
+    ifNode2.SetCondition("NextNumber < 10");
+    ifNode2.IsDisabled = false; // default value
+    ifNode2.Label = null; // default value
+    
+    var endNode = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedToTheRightOf(assignNode2, 1368);
+    endNode.IsDisabled = false; // default value
+    
+    var ifNode3 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>();
+    ifNode3.SetCondition("NextNumber < 100");
+    ifNode3.HorizontalPosition = 3199;
+    ifNode3.IsDisabled = false; // default value
+    ifNode3.Label = null; // default value
+    ifNode3.VerticalPosition = 8000;
+    ifNode2.FalseTarget = ifNode3;
+    
+    var assignNode3 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>();
+    assignNode3.HorizontalPosition = 4799;
+    assignNode3.IsDisabled = false; // default value
+    assignNode3.Label = null; // default value
+    assignNode3.VerticalPosition = 6629;
+    
+    var assignment3 = assignNode3.CreateAssignment("Code", "\"A000\" + NextNumber");
+    ifNode2.TrueTarget = assignNode3;
+    
+    var ifNode4 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IIfNode>().Below(ifNode3, 1600);
+    ifNode4.SetCondition("NextNumber < 1000");
+    ifNode4.IsDisabled = false; // default value
+    ifNode4.Label = null; // default value
+    ifNode3.FalseTarget = ifNode4;
+    
+    var assignNode4 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ToTheRightOf(ifNode3, 1600);
+    assignNode4.IsDisabled = false; // default value
+    assignNode4.Label = null; // default value
+    
+    var assignment4 = assignNode4.CreateAssignment("Code", "\"A00\" + NextNumber");
+    ifNode3.TrueTarget = assignNode4;
+    
+    var endNode2 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedToTheRightOf(assignNode3, 1372);
+    endNode2.IsDisabled = false; // default value
+    
+    var assignNode5 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>();
+    assignNode5.HorizontalPosition = 3192;
+    assignNode5.IsDisabled = false; // default value
+    assignNode5.Label = null; // default value
+    assignNode5.VerticalPosition = 11172;
+    
+    var assignment5 = assignNode5.CreateAssignment("Code", "\"A\" + NextNumber");
+    ifNode4.FalseTarget = assignNode5;
+    
+    var assignNode6 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>().ToTheRightOf(ifNode4, 1600);
+    assignNode6.IsDisabled = false; // default value
+    assignNode6.Label = null; // default value
+    
+    var assignment6 = assignNode6.CreateAssignment("Code", "\"A0\" + NextNumber");
+    ifNode4.TrueTarget = assignNode6;
+    
+    var endNode3 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedToTheRightOf(assignNode4, 1372);
+    endNode3.IsDisabled = false; // default value
+    
+    var endNode4 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>();
+    endNode4.HorizontalPosition = 3196;
+    endNode4.IsDisabled = false; // default value
+    endNode4.VerticalPosition = 12540;
+    assignNode5.Target = endNode4;
+    
+    var endNode5 = account_GenerateCode.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedToTheRightOf(assignNode6, 1372);
+    endNode5.IsDisabled = false; // default value
+    
+    var code = account_GenerateCode.CreateOutputParameter("Code");
+    code.DataType = eSpace.TextType;
+    code.SetDefaultValue(null); // default value
+    code.Description = null; // default value
+}
+
+```

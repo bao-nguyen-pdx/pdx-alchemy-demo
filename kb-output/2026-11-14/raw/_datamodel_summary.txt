@@ -1,0 +1,179 @@
+
+## Account (Server) — Represents a company
+  - Id: IntegerType
+  - IsActive: BooleanType * — Indicates that the record is active
+  - Company: TextType(100) * — Company name
+  - Code: TextType(10) * — Account unique code
+  - Contact: TextType(100) * — Main contact inside the company
+  - CountryId: ? [del:Protect] — Company country
+  - Address: TextType(250) — Company address
+  - City: TextType(50) — Company city
+  - PostalCode: TextType(50) — Company postal code
+  - Phone: PhoneNumberType — Company phone number
+  - Email: EmailType — Company email
+  - CreatedBy: →user * [del:Protect] — User that created the record
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - UpdatedBy: →user [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+
+## Country (Server) — Country
+  - Id: LongIntegerType
+  - Code: TextType(50) * — Country code
+  - Name: TextType(100) * — Country name
+  - CreatedBy: ? * [del:Protect] — User that created the record
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - UpdatedBy: ? [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+  - IsActive: BooleanType * — Indicates that the record is active
+
+## Brand (Server) — Entity that holds the records of type Brand.
+  - Id: LongIntegerType — Unique Brand record identifier.
+  - Name: TextType(50) * — Name of the product brand.
+  - IsActive: BooleanType — Holds True if record is active, and False if otherwise.
+  - CreatedBy: →user [del:Ignore] — Identifier for the user that created the record.
+  - CreatedOn: DateTimeType — Date and time in which the record was created.
+  - UpdatedBy: →user [del:Ignore] — Identifier for the user that updated the record.
+  - UpdatedOn: DateTimeType — Date and time in which the record was updated.
+
+## Model (Server) — Entity that holds the records of type Model for products.
+  - Id: LongIntegerType — Unique product Model record identifier.
+  - Name: TextType(50) * — Name of the product Model.
+  - BrandId: →Brand * [del:Protect] — Identifier of the brand of the product model.
+  - IsActive: BooleanType — Holds True if record is active, and False if otherwise.
+  - CreatedBy: →user [del:Ignore] — Identifier for the user that created the record.
+  - CreatedOn: DateTimeType — Date and time in which the record was created.
+  - UpdatedBy: →user [del:Ignore] — Identifier for the user that updated the record.
+  - UpdatedOn: DateTimeType — Date and time in which the record was updated.
+
+## Opportunity (Server) — Represents an opportunity associated with a company
+  - Id: IntegerType
+  - IsActive: BooleanType * — Indicates that the record is active
+  - Name: TextType(100) * — Opportunity name
+  - AccountId: →Account * [del:Protect] — Account of the Opportunity
+  - Description: TextType(1500) — Opportunity description
+  - OpportunityTypeId: ? * [del:Protect] — Opportunity type
+  - OpportunityStageId: ? * [del:Protect] — Opportunity stage
+  - Amount: CurrencyType — Estimated total sale amount
+  - Probability: DecimalType — Percentage of estimated confidence in closing the opportunity
+  - ExpectedRevenue: CurrencyType — Opportunity expected revenue
+  - CloseOn: DateTimeType — Date expected to close the opportunity
+  - CreatedBy: →user * [del:Protect] — User that created the record
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - UpdatedBy: →user [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+
+## OpportunityType (Static) — Opportunity type
+  - Id: IntegerType
+  - Label: TextType(50) * — Label
+  - Order: IntegerType * — Order
+  - IsActive: BooleanType * — Indicates that the record is active
+
+## OpportunityStage (Static) — Opportunity stage
+  - Id: IntegerType
+  - Label: TextType(50) * — Label
+  - Order: IntegerType * — Order
+  - IsActive: BooleanType * — Indicates that the record is active
+
+## Order (Server) — Sales order
+  - Id: IntegerType
+  - IsActive: BooleanType * — Indicates that the record is active
+  - Code: TextType(10) * — Order unique code
+  - AccountId: →Account * [del:Protect] — Account associated with current order
+  - OpportunityId: →Opportunity [del:Protect] — Opportunity associated with current order
+  - TotalAmount: DecimalType — Order total amount, the sum of order items
+  - OrderStatusId: ? * [del:Protect] — Order status
+  - ExpectedClosedOn: DateType
+  - RequiredOn: DateTimeType
+  - ShippedOn: DateTimeType — Timestamp when the order was shipped
+  - CreatedBy: →user * [del:Protect] — User that created the record
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - UpdatedBy: →user [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+
+## OrderStatus (Static) — Order status
+  - Id: IntegerType
+  - Label: TextType(50) * — Label
+  - Order: IntegerType * — Order
+  - Description: TextType(200) — Description
+  - IconNameId: →iconName — Icon associated with current status
+  - ColorRGB: TextType(50) — Icon color associated with current status
+
+## OrderItem (Server) — Order item
+  - Id: IntegerType
+  - IsActive: BooleanType * — Indicates that the record is active
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - OrderId: →Order * [del:Protect] — Order associated with order item
+  - ProductId: ? * [del:Protect] — Product sold
+  - Quantity: IntegerType * — Quantity
+  - Discount: DecimalType — Percentage of discount
+  - Amount: CurrencyType — Total amount of the order item
+  - CreatedBy: →user * [del:Protect] — User that created the record
+  - UpdatedBy: →user [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+
+## Product (Server) — Product, can be added on OrderItems
+  - Id: IntegerType
+  - Code: TextType(10) * — Product unique code
+  - Name: TextType(250) * — Product name
+  - Description: TextType(1000) — Product description
+  - CategoryId: ? * [del:Protect] — Product category
+  - ModelId: →Model [del:Protect]
+  - Price: CurrencyType * — Unit price
+  - Discount: DecimalType — Percentage of discount that will be applied on top of the product price.
+  - Stock: IntegerType — Value indicating the product availability.
+  - Reference: TextType(50) — Numeric identifier of the product.
+  - EAN: TextType(50) — Number of the article.
+  - Weight: TextType(50) — Weight of the product in kilograms.
+  - Dimensions: TextType(150) — Physical dimensions of the product in millimeters.
+  - CreatedBy: →user * [del:Protect] — User that created the record
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - UpdatedBy: →user [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+  - IsActive: BooleanType — Indicates that the record is active
+
+## ProductCategory (Server) — Product category
+  - Id: IntegerType
+  - Code: TextType(10) — Category unique code
+  - Name: TextType(50) * — Category name
+  - Description: TextType(250) — Category description
+  - CreatedBy: →user * [del:Protect] — User that created the record
+  - CreatedOn: DateTimeType * — Timestamp when the record was created
+  - UpdatedBy: →user [del:Protect] — Last user that updated the record
+  - UpdatedOn: DateTimeType — Timestamp when the record was updated by the last time
+  - IsActive: BooleanType * — Indicates that the record is active
+
+## ProductFeature (Server) — Entity that holds the features for products
+  - Id: LongIntegerType — ProductFeature Identifier
+  - ProductId: →Product * [del:Delete] — Product Identifier
+  - Description: TextType(100) * — Feature description
+  - IsActive: BooleanType — Holds True if record is active, and False if otherwise.
+  - CreatedBy: →user [del:Ignore] — Identifier for the user that created the record.
+  - CreatedOn: DateTimeType — Date and time in which the record was created.
+  - UpdatedBy: →user [del:Ignore] — Identifier for the user that updated the record.
+  - UpdatedOn: DateTimeType — Date and time in which the record was updated.
+
+## ProductPicture (Server) — Entity that holds the sample images for Products.
+  - Id: LongIntegerType — Unique ProductImage record identifier.
+  - ProductId: →Product * [del:Delete] — Identifier of the product.
+  - Filename: TextType(250) — Name of the image file illustrating the product.
+  - Filetype: TextType(150) — MIME type of the image file.
+  - File: BinaryDataType — Binary content of the image file.
+  - IsCover: BooleanType — Holds True if the image should be displayed as cover image in the gallery, and False if otherwise.
+  - IsActive: BooleanType — Holds True if record is active, and False if otherwise.
+  - CreatedBy: →user [del:Ignore] — Identifier for the user that created the record.
+  - CreatedOn: DateTimeType — Date and time in which the record was created.
+  - UpdatedBy: →user [del:Ignore] — Identifier for the user that updated the record.
+  - UpdatedOn: DateTimeType — Date and time in which the record was updated.
+
+## ProductSort (Static) — Product sort
+  - Id: IntegerType
+  - IsActive: BooleanType *
+  - Label: TextType(50) *
+  - Order: IntegerType *
+  - Value: TextType(50)
+
+Static record counts:
+  OpportunityType 2
+  OpportunityStage 6
+  OrderStatus 4
+  ProductSort 3

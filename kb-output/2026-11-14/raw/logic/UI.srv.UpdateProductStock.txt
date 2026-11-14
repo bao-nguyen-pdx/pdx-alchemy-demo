@@ -1,0 +1,68 @@
+```csharp
+(OutSystems.Model.IESpace eSpace) => {
+    
+    /*** creating IServerAction 'UpdateProductStock' ***/
+    var updateProductStock = eSpace.CreateServerAction("UpdateProductStock");
+    updateProductStock.CacheInMinutes = null; // default value
+    updateProductStock.Description = null; // default value
+    updateProductStock.Folder = null; // default value
+    updateProductStock.Function = false; // default value
+    updateProductStock.Icon = null; // default value
+    updateProductStock.Public = false; // default value
+    updateProductStock.Shareable = false; // default value
+    
+    var productId = updateProductStock.CreateInputParameter("ProductId");
+    var orderManagement_CS = eSpace.References.Named("OrderManagement_CS");
+    var product = orderManagement_CS.Entities.OfType<OutSystems.Model.Data.IServerEntitySignature>().Named("Product");
+    productId.DataType = product.IdentifierType;
+    productId.Description = null; // default value
+    productId.IsMandatory = true; // default value
+    
+    var quantity = updateProductStock.CreateInputParameter("Quantity");
+    quantity.DataType = eSpace.IntegerType;
+    quantity.Description = null; // default value
+    quantity.IsMandatory = true; // default value
+    
+    var startNode = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IStartNode>();
+    startNode.IsDisabled = false; // default value
+    
+    var getProductById = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IAggregateNode>("GetProductById");
+    getProductById.CacheInMinutes = null; // default value
+    getProductById.Description = null; // default value
+    getProductById.HorizontalPosition = 3192;
+    getProductById.IsDisabled = false; // default value
+    getProductById.SetMaxRecords("1");
+    getProductById.SetStartIndex(null); // default value
+    getProductById.Timeout = null; // default value
+    getProductById.VerticalPosition = 2280;
+    var product2 = getProductById.AsDatabaseAggregate.CreateSource(product);
+    getProductById.AsDatabaseAggregate.CreateFilter("Product.IsActive = True");
+    getProductById.AsDatabaseAggregate.CreateFilter("Product.Id = ProductId");
+    
+    startNode.Target = getProductById;
+    
+    var assignNode = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IAssignNode>();
+    assignNode.HorizontalPosition = 3200;
+    assignNode.IsDisabled = false; // default value
+    assignNode.Label = "Set new stock";
+    assignNode.VerticalPosition = 3886;
+    
+    var assignment = assignNode.CreateAssignment("GetProductById.List.Current.Product.Stock", "GetProductById.List.Current.Product.Stock + Quantity");
+    getProductById.Target = assignNode;
+    
+    var product_Save = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IExecuteServerActionNode>("Product_Save").ConnectedBelow(assignNode, 1600);
+    var product_Save2 = orderManagement_CS.ServerActions.Named("Product_Save");
+    product_Save.Action = product_Save2;
+    product_Save.AnimationEffect = OutSystems.Model.Enumerations.ExecuteActionAnimationEffectType.None; // default value
+    product_Save.IsDisabled = false; // default value
+    product_Save.ServerRequestTimeout = null; // default value
+    var productRecord = product_Save2.InputParameters.Named("ProductRecord");
+    product_Save.SetArgumentValue(productRecord, "GetProductById.List.Current.Product");
+    var invoker = product_Save2.InputParameters.Named("Invoker");
+    product_Save.SetArgumentValue(invoker, "GetUserId()");
+    
+    var endNode = updateProductStock.CreateNode<OutSystems.Model.Logic.Nodes.IEndNode>().ConnectedBelow(product_Save, 1600);
+    endNode.IsDisabled = false; // default value
+}
+
+```
