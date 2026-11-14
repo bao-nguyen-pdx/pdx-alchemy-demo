@@ -1,0 +1,6287 @@
+{
+ "Name": "SalesSampleData",
+ "Object": "IESpace",
+ "DBMS": "All",
+ "DefaultTransition": "SlideFromRight",
+ "InvalidCurrency": "Currency expected!",
+ "InvalidDate": "Date expected!",
+ "InvalidDateTime": "DateTime expected!",
+ "InvalidDecimal": "Decimal expected!",
+ "InvalidEmail": "Email expected!",
+ "InvalidInteger": "Integer expected!",
+ "InvalidNumericPassword": "Numeric Password expected!",
+ "InvalidPhone": "Phone Number expected!",
+ "InvalidText": "Text expected!",
+ "InvalidTime": "Time expected!",
+ "MandatoryInput": "Required field!",
+ "UpgradeFailed": "An error occurred while trying to update the app. If you want to retry the update, restart the app.",
+ "UpgradeFailedOnDataModel": "An error occurred while trying to update the app. If you want to retry the update, restart the app. If the problem persists you can reinstall, but all local data will be lost.",
+ "UpgradeFailedOnResources": "An error occurred while trying to update the app. If you want to retry the update, restart the app.",
+ "UpgradeRequired": "Your application needs to be updated. Tap here to update.",
+ "UpgradeRequiredWithDataLoss": "Your application needs to be updated. Unsaved data will be lost. Tap here to update.",
+ "UseCookies": "True",
+ "Folders": [
+  {
+   "Name": "SampleData",
+   "Object": "IFolder",
+   "ParentFolder": "ServerActions"
+  }
+ ],
+ "PreviousScreen": [
+  {
+   "Object": "IPreviousScreen"
+  }
+ ],
+ "References": [
+  {
+   "Name": "(System)",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "Activity",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Activity",
+     "LabelPlural": "Activities",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Espace",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Espace",
+     "LabelPlural": "Espaces",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Group",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Group",
+     "LabelPlural": "Groups",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Process",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Process",
+     "LabelPlural": "Process",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Role",
+     "Object": "IServerEntitySignature",
+     "ExposeProcessEvents": "True",
+     "IdentifierAttribute": "Id",
+     "IsActiveAttribute": "Is_Active",
+     "IsMultiTenant": "No",
+     "Label": "Role",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Roles",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "CreateOrUpdateRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateSomeRoles",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "CreateRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllRoles",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetRoleForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Name",
+       "Length": "50"
+      },
+      {
+       "Name": "Persistent",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Persistent"
+      },
+      {
+       "Name": "SS_Key",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "SS Key",
+       "Length": "100"
+      },
+      {
+       "Name": "Espace_Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Espace Identifier",
+       "DeleteRule": "Delete",
+       "IsMandatory": "True",
+       "Label": "Espace"
+      },
+      {
+       "Name": "Is_Active",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Is Active"
+      },
+      {
+       "Name": "Description",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Description",
+       "Length": "2000"
+      }
+     ]
+    },
+    {
+     "Name": "RuntimeKind",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Runtime Kind",
+     "LabelPlural": "Runtime Kinds",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Sent_Email",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Sent Email",
+     "LabelPlural": "Sent Emails",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Tenant",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Tenant",
+     "LabelPlural": "Tenants",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "User",
+     "Object": "IServerEntitySignature",
+     "ExposeProcessEvents": "True",
+     "IdentifierAttribute": "Id",
+     "IsActiveAttribute": "Is_Active",
+     "IsMultiTenant": "Yes",
+     "Label": "User",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Users",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "CreateOrUpdateSomeUsers",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllUsers",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetUserForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Name",
+       "Length": "256"
+      },
+      {
+       "Name": "Username",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Username",
+       "Length": "250"
+      },
+      {
+       "Name": "Password",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Password",
+       "Length": "256"
+      },
+      {
+       "Name": "Email",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Email",
+       "DeleteRule": "Protect",
+       "Label": "Email",
+       "Length": "250"
+      },
+      {
+       "Name": "MobilePhone",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Mobile Phone",
+       "Length": "20"
+      },
+      {
+       "Name": "External_Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "External",
+       "Length": "36"
+      },
+      {
+       "Name": "Creation_Date",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date Time",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Creation Date"
+      },
+      {
+       "Name": "Last_Login",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date Time",
+       "DeleteRule": "Protect",
+       "Label": "Last Login"
+      },
+      {
+       "Name": "Is_Active",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DefaultValue": "True",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Is Active"
+      }
+     ]
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "EspaceInvalidateCache",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "EspaceId",
+       "Object": "IInputParameterSignature",
+       "DataType": "Espace Identifier"
+      },
+      {
+       "Name": "TenantId",
+       "Object": "IInputParameterSignature",
+       "DataType": "Tenant Identifier"
+      }
+     ]
+    },
+    {
+     "Name": "Logout",
+     "Object": "IServerActionSignature"
+    }
+   ]
+  },
+  {
+   "Name": "Customers",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "Company",
+     "Object": "IServerEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Company",
+     "LabelAttribute": "CompanyName",
+     "LabelPlural": "Companies",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "GetCompany",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Company Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Company Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "CompanyName",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Company Name",
+       "Length": "50"
+      },
+      {
+       "Name": "CompanyType",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "CompanyType Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Company Type"
+      },
+      {
+       "Name": "Phone",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Phone",
+       "Length": "20"
+      },
+      {
+       "Name": "Email",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Email",
+       "Length": "50"
+      },
+      {
+       "Name": "Fax",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Fax",
+       "Length": "20"
+      },
+      {
+       "Name": "Website",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Website",
+       "Length": "50"
+      },
+      {
+       "Name": "Address",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Address",
+       "Length": "50"
+      },
+      {
+       "Name": "PostalCode",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Postal Code",
+       "Length": "50"
+      },
+      {
+       "Name": "City",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "City",
+       "Length": "50"
+      },
+      {
+       "Name": "CountryId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Country Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Country"
+      }
+     ]
+    },
+    {
+     "Name": "CompanyType",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Company Type",
+     "LabelPlural": "Company Types",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Contact",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Contact",
+     "LabelPlural": "Contacts",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Country",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Country",
+     "LabelPlural": "Countries",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "CustomersSampleData",
+   "Object": "IReference",
+   "ServerActions": [
+    {
+     "Name": "Company_GetIdFromName",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "InputParameters": [
+      {
+       "Name": "CompanyName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "CompanyId",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Company Identifier"
+      }
+     ]
+    },
+    {
+     "Name": "Company_ImportFromExcel",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Excel",
+       "Object": "IInputParameterSignature",
+       "DataType": "Binary Data",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "Contact_GetIdFromName",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "InputParameters": [
+      {
+       "Name": "ContactName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "ContactId",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Contact Identifier"
+      }
+     ]
+    },
+    {
+     "Name": "Contact_ImportFromExcel",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Excel",
+       "Object": "IInputParameterSignature",
+       "DataType": "Binary Data",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "CRM_SampleData_Bootstrap",
+     "Object": "IServerActionSignature"
+    },
+    {
+     "Name": "CRM_SampleData_Delete",
+     "Object": "IServerActionSignature"
+    },
+    {
+     "Name": "DownloadSampleCompanies",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "OutputParameters": [
+      {
+       "Name": "BinaryData",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Binary Data"
+      }
+     ]
+    },
+    {
+     "Name": "DownloadSampleContacts",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "OutputParameters": [
+      {
+       "Name": "BinaryData",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Binary Data"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "EmployeesSampleData",
+   "Object": "IReference",
+   "Folders": [
+    {
+     "Name": "Bootstrap",
+     "Object": "IFolderSignature",
+     "ParentFolder": "ServerActions"
+    },
+    {
+     "Name": "Utils",
+     "Object": "IFolderSignature",
+     "ParentFolder": "ServerActions"
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "SampleData_Bootstrap_Employee",
+     "Object": "IServerActionSignature",
+     "Folder": "Bootstrap",
+     "InputParameters": [
+      {
+       "Name": "SYDId",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "SYDCallback",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "ExcelToBootstrap",
+       "Object": "IInputParameterSignature",
+       "DataType": "Binary Data"
+      },
+      {
+       "Name": "IsSampleData",
+       "Object": "IInputParameterSignature",
+       "DataType": "Boolean",
+       "DefaultValue": "True"
+      }
+     ]
+    },
+    {
+     "Name": "User_GetIdbyEmail",
+     "Object": "IServerActionSignature",
+     "Folder": "Utils",
+     "Function": "True",
+     "InputParameters": [
+      {
+       "Name": "Email",
+       "Object": "IInputParameterSignature",
+       "DataType": "Email",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "UserId",
+       "Object": "IOutputParameterSignature",
+       "DataType": "User Identifier"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "OutSystemsUIWeb",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "Orientation",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Orientation",
+     "LabelPlural": "Orientations",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    }
+   ],
+   "Structures": [
+    {
+     "Name": "DeviceConfig",
+     "Object": "IStructureSignature",
+     "Attributes": [
+      {
+       "Name": "PhonePx",
+       "Object": "IStructureAttributeSignature",
+       "DataType": "Integer",
+       "DefaultValue": "420",
+       "Label": "Phone Px"
+      },
+      {
+       "Name": "TabletPx",
+       "Object": "IStructureAttributeSignature",
+       "DataType": "Integer",
+       "DefaultValue": "1024",
+       "Label": "Tablet Px"
+      },
+      {
+       "Name": "DesktopSmallPx",
+       "Object": "IStructureAttributeSignature",
+       "DataType": "Integer",
+       "DefaultValue": "1366",
+       "Label": "Desktop Small Px"
+      },
+      {
+       "Name": "DesktopPx",
+       "Object": "IStructureAttributeSignature",
+       "DataType": "Integer",
+       "DefaultValue": "1600",
+       "Label": "Desktop Px"
+      },
+      {
+       "Name": "DesktopBigPx",
+       "Object": "IStructureAttributeSignature",
+       "DataType": "Integer",
+       "DefaultValue": "1920",
+       "Label": "Desktop Big Px"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "PlatformPasswordUtils",
+   "Object": "IReference",
+   "ServerActions": [
+    {
+     "Name": "GenerateSaltedMD5Hash",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "InputParameters": [
+      {
+       "Name": "PlainTextPassword",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "SaltedMD5HashPassword",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "RichWidgets",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "IconName",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Icon Name",
+     "LabelPlural": "Icon Names",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "IconSize",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Icon Size",
+     "LabelPlural": "Icon Sizes",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "MessageType",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Message Type",
+     "LabelPlural": "Message Types",
+     "OrderByAttribute": "Id",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "GetMessageType",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "MessageType Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "MessageType Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Label",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Label",
+       "Length": "50"
+      }
+     ],
+     "Records": [
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Error",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id",
+         "Value": "3"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Error\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Info",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id",
+         "Value": "1"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Info\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Success",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id",
+         "Value": "2"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Success\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Warning",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id",
+         "Value": "4"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Warning\""
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "Images": [
+    {
+     "Name": "Bar_Gradient",
+     "Object": "IImageSignature",
+     "Height": "23",
+     "OriginalFilename": "Bar_Gradient.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/Bar_Gradient.png",
+     "Width": "1",
+     "Hidden": "True"
+    },
+    {
+     "Name": "Feedback_AjaxWait",
+     "Object": "IImageSignature",
+     "Height": "16",
+     "OriginalFilename": "Feedback_AjaxWait.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/Feedback_AjaxWait.png",
+     "Width": "16",
+     "Hidden": "True"
+    },
+    {
+     "Name": "Icon_Check_Green",
+     "Object": "IImageSignature",
+     "Height": "16",
+     "OriginalFilename": "Icon_Check_Green.gif",
+     "OriginalFormat": "Gif",
+     "RuntimePath": "/RichWidgets/img/Icon_Check_Green.gif",
+     "Width": "16"
+    },
+    {
+     "Name": "InfoBalloon_Info",
+     "Object": "IImageSignature",
+     "Height": "16",
+     "OriginalFilename": "InfoBalloon.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/InfoBalloon_Info.png",
+     "Width": "16"
+    },
+    {
+     "Name": "Popup_Editor_No_Title_Close",
+     "Object": "IImageSignature",
+     "Height": "48",
+     "OriginalFilename": "Popup_Editor_No_Title_Close.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/Popup_Editor_No_Title_Close.png",
+     "Width": "48",
+     "Hidden": "True"
+    },
+    {
+     "Name": "Popup_Editor_No_Title_Close_Hover",
+     "Object": "IImageSignature",
+     "Height": "48",
+     "OriginalFilename": "Popup_Editor_No_Title_Close_Hover.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/Popup_Editor_No_Title_Close_Hover.png",
+     "Width": "48",
+     "Hidden": "True"
+    },
+    {
+     "Name": "Popup_titlebar_close",
+     "Object": "IImageSignature",
+     "Height": "16",
+     "OriginalFilename": "popup_titlebar_close.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/Popup_titlebar_close.png",
+     "Width": "16",
+     "Hidden": "True"
+    },
+    {
+     "Name": "Script",
+     "Object": "IImageSignature",
+     "Height": "16",
+     "OriginalFilename": "Script.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/RichWidgets/img/Script.png",
+     "Width": "16",
+     "Hidden": "True"
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "Feedback_Message",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "MessageText",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "MessageType",
+       "Object": "IInputParameterSignature",
+       "DataType": "MessageType Identifier",
+       "IsMandatory": "True"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "Sales",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "AccountManager",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "CompanyId",
+     "IsMultiTenant": "No",
+     "Label": "Account Manager",
+     "LabelPlural": "Account Managers",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "CreateAccountManager",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "AccountManager Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateAccountManager",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "AccountManager Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateSomeAccountManagers",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAccountManager",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllAccountManagers",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "GetAccountManager",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "AccountManager Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetAccountManagerForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "AccountManager Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateAccountManager",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "AccountManager Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "CompanyId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Company Identifier",
+       "DeleteRule": "Delete",
+       "IsMandatory": "True",
+       "Label": "Company"
+      },
+      {
+       "Name": "UserId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "User Identifier",
+       "DeleteRule": "Protect",
+       "Label": "User"
+      }
+     ]
+    },
+    {
+     "Name": "MenuItem",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Menu Item",
+     "LabelPlural": "Menu Items",
+     "OrderByAttribute": "Order",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "GetMenuItem",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "MenuItem Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "MenuItem Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Order",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Order"
+      },
+      {
+       "Name": "Caption",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Caption",
+       "Length": "50"
+      }
+     ],
+     "Records": [
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Companies",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Companies\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "4"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Contacts",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Contacts\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "2"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Dashboard",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Dashboard\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "1"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "More",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"More\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "8"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "MyCompanies",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"My Companies\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "7"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "MyContacts",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"My Contacts\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "5"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "MyDetails",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"My Details\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "9"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "MyOpportunities",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"My Opportunities\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "6"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Opportunities",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Opportunities\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "3"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "MenuSubItem",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Menu Sub Item",
+     "LabelAttribute": "Caption",
+     "LabelPlural": "Menu Sub Items",
+     "OrderByAttribute": "Order",
+     "UpdateBehavior": "Full",
+     "UseTranslations": "True",
+     "EntityActions": [
+      {
+       "Name": "GetMenuSubItem",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "MenuSubItem Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "MenuSubItem Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Order",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Order"
+      },
+      {
+       "Name": "Caption",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Caption",
+       "Length": "50"
+      },
+      {
+       "Name": "MenuItemId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "MenuItem Identifier",
+       "DeleteRule": "Ignore",
+       "Label": "Menu Item"
+      }
+     ],
+     "Records": [
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "ClosedOpportunities",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Closed Opportunities\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "MenuItemId",
+         "Value": "Entities.MenuItem.More"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "3"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "History",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"History\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "MenuItemId",
+         "Value": "Entities.MenuItem.More"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "1"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "ImportYourOwnData",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Import Your Own Data\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "MenuItemId",
+         "Value": "Entities.MenuItem.More"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "4"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "QuarterQuotas",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Caption",
+         "Value": "\"Quarter Quotas\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "MenuItemId",
+         "Value": "Entities.MenuItem.More"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "2"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "Opportunity",
+     "Object": "IServerEntitySignature",
+     "ExposeProcessEvents": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Opportunity",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Opportunities",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "CreateOpportunity",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Opportunity Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateOpportunity",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Opportunity Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateSomeOpportunities",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllOpportunities",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteOpportunity",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetOpportunity",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Opportunity Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetOpportunityForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Opportunity Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateOpportunity",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Opportunity Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "CompanyId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Company Identifier",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Company"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Name",
+       "Length": "50"
+      },
+      {
+       "Name": "Description",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Description",
+       "Length": "500"
+      },
+      {
+       "Name": "CloseDate",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date",
+       "DeleteRule": "Protect",
+       "Label": "Close Date"
+      },
+      {
+       "Name": "Amount",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Currency",
+       "DeleteRule": "Protect",
+       "Label": "Amount"
+      },
+      {
+       "Name": "Stage",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "OpportunityStage Identifier",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Stage"
+      },
+      {
+       "Name": "LastModified",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date Time",
+       "DeleteRule": "Protect",
+       "Label": "Last Modified"
+      },
+      {
+       "Name": "Proposal",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Binary Data",
+       "DeleteRule": "Protect",
+       "Label": "Proposal"
+      }
+     ]
+    },
+    {
+     "Name": "OpportunityStage",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Opportunity Stage",
+     "LabelAttribute": "Label",
+     "LabelPlural": "Opportunity Stages",
+     "OrderByAttribute": "Order",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "GetOpportunityStage",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "OpportunityStage Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "OpportunityStage Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Label",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Label",
+       "Length": "50"
+      },
+      {
+       "Name": "Order",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Order"
+      },
+      {
+       "Name": "Percentage",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Decimal",
+       "Decimals": "8",
+       "DeleteRule": "Ignore",
+       "Label": "Percentage",
+       "Length": "37"
+      },
+      {
+       "Name": "ChartColor",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "Label": "Chart Color",
+       "Length": "50"
+      }
+     ],
+     "Records": [
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Finalizing_90",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"8EA22D\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"90%\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "6"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0.9"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Lead_10",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"FF6A00\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"10%\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "1"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0.1"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Lost",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"FF0000\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Lost\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "8"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Meeting_40",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"FFFF500\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"40%\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "3"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0.4"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Negotiating_80",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"B5C21E\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"80%\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "5"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0.8"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Opportunity_20",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"FFB100\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"20%\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "2"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0.2"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Validating_70",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"DBE20E\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"70%\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "4"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "0.7"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Won",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "ChartColor",
+         "Value": "\"607142\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Won\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "7"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Percentage",
+         "Value": "1"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "QuarterQuota",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "UserId",
+     "IsMultiTenant": "No",
+     "Label": "Quarter Quota",
+     "LabelPlural": "Quarter Quotas",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "CreateOrUpdateQuarterQuota",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "QuarterQuota Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateSomeQuarterQuotas",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "CreateQuarterQuota",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "QuarterQuota Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllQuarterQuotas",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteQuarterQuota",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetQuarterQuota",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "QuarterQuota Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetQuarterQuotaForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "QuarterQuota Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateQuarterQuota",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "QuarterQuota Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "UserId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "User Identifier",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "User"
+      },
+      {
+       "Name": "QuarterQuota",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Currency",
+       "DeleteRule": "Protect",
+       "Label": "Quarter Quota"
+      }
+     ]
+    },
+    {
+     "Name": "Task",
+     "Object": "IServerEntitySignature",
+     "ExposeProcessEvents": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Task",
+     "LabelPlural": "Tasks",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "CreateOrUpdateSomeTasks",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateTask",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Task Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateTask",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Task Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllTasks",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteTask",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetTask",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Task Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetTaskForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Task Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateTask",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Task Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Name",
+       "Length": "150"
+      },
+      {
+       "Name": "UserId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "User Identifier",
+       "DeleteRule": "Delete",
+       "IsMandatory": "True",
+       "Label": "User"
+      },
+      {
+       "Name": "DueDate",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Due Date"
+      },
+      {
+       "Name": "CompanyId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Company Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Company"
+      },
+      {
+       "Name": "OpportunityId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Opportunity Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Opportunity"
+      },
+      {
+       "Name": "ContactId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Contact Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Contact"
+      },
+      {
+       "Name": "IsCompleted",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DeleteRule": "Protect",
+       "Label": "Is Completed"
+      }
+     ]
+    }
+   ],
+   "Images": [
+    {
+     "Name": "salesicon",
+     "Object": "IImageSignature",
+     "Height": "128",
+     "OriginalFilename": "sales-icon.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/Sales/img/salesicon.png",
+     "Width": "128",
+     "Hidden": "True"
+    },
+    {
+     "Name": "UserIcon",
+     "Object": "IImageSignature",
+     "Height": "100",
+     "OriginalFilename": "UserIcon.png",
+     "OriginalFormat": "Png",
+     "RuntimePath": "/Sales/img/UserIcon.png",
+     "Width": "100",
+     "Hidden": "True"
+    }
+   ],
+   "Roles": [
+    {
+     "Name": "AccountManager",
+     "Object": "IAppRoleSignature",
+     "IsPersistent": "True",
+     "RoleActions": [
+      {
+       "Name": "CheckAccountManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "HasRole",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Boolean"
+        }
+       ]
+      },
+      {
+       "Name": "GrantAccountManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "RevokeAccountManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "SalesManager",
+     "Object": "IAppRoleSignature",
+     "IsPersistent": "True",
+     "RoleActions": [
+      {
+       "Name": "CheckSalesManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "HasRole",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Boolean"
+        }
+       ]
+      },
+      {
+       "Name": "GrantSalesManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "RevokeSalesManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "Opportunity_Create",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "OpportunityRecord",
+       "Object": "IInputParameterSignature",
+       "DataType": "Opportunity Record",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "OpportunityId",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Opportunity Identifier"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "Users",
+   "Object": "IReference",
+   "Roles": [
+    {
+     "Name": "UserManager",
+     "Object": "IAppRoleSignature",
+     "IsPersistent": "True",
+     "RoleActions": [
+      {
+       "Name": "CheckUserManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "HasRole",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Boolean"
+        }
+       ]
+      },
+      {
+       "Name": "GrantUserManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "RevokeUserManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "User_Login",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Username",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "Password",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "RememberLogin",
+       "Object": "IInputParameterSignature",
+       "DataType": "Boolean",
+       "IsMandatory": "True"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "Resources": [
+  {
+   "Name": "SampleCompanyAccountManager.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  },
+  {
+   "Name": "SampleOpportunities.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  },
+  {
+   "Name": "SampleQuarterQuotas.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  },
+  {
+   "Name": "SampleSalesUsers.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  },
+  {
+   "Name": "SampleTasks.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  }
+ ],
+ "RoleExceptions": [
+  {
+   "Object": "IRoleException"
+  },
+  {
+   "Object": "IRoleException"
+  },
+  {
+   "Object": "IRoleException"
+  }
+ ],
+ "ServerActions": [
+  {
+   "Name": "CompanyAccountManager_ImportExcel",
+   "Object": "IServerAction",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetSampleCompanyAccountManagerFomExcel",
+     "Y": "800"
+    },
+    {
+     "Name": "GetSampleCompanyAccountManagerFomExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_CompanyAccountManager Record List",
+     "FileContent": "Resources.SampleCompanyAccountManager_xlsx.Content ",
+     "X": "3192",
+     "Target": "3196,4168",
+     "Y": "2515"
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3196",
+     "RecordList": "GetSampleCompanyAccountManagerFomExcel",
+     "Y": "4168",
+     "Target": "3196,6624",
+     "CycleTarget": "GetCompanyByName"
+    },
+    {
+     "Name": "GetCompanyByName",
+     "Object": "IAggregateNode",
+     "X": "5025",
+     "MaxRecords": "1",
+     "Target": "GetAccountManager",
+     "Y": "4168",
+     "Operations": [
+      {
+       "Name": "Companies",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "Company.CompanyName = GetSampleCompanyAccountManagerFomExcel.Current.Excel_CompanyAccountManager.CompanyName"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "Company",
+         "Object": "IAliasedSource",
+         "SourceOperation": "Company"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "GetAccountManager",
+     "Object": "IAggregateNode",
+     "X": "6854",
+     "Target": "6854,5536",
+     "Y": "4168",
+     "Operations": [
+      {
+       "Name": "AccountManagers",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "AccountManager.CompanyId = GetCompanyByName.List.Current.Company.Id"
+        },
+        {
+         "Object": "IFilter",
+         "Condition": "AccountManager.UserId = User_GetIdbyEmail(Email:GetSampleCompanyAccountManagerFomExcel.Current.Excel_CompanyAccountManager.AccountManager) "
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "AccountManager",
+         "Object": "IAliasedSource",
+         "SourceOperation": "AccountManager"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "CreateOrUpdateAccountManager",
+     "Object": "IExecuteServerActionNode",
+     "Action": "CreateOrUpdateAccountManager",
+     "AnimationEffect": "None",
+     "X": "5025",
+     "Target": "3196,4168",
+     "Y": "5536",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "GetAccountManager.List.Current.AccountManager",
+       "Parameter": "Source"
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "6854",
+     "Label": "Set AccountManager",
+     "Target": "CreateOrUpdateAccountManager",
+     "Y": "5536",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "User_GetIdbyEmail(Email:GetSampleCompanyAccountManagerFomExcel.Current.Excel_CompanyAccountManager.AccountManager)",
+       "Variable": "GetAccountManager.List.Current.AccountManager.UserId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "GetCompanyByName.List.Current.Company.Id",
+       "Variable": "GetAccountManager.List.Current.AccountManager.CompanyId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "6624"
+    }
+   ]
+  },
+  {
+   "Name": "Opportunity_GetIdFromName",
+   "Object": "IServerAction",
+   "Function": "True",
+   "InputParameters": [
+    {
+     "Name": "OpportunityName",
+     "Object": "IInputParameter",
+     "DataType": "Text",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetOpportunityFromName",
+     "Y": "800"
+    },
+    {
+     "Name": "GetOpportunityFromName",
+     "Object": "IAggregateNode",
+     "X": "3196",
+     "Target": "3196,4114",
+     "Y": "2771",
+     "Operations": [
+      {
+       "Name": "Opportunities",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "Opportunity.Name = OpportunityName\n"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "Opportunity",
+         "Object": "IAliasedSource",
+         "SourceOperation": "Opportunity"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5942",
+     "Y": "4114",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "GetOpportunityFromName.List.Current.Opportunity.Id",
+       "Variable": "OpportunityId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5942"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "OpportunityId",
+     "Object": "IOutputParameter",
+     "DataType": "Opportunity Identifier"
+    }
+   ]
+  },
+  {
+   "Name": "Opportunity_ImportFromExcel",
+   "Object": "IServerAction",
+   "Public": "True",
+   "Shareable": "True",
+   "InputParameters": [
+    {
+     "Name": "Excel",
+     "Object": "IInputParameter",
+     "DataType": "Binary Data",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "Opportunity_ImportFromExcel_ShiftDate",
+     "Y": "800"
+    },
+    {
+     "Name": "Opportunity_ImportFromExcel_ShiftDate",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Opportunity_ImportFromExcel_ShiftDate",
+     "AnimationEffect": "None",
+     "X": "3196",
+     "Target": "3196,5120",
+     "Y": "2971",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "Excel",
+       "Parameter": "Excel"
+      },
+      {
+       "Object": "IArgument",
+       "Value": "False",
+       "Parameter": "IsSampleData"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5120"
+    }
+   ]
+  },
+  {
+   "Name": "Opportunity_ImportFromExcel_ShiftDate",
+   "Object": "IServerAction",
+   "InputParameters": [
+    {
+     "Name": "Excel",
+     "Object": "IInputParameter",
+     "DataType": "Binary Data",
+     "IsMandatory": "True"
+    },
+    {
+     "Name": "IsSampleData",
+     "Object": "IInputParameter",
+     "DataType": "Boolean",
+     "IsMandatory": "True"
+    }
+   ],
+   "LocalVariables": [
+    {
+     "Name": "OpportunityRecord",
+     "Object": "ILocalVariable",
+     "DataType": "Opportunity Record"
+    },
+    {
+     "Name": "DiffDate",
+     "Object": "ILocalVariable",
+     "DataType": "Integer",
+     "DefaultValue": "0"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "3199,2514",
+     "Y": "800"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "IsSampleData",
+     "X": "3199",
+     "Y": "2514",
+     "TrueTarget": "4799,2514",
+     "FalseTarget": "OppurtinitiesExcel"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "4799",
+     "Target": "OppurtinitiesExcel",
+     "Y": "2514",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "DiffDays(Site.ZeroDate,CurrDate())\n",
+       "Variable": "DiffDate"
+      }
+     ]
+    },
+    {
+     "Name": "OppurtinitiesExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_Opportunity Record List",
+     "FileContent": "Excel",
+     "X": "3199",
+     "SheetName": "\"Opportunities\"",
+     "Target": "3199,6171",
+     "Y": "4342"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "4799",
+     "Label": "Opportunity Record",
+     "Target": "Opportunity_Create",
+     "Y": "4342",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "Company_GetIdFromName(OppurtinitiesExcel.Current.Excel_Opportunity.CompanyName)",
+       "Variable": "OpportunityRecord.Opportunity.CompanyId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "OppurtinitiesExcel.Current.Excel_Opportunity.Name",
+       "Variable": "OpportunityRecord.Opportunity.Name"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "OppurtinitiesExcel.Current.Excel_Opportunity.Description",
+       "Variable": "OpportunityRecord.Opportunity.Description"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "AddDays(OppurtinitiesExcel.Current.Excel_Opportunity.CloseDate,DiffDate)",
+       "Variable": "OpportunityRecord.Opportunity.CloseDate"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "OppurtinitiesExcel.Current.Excel_Opportunity.Amount",
+       "Variable": "OpportunityRecord.Opportunity.Amount"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "OpportunityStage_GetIdFromLabel(OppurtinitiesExcel.Current.Excel_Opportunity.Stage) ",
+       "Variable": "OpportunityRecord.Opportunity.Stage"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CurrDateTime()",
+       "Variable": "OpportunityRecord.Opportunity.LastModified"
+      }
+     ]
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3199",
+     "RecordList": "OppurtinitiesExcel",
+     "Y": "6171",
+     "Target": "3199,7542",
+     "CycleTarget": "4799,4342"
+    },
+    {
+     "Name": "Opportunity_Create",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Opportunity_Create",
+     "AnimationEffect": "None",
+     "X": "4799",
+     "Target": "3199,6171",
+     "Y": "6171",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "OpportunityRecord",
+       "Parameter": "OpportunityRecord"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "7542"
+    },
+    {
+     "Object": "ICommentNode",
+     "X": "6628",
+     "Text": "Zero Date for bootstrap is 01-01-2011\nall dates will be shifted with the diffdays\nbetween today and 01-01-2011\nzero date is defined in a site property",
+     "Y": "2285",
+     "Connectors": [
+      {
+       "Object": "ICommentConnector",
+       "Target": "4799,2514"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "OpportunityStage_GetIdFromLabel",
+   "Object": "IServerAction",
+   "Function": "True",
+   "InputParameters": [
+    {
+     "Name": "Label",
+     "Object": "IInputParameter",
+     "DataType": "Text",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetOpportunityStage",
+     "Y": "800"
+    },
+    {
+     "Name": "GetOpportunityStage",
+     "Object": "IAggregateNode",
+     "X": "3196",
+     "MaxRecords": "1",
+     "Target": "3196,3843",
+     "Y": "2500",
+     "Operations": [
+      {
+       "Name": "OpportunityStages",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "OpportunityStage.Label = Label"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "OpportunityStage",
+         "Object": "IAliasedSource",
+         "SourceOperation": "OpportunityStage"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5485",
+     "Y": "3843",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "GetOpportunityStage.List.Current.OpportunityStage.Id",
+       "Variable": "OpportunityStageId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5485"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "OpportunityStageId",
+     "Object": "IOutputParameter",
+     "DataType": "OpportunityStage Identifier"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_Bootstrap",
+   "Object": "IServerAction",
+   "Folder": "SampleData",
+   "Public": "True",
+   "Shareable": "True",
+   "LocalVariables": [
+    {
+     "Name": "QuarterQuotaRecord",
+     "Object": "ILocalVariable",
+     "DataType": "QuarterQuota Record"
+    },
+    {
+     "Name": "TaskRecord",
+     "Object": "ILocalVariable",
+     "DataType": "Task Record"
+    },
+    {
+     "Name": "DiffDate",
+     "Object": "ILocalVariable",
+     "DataType": "Integer"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3199",
+     "Target": "3205,2286",
+     "Y": "800"
+    },
+    {
+     "Name": "AllExceptions",
+     "Object": "IExceptionHandlerNode",
+     "Exception": "All Exceptions",
+     "X": "10585",
+     "LogError": "True",
+     "Target": "10514,2514",
+     "Y": "1042"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "SampleData_BootstrapDone() = True",
+     "X": "3205",
+     "Label": "Bootstrap done?",
+     "Y": "2286",
+     "TrueTarget": "5031,2286",
+     "FalseTarget": "3208,3814"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "5031",
+     "Y": "2286"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "10514",
+     "Target": "EspaceInvalidateCache",
+     "Y": "2514",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "\"There was a problem creating sample data. <br /><br />Please check ServiceCenter error log.\"",
+       "Variable": "Site.BootstrapFeedback"
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3208",
+     "Target": "Mutex",
+     "Y": "3814",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "\"\"",
+       "Variable": "Site.BootstrapFeedback"
+      }
+     ]
+    },
+    {
+     "Name": "EspaceInvalidateCache",
+     "Object": "IExecuteServerActionNode",
+     "Action": "EspaceInvalidateCache",
+     "AnimationEffect": "None",
+     "X": "10571",
+     "Target": "10428,5028",
+     "Y": "3885"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "10428",
+     "Y": "5028"
+    },
+    {
+     "Name": "Mutex",
+     "Object": "IExecuteServerActionNode",
+     "Action": "GetRoleForUpdate",
+     "AnimationEffect": "None",
+     "X": "3208",
+     "Target": "CRM_SampleData_Bootstrap",
+     "Y": "5371",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "Roles.UserManager",
+       "Parameter": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "CRM_SampleData_Bootstrap",
+     "Object": "IExecuteServerActionNode",
+     "Action": "CRM_SampleData_Bootstrap",
+     "AnimationEffect": "None",
+     "X": "3208",
+     "Target": "SampleData_Bootstrap_Employee",
+     "Y": "6857"
+    },
+    {
+     "Name": "SampleData_Bootstrap_Employee",
+     "Object": "IExecuteServerActionNode",
+     "Action": "SampleData_Bootstrap_Employee",
+     "AnimationEffect": "None",
+     "X": "3192",
+     "Target": "3214,9804",
+     "Y": "8436",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "\"\"",
+       "Parameter": "SYDCallback"
+      },
+      {
+       "Object": "IArgument",
+       "Value": "\"\"",
+       "Parameter": "SYDId"
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3214",
+     "Target": "CompanyAccountManager_ImportExcel",
+     "Y": "9804",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "DiffDays(Site.ZeroDate, CurrDate())\n",
+       "Variable": "DiffDate"
+      }
+     ]
+    },
+    {
+     "Name": "CompanyAccountManager_ImportExcel",
+     "Object": "IExecuteServerActionNode",
+     "Action": "CompanyAccountManager_ImportExcel",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "Opportunity_ImportFromExcel_ShiftDate",
+     "Y": "11400"
+    },
+    {
+     "Name": "Opportunity_ImportFromExcel_ShiftDate",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Opportunity_ImportFromExcel_ShiftDate",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "SampleData_BootstrapUsers",
+     "Y": "12944",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "Resources.SampleOpportunities_xlsx.Content ",
+       "Parameter": "Excel"
+      },
+      {
+       "Object": "IArgument",
+       "Value": "True",
+       "Parameter": "IsSampleData"
+      }
+     ]
+    },
+    {
+     "Name": "SampleData_BootstrapUsers",
+     "Object": "IExecuteServerActionNode",
+     "Action": "SampleData_BootstrapUsers",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "GetSampleQuarterQuotasFromExcel",
+     "Y": "14540"
+    },
+    {
+     "Name": "GetSampleQuarterQuotasFromExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_QuarterQuota Record List",
+     "FileContent": "Resources.SampleQuarterQuotas_xlsx.Content",
+     "X": "3199",
+     "SheetName": "\"QuarterQuotas\"",
+     "Target": "3199,17732",
+     "Y": "16136"
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3199",
+     "RecordList": "GetSampleQuarterQuotasFromExcel",
+     "Y": "17732",
+     "Target": "GetSampleTasksFromExcel",
+     "CycleTarget": "5027,18696"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "5027",
+     "Label": "QuarterQuota Record",
+     "Target": "CreateQuarterQuota",
+     "Y": "18696",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "User_GetIdbyEmail(Email:GetSampleQuarterQuotasFromExcel.Current.Excel_QuarterQuota.Username) ",
+       "Variable": "QuarterQuotaRecord.QuarterQuota.UserId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "GetSampleQuarterQuotasFromExcel.Current.Excel_QuarterQuota.QuarterQuota",
+       "Variable": "QuarterQuotaRecord.QuarterQuota.QuarterQuota"
+      }
+     ]
+    },
+    {
+     "Name": "CreateQuarterQuota",
+     "Object": "IExecuteServerActionNode",
+     "Action": "CreateQuarterQuota",
+     "AnimationEffect": "None",
+     "X": "5027",
+     "Target": "3199,17732",
+     "Y": "20292",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "QuarterQuotaRecord",
+       "Parameter": "Source"
+      }
+     ]
+    },
+    {
+     "Name": "GetSampleTasksFromExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_Task Record List",
+     "FileContent": "Resources.SampleTasks_xlsx.Content",
+     "X": "3199",
+     "SheetName": "\"Tasks\"",
+     "Target": "3199,22064",
+     "Y": "20468"
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3199",
+     "RecordList": "GetSampleTasksFromExcel",
+     "Y": "22064",
+     "Target": "EspaceInvalidateCache2",
+     "CycleTarget": "5027,23028"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "5027",
+     "Label": "Task Record",
+     "Target": "CreateTask",
+     "Y": "23028",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "GetSampleTasksFromExcel.Current.Excel_Task.Name",
+       "Variable": "TaskRecord.Task.Name"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "User_GetIdbyEmail(Email:GetSampleTasksFromExcel.Current.Excel_Task.Email) ",
+       "Variable": "TaskRecord.Task.UserId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "AddDays(GetSampleTasksFromExcel.Current.Excel_Task.DueDate,DiffDate)",
+       "Variable": "TaskRecord.Task.DueDate"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "Company_GetIdFromName(GetSampleTasksFromExcel.Current.Excel_Task.CompanyName)",
+       "Variable": "TaskRecord.Task.CompanyId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "Opportunity_GetIdFromName(GetSampleTasksFromExcel.Current.Excel_Task.OpportunityName) ",
+       "Variable": "TaskRecord.Task.OpportunityId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "Contact_GetIdFromName(GetSampleTasksFromExcel.Current.Excel_Task.Contact)",
+       "Variable": "TaskRecord.Task.ContactId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "GetSampleTasksFromExcel.Current.Excel_Task.IsCompleted",
+       "Variable": "TaskRecord.Task.IsCompleted"
+      }
+     ]
+    },
+    {
+     "Name": "CreateTask",
+     "Object": "IExecuteServerActionNode",
+     "Action": "CreateTask",
+     "AnimationEffect": "None",
+     "X": "5027",
+     "Target": "3199,22064",
+     "Y": "24624",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "TaskRecord",
+       "Parameter": "Source"
+      }
+     ]
+    },
+    {
+     "Name": "EspaceInvalidateCache2",
+     "Object": "IExecuteServerActionNode",
+     "Action": "EspaceInvalidateCache",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "3199,26396",
+     "Y": "25028"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "26396"
+    },
+    {
+     "Object": "ICommentNode",
+     "X": "4559",
+     "Text": "Zero Date for bootstrap is 01-01-2011\nall dates will be shifted with the diffdays\nbetween today and 01-01-2011\nzero date is defined in a site property",
+     "Y": "9576",
+     "Connectors": [
+      {
+       "Object": "ICommentConnector",
+       "Target": "3214,9804"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_BootstrapDone",
+   "Object": "IServerAction",
+   "Folder": "SampleData",
+   "Function": "True",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3235",
+     "Target": "GetOpportunities",
+     "Y": "800"
+    },
+    {
+     "Name": "GetOpportunities",
+     "Object": "IAggregateNode",
+     "X": "3199",
+     "Target": "3199,3657",
+     "Y": "2286"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "not GetOpportunities.List.Empty",
+     "X": "3199",
+     "Label": "Has Opportunities?",
+     "Y": "3657",
+     "TrueTarget": "5028,3657",
+     "FalseTarget": "GetQuarterQuotas"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "5028",
+     "Y": "3657"
+    },
+    {
+     "Name": "GetQuarterQuotas",
+     "Object": "IAggregateNode",
+     "X": "3157",
+     "Target": "3157,6401",
+     "Y": "5030"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "not GetQuarterQuotas.List.Empty",
+     "X": "3157",
+     "Label": "Has Quotas?",
+     "Y": "6401",
+     "TrueTarget": "5113,6401",
+     "FalseTarget": "GetTasks"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "5113",
+     "Y": "6401"
+    },
+    {
+     "Name": "GetTasks",
+     "Object": "IAggregateNode",
+     "X": "3199",
+     "Target": "3199,9145",
+     "Y": "7774"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "not GetTasks.List.Empty ",
+     "X": "3199",
+     "Label": "Has Tasks?",
+     "Y": "9145",
+     "TrueTarget": "5028,9145",
+     "FalseTarget": "3199,10518"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "5028",
+     "Y": "9145"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3199",
+     "Label": "Bootstrap not done",
+     "Target": "3199,11890",
+     "Y": "10518",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "False",
+       "Variable": "BootstrapDone"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "11890"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "BootstrapDone",
+     "Object": "IOutputParameter",
+     "DataType": "Boolean",
+     "DefaultValue": "True"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_BootstrapUsers",
+   "Object": "IServerAction",
+   "Folder": "SampleData",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "2740",
+     "Target": "GetSampleUsersFromExcel",
+     "Y": "800"
+    },
+    {
+     "Name": "AllExceptions",
+     "Object": "IExceptionHandlerNode",
+     "Exception": "All Exceptions",
+     "X": "11199",
+     "LogError": "True",
+     "Target": "11199,2285",
+     "Y": "913"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "Index(AllExceptions.ExceptionMessage, \"Users\")>=0",
+     "X": "11199",
+     "Label": "Licensing?",
+     "Y": "2285",
+     "TrueTarget": "13028,2285",
+     "FalseTarget": "11199,3885"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "13028",
+     "Label": "Error; Success = false",
+     "Target": "11199,5257",
+     "Y": "2285",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "\"Sample data was not loaded. <br /><br /> \" + AllExceptions.ExceptionMessage + \"<br /><br /> To load the sample data, please upgrade your license or request a trial license with more users.\"",
+       "Variable": "Site.BootstrapFeedback"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "False",
+       "Variable": "Success"
+      }
+     ]
+    },
+    {
+     "Name": "GetSampleUsersFromExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_User Record List",
+     "FileContent": "Resources.SampleSalesUsers_xlsx.Content ",
+     "X": "2743",
+     "SheetName": "\"SampleUsers\"",
+     "Target": "2746,4115",
+     "Y": "2414"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "11199",
+     "Label": "Error; Success = false",
+     "Target": "11199,5257",
+     "Y": "3885",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "\"Sample data was not loaded because there was a problem creating users. <br /><br />Please check Service Center for a detailed description.\"",
+       "Variable": "Site.BootstrapFeedback"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "False",
+       "Variable": "Success"
+      }
+     ]
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "2746",
+     "RecordList": "GetSampleUsersFromExcel",
+     "Y": "4115",
+     "Target": "2743,8005",
+     "CycleTarget": "GetUserByEmail"
+    },
+    {
+     "Name": "GetUserByEmail",
+     "Object": "IAggregateNode",
+     "X": "4571",
+     "MaxRecords": "1",
+     "Target": "4571,5487",
+     "Y": "4115",
+     "Operations": [
+      {
+       "Name": "Users",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "User.Is_Active = True"
+        },
+        {
+         "Object": "IFilter",
+         "Condition": "User.Email = GetSampleUsersFromExcel.Current.Excel_User.Email"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "User",
+         "Object": "IAliasedSource",
+         "SourceOperation": "User"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "11199",
+     "Y": "5257"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "not GetUserByEmail.List.Empty",
+     "X": "4571",
+     "Label": "Exists?",
+     "Y": "5487",
+     "TrueTarget": "User_GrantPermissionByName",
+     "FalseTarget": "2746,4115"
+    },
+    {
+     "Name": "User_GrantPermissionByName",
+     "Object": "IExecuteServerActionNode",
+     "Action": "User_GrantPermissionByName",
+     "AnimationEffect": "None",
+     "X": "4571",
+     "Target": "2746,4115",
+     "Y": "7085",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "GetSampleUsersFromExcel.Current.Excel_User.Permission",
+       "Parameter": "Permission"
+      },
+      {
+       "Object": "IArgument",
+       "Value": "GetUserByEmail.List.Current.User.Id",
+       "Parameter": "UserId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "2743",
+     "Y": "8005"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "Success",
+     "Object": "IOutputParameter",
+     "DataType": "Boolean",
+     "DefaultValue": "True"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_Delete",
+   "Object": "IServerAction",
+   "Folder": "SampleData",
+   "Public": "True",
+   "Shareable": "True",
+   "InputParameters": [
+    {
+     "Name": "DeleteCustomerData",
+     "Object": "IInputParameter",
+     "DataType": "Boolean",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "DeleteTasks",
+     "Y": "800"
+    },
+    {
+     "Name": "DeleteTasks",
+     "Object": "ISQLNode",
+     "X": "3199",
+     "Statement": "DELETE FROM {Task}\n",
+     "Target": "DeleteQuarterQuotas",
+     "Y": "2286",
+     "Outputs": [
+      {
+       "Name": "Task",
+       "Object": "ISQLOutput",
+       "EntityOrStructure": "Task"
+      }
+     ]
+    },
+    {
+     "Name": "DeleteQuarterQuotas",
+     "Object": "ISQLNode",
+     "X": "3199",
+     "Statement": "DELETE FROM {QuarterQuota}\n",
+     "Target": "DeleteOppurtunities",
+     "Y": "3643",
+     "Outputs": [
+      {
+       "Name": "QuarterQuota",
+       "Object": "ISQLOutput",
+       "EntityOrStructure": "QuarterQuota"
+      }
+     ]
+    },
+    {
+     "Name": "DeleteOppurtunities",
+     "Object": "ISQLNode",
+     "X": "3199",
+     "Statement": "DELETE FROM {Opportunity}\n",
+     "Target": "DeleteAccountManagers",
+     "Y": "4986",
+     "Outputs": [
+      {
+       "Name": "Opportunity",
+       "Object": "ISQLOutput",
+       "EntityOrStructure": "Opportunity"
+      }
+     ]
+    },
+    {
+     "Name": "DeleteAccountManagers",
+     "Object": "ISQLNode",
+     "X": "3199",
+     "Statement": "DELETE FROM {AccountManager}",
+     "Target": "GetSampleUsersFromExcel",
+     "Y": "6742",
+     "Outputs": [
+      {
+       "Name": "AccountManager",
+       "Object": "ISQLOutput",
+       "EntityOrStructure": "AccountManager"
+      }
+     ]
+    },
+    {
+     "Name": "GetSampleUsersFromExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_User Record List",
+     "FileContent": "Resources.SampleSalesUsers_xlsx.Content ",
+     "X": "3199",
+     "SheetName": "\"SampleUsers\"",
+     "Target": "3199,9830",
+     "Y": "8229"
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3199",
+     "RecordList": "GetSampleUsersFromExcel",
+     "Y": "9830",
+     "Target": "3199,13941",
+     "CycleTarget": "GetUser"
+    },
+    {
+     "Name": "GetUser",
+     "Object": "IAggregateNode",
+     "X": "5257",
+     "MaxRecords": "1",
+     "Target": "5257,11201",
+     "Y": "9830",
+     "Operations": [
+      {
+       "Name": "Users",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "User.Is_Active = True"
+        },
+        {
+         "Object": "IFilter",
+         "Condition": "User.Email = GetSampleUsersFromExcel.Current.Excel_User.Email"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "User",
+         "Object": "IAliasedSource",
+         "SourceOperation": "User"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "not GetUser.List.Empty",
+     "X": "5257",
+     "Label": "Exists?",
+     "Y": "11201",
+     "TrueTarget": "RevokeAccountManagerRole",
+     "FalseTarget": "3199,9830"
+    },
+    {
+     "Name": "RevokeAccountManagerRole",
+     "Object": "IExecuteServerActionNode",
+     "Action": "RevokeAccountManagerRole",
+     "AnimationEffect": "None",
+     "X": "6857",
+     "Target": "RevokeSalesManagerRole",
+     "Y": "11201",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "GetUser.List.Current.User.Id",
+       "Parameter": "UserId"
+      }
+     ]
+    },
+    {
+     "Name": "RevokeSalesManagerRole",
+     "Object": "IExecuteServerActionNode",
+     "Action": "RevokeSalesManagerRole",
+     "AnimationEffect": "None",
+     "X": "5257",
+     "Target": "3199,9830",
+     "Y": "12573",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "GetUser.List.Current.User.Id",
+       "Parameter": "UserId"
+      }
+     ]
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "DeleteCustomerData",
+     "X": "3199",
+     "Label": "Delete Customer Data?",
+     "Y": "13941",
+     "TrueTarget": "SampleData_DeleteCRMCore",
+     "FalseTarget": "Feedback_Message_Success"
+    },
+    {
+     "Name": "SampleData_DeleteCRMCore",
+     "Object": "IExecuteServerActionNode",
+     "Action": "SampleData_DeleteCRMCore",
+     "AnimationEffect": "None",
+     "X": "5257",
+     "Target": "5257,15542",
+     "Y": "13941"
+    },
+    {
+     "Name": "Feedback_Message_Success",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Feedback_Message",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "3199,18284",
+     "Y": "15542",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "\"All sample data has been deleted.\"",
+       "Parameter": "MessageText"
+      },
+      {
+       "Object": "IArgument",
+       "Value": "Entities.MessageType.Success",
+       "Parameter": "MessageType"
+      }
+     ]
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "SampleData_DeleteCRMCore.Success",
+     "X": "5257",
+     "Label": "Success?",
+     "Y": "15542",
+     "TrueTarget": "Feedback_Message_Success",
+     "FalseTarget": "Feedback_Message"
+    },
+    {
+     "Name": "Feedback_Message",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Feedback_Message",
+     "AnimationEffect": "None",
+     "X": "5257",
+     "Target": "3199,18284",
+     "Y": "17142",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "\"Customers sample data could not be deleted. It might be in use by another application.\"",
+       "Parameter": "MessageText"
+      },
+      {
+       "Object": "IArgument",
+       "Value": "Entities.MessageType.Warning",
+       "Parameter": "MessageType"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "18284"
+    },
+    {
+     "Object": "ICommentNode",
+     "X": "6171",
+     "Text": "Try to delete sample data from core if it is in use \nissue a warning to the user stating that core data \ncould not be deleted because it is probably in use",
+     "Y": "14173",
+     "Connectors": [
+      {
+       "Object": "ICommentConnector",
+       "Target": "SampleData_DeleteCRMCore"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_DeleteBootstrap",
+   "Object": "IServerAction",
+   "Folder": "SampleData",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "SampleData_Delete",
+     "Y": "800"
+    },
+    {
+     "Name": "SampleData_Delete",
+     "Object": "IExecuteServerActionNode",
+     "Action": "SampleData_Delete",
+     "AnimationEffect": "None",
+     "X": "3192",
+     "Target": "SampleData_Bootstrap",
+     "Y": "2280",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "False",
+       "Parameter": "DeleteCustomerData"
+      }
+     ]
+    },
+    {
+     "Name": "SampleData_Bootstrap",
+     "Object": "IExecuteServerActionNode",
+     "Action": "SampleData_Bootstrap",
+     "AnimationEffect": "None",
+     "X": "3192",
+     "Target": "3196,5348",
+     "Y": "3876"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5348"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_DeleteCRMCore",
+   "Object": "IServerAction",
+   "Folder": "SampleData",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "CRM_SampleData_Delete",
+     "Y": "800"
+    },
+    {
+     "Name": "DatabaseException",
+     "Object": "IExceptionHandlerNode",
+     "Exception": "Database Exception",
+     "X": "5714",
+     "LogError": "True",
+     "Target": "5714,2571",
+     "Y": "914"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "5714",
+     "Label": "Success = False",
+     "Target": "5714,4400",
+     "Y": "2571",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "False",
+       "Variable": "Success"
+      }
+     ]
+    },
+    {
+     "Name": "CRM_SampleData_Delete",
+     "Object": "IExecuteServerActionNode",
+     "Action": "CRM_SampleData_Delete",
+     "AnimationEffect": "None",
+     "X": "3196",
+     "Target": "3196,4342",
+     "Y": "2742"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "4342"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "5714",
+     "Y": "4400"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "Success",
+     "Object": "IOutputParameter",
+     "DataType": "Boolean",
+     "DefaultValue": "True"
+    }
+   ]
+  },
+  {
+   "Name": "User_GrantPermissionByName",
+   "Object": "IServerAction",
+   "InputParameters": [
+    {
+     "Name": "UserId",
+     "Object": "IInputParameter",
+     "DataType": "User Identifier",
+     "IsMandatory": "True"
+    },
+    {
+     "Name": "Permission",
+     "Object": "IInputParameter",
+     "DataType": "Text",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "3199,2443",
+     "Y": "800"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "Permission = \"AccountManager\"",
+     "X": "3199",
+     "Label": "AccountManager?",
+     "Y": "2443",
+     "TrueTarget": "GrantAccountManagerPermission",
+     "FalseTarget": "3199,4242"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "6628",
+     "Y": "2514"
+    },
+    {
+     "Name": "GrantAccountManagerPermission",
+     "Object": "IExecuteServerActionNode",
+     "Action": "GrantAccountManagerRole",
+     "AnimationEffect": "None",
+     "X": "5028",
+     "Target": "6628,2514",
+     "Y": "2571",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "UserId",
+       "Parameter": "UserId"
+      }
+     ]
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "Permission = \"SalesManager\"",
+     "X": "3199",
+     "Label": "SalesManager?",
+     "Y": "4242",
+     "TrueTarget": "GrantSalesManagerPermission",
+     "FalseTarget": "3199,5842"
+    },
+    {
+     "Name": "GrantSalesManagerPermission",
+     "Object": "IExecuteServerActionNode",
+     "Action": "GrantSalesManagerRole",
+     "AnimationEffect": "None",
+     "X": "5028",
+     "Target": "6628,4242",
+     "Y": "4242",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "UserId",
+       "Parameter": "UserId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "6628",
+     "Y": "4242"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "5842"
+    }
+   ]
+  }
+ ],
+ "SessionVariables": [
+  {
+   "Name": "Company_List_SearchKeyword",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  },
+  {
+   "Name": "Contact_List_SearchKeyword",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  },
+  {
+   "Name": "MobilePhone",
+   "Object": "ISessionVariable",
+   "DataType": "Phone Number"
+  },
+  {
+   "Name": "Opportunity_List_AccountManager",
+   "Object": "ISessionVariable",
+   "DataType": "User Identifier"
+  },
+  {
+   "Name": "Opportunity_List_SearchKeyword",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  },
+  {
+   "Name": "Opportunity_List_Time",
+   "Object": "ISessionVariable",
+   "DataType": "Text",
+   "DefaultValue": "\"Quarter\""
+  },
+  {
+   "Name": "OpportunityProposal_List_SearchKeyword",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  },
+  {
+   "Name": "QuarterQuota_List_SearchKeyword",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  },
+  {
+   "Name": "TerminalType",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  },
+  {
+   "Name": "Username",
+   "Object": "ISessionVariable",
+   "DataType": "Text"
+  }
+ ],
+ "Settings": [
+  {
+   "Name": "ApplicationName",
+   "Object": "ISiteProperty",
+   "DataType": "Text",
+   "DefaultValue": "\"Sales Sample Data\"",
+   "IsMultiTenant": "Inherited"
+  },
+  {
+   "Name": "BootstrapFeedback",
+   "Object": "ISiteProperty",
+   "DataType": "Text",
+   "IsMultiTenant": "Inherited"
+  },
+  {
+   "Name": "TenantId",
+   "Object": "ISiteProperty",
+   "DataType": "Tenant Identifier"
+  },
+  {
+   "Name": "TenantName",
+   "Object": "ISiteProperty",
+   "DataType": "Text"
+  },
+  {
+   "Name": "ZeroDate",
+   "Object": "ISiteProperty",
+   "DataType": "Date",
+   "DefaultValue": "#2011-01-01#",
+   "IsMultiTenant": "Inherited"
+  }
+ ],
+ "Structures": [
+  {
+   "Name": "Excel_CompanyAccountManager",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "CompanyName",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Company Name",
+     "Length": "150"
+    },
+    {
+     "Name": "AccountManager",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Account Manager",
+     "Length": "50"
+    }
+   ]
+  },
+  {
+   "Name": "Excel_Opportunity",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "CompanyName",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Company Name",
+     "Length": "50"
+    },
+    {
+     "Name": "Name",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "IsMandatory": "True",
+     "Label": "Name",
+     "Length": "50"
+    },
+    {
+     "Name": "Description",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Description",
+     "Length": "500"
+    },
+    {
+     "Name": "CloseDate",
+     "Object": "IStructureAttribute",
+     "DataType": "Date",
+     "Label": "Close Date"
+    },
+    {
+     "Name": "Stage",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Stage",
+     "Length": "50"
+    },
+    {
+     "Name": "Amount",
+     "Object": "IStructureAttribute",
+     "DataType": "Currency",
+     "Label": "Amount"
+    }
+   ]
+  },
+  {
+   "Name": "Excel_QuarterQuota",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "Username",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Username",
+     "Length": "50"
+    },
+    {
+     "Name": "QuarterQuota",
+     "Object": "IStructureAttribute",
+     "DataType": "Currency",
+     "Label": "Quarter Quota"
+    }
+   ]
+  },
+  {
+   "Name": "Excel_Task",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "Name",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Name",
+     "Length": "50"
+    },
+    {
+     "Name": "Email",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Email",
+     "Length": "50"
+    },
+    {
+     "Name": "DueDate",
+     "Object": "IStructureAttribute",
+     "DataType": "Date",
+     "Label": "Due Date"
+    },
+    {
+     "Name": "CompanyName",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Company Name",
+     "Length": "50"
+    },
+    {
+     "Name": "OpportunityName",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Opportunity Name",
+     "Length": "50"
+    },
+    {
+     "Name": "Contact",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Contact",
+     "Length": "250"
+    },
+    {
+     "Name": "IsCompleted",
+     "Object": "IStructureAttribute",
+     "DataType": "Boolean",
+     "Label": "Is Completed"
+    }
+   ]
+  },
+  {
+   "Name": "Excel_User",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "Name",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Name",
+     "Length": "50"
+    },
+    {
+     "Name": "Username",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Username"
+    },
+    {
+     "Name": "Email",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Email",
+     "Length": "250"
+    },
+    {
+     "Name": "Phone",
+     "Object": "IStructureAttribute",
+     "DataType": "Phone Number",
+     "Label": "Phone"
+    },
+    {
+     "Name": "Permission",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Permission",
+     "Length": "50"
+    }
+   ]
+  }
+ ],
+ "Timers": [
+  {
+   "Name": "SampleData_BootstrapOnPublish",
+   "Object": "ITimer",
+   "Action": "SampleData_Bootstrap",
+   "IsMultiTenant": "Inherited",
+   "Priority": "Normal",
+   "TimeoutInMinutes": "20",
+   "CronSchedule": "WhenPublished",
+   "ScheduleConfiguration": "WhenPublished",
+   "TimerActions": [
+    {
+     "Name": "WakeSampleData_BootstrapOnPublish",
+     "Object": "IActionSignature"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_Delete",
+   "Object": "ITimer",
+   "Action": "SampleData_Delete",
+   "IsMultiTenant": "Inherited",
+   "Priority": "Normal",
+   "TimeoutInMinutes": "20",
+   "Arguments": [
+    {
+     "Object": "IArgument",
+     "Value": "False",
+     "Parameter": "DeleteCustomerData"
+    }
+   ],
+   "TimerActions": [
+    {
+     "Name": "WakeSampleData_Delete",
+     "Object": "IActionSignature"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_DeleteBootstrap",
+   "Object": "ITimer",
+   "Action": "SampleData_DeleteBootstrap",
+   "IsMultiTenant": "Inherited",
+   "Priority": "Normal",
+   "TimeoutInMinutes": "20",
+   "TimerActions": [
+    {
+     "Name": "WakeSampleData_DeleteBootstrap",
+     "Object": "IActionSignature"
+    }
+   ]
+  }
+ ],
+ "UserExceptions": [
+  {
+   "Name": "NoPermissionForSelectedCompany",
+   "Object": "IUserException"
+  }
+ ],
+ "ValidationErrorsAndWarnings": [
+  {
+   "Type": "Warning",
+   "Object": "I/Settings/Setting[@Name=ApplicationName]",
+   "Properties": [],
+   "Message": "Unused Element",
+   "Detail": "Site Property 'ApplicationName' is never used in Module 'SalesSampleData'. Consider deleting it.",
+   "WasHiddenByUser": "No"
+  }
+ ],
+ "WebFlows": [
+  {
+   "Name": "MainFlow",
+   "Object": "IWebFlow",
+   "HTTPSecurity": "None",
+   "Nodes": [
+    {
+     "Name": "AskOutSystems",
+     "Object": "IExternalSite",
+     "X": "1671",
+     "URL": "http://www.outsystems.com/ask-outsystems/",
+     "Y": "4342"
+    },
+    {
+     "Name": "Configuration",
+     "Object": "IWebScreen",
+     "X": "1599",
+     "HTTPSecurity": "Inherited",
+     "IntegratedAuthentication": "Inherited",
+     "Public": "True",
+     "Roles": [
+      "UserManager"
+     ],
+     "Shareable": "True",
+     "Title": "\"Sales - Configuration\"",
+     "Y": "2514",
+     "StyleSheet": " .Section_Item{color:#444444;font-size:16px;padding:8px 0px 8px 0px}.DataTitles{font-size:120%;padding-bottom:3px}",
+     "LocalVariables": [
+      {
+       "Name": "IsSampleUser",
+       "Object": "ILocalVariable",
+       "DataType": "Boolean"
+      }
+     ],
+     "Preparation": [
+      {
+       "Object": "IPreparation",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3199",
+         "Target": "GetUser",
+         "Y": "800"
+        },
+        {
+         "Name": "GetUser",
+         "Object": "IAggregateNode",
+         "X": "3202",
+         "Target": "3202,3843",
+         "Y": "2571",
+         "Operations": [
+          {
+           "Name": "Users",
+           "Object": "ICombineSourcesOperation",
+           "Filters": [
+            {
+             "Object": "IFilter",
+             "Condition": "User.Is_Active = True"
+            },
+            {
+             "Object": "IFilter",
+             "Condition": "User.Id = GetUserId()"
+            }
+           ],
+           "Sources": [
+            {
+             "Name": "User",
+             "Object": "IAliasedSource",
+             "SourceOperation": "User"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "Object": "IAssignNode",
+         "X": "3202",
+         "Target": "GetOpportunities",
+         "Y": "3843",
+         "Assignments": [
+          {
+           "Object": "IAssignment",
+           "Value": "Index(GetUser.List.Current.User.Email,\"sales.example\") <> -1\n",
+           "Variable": "IsSampleUser"
+          }
+         ]
+        },
+        {
+         "Name": "GetOpportunities",
+         "Object": "IAggregateNode",
+         "X": "3202",
+         "MaxRecords": "1",
+         "Target": "3199,7314",
+         "Y": "5627"
+        },
+        {
+         "Object": "IEndNode",
+         "X": "3199",
+         "Y": "7314"
+        }
+       ]
+      }
+     ],
+     "ScreenActions": [
+      {
+       "Name": "DeleteAllData",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "3196,2257",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Object": "IIfNode",
+         "Condition": "IsSampleUser",
+         "X": "3196",
+         "Y": "2257",
+         "TrueTarget": "Logout",
+         "FalseTarget": "SampleData_Delete"
+        },
+        {
+         "Name": "Logout",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Logout",
+         "AnimationEffect": "None",
+         "X": "4799",
+         "Target": "SampleData_Delete",
+         "Y": "2285"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        },
+        {
+         "Name": "SampleData_Delete",
+         "Object": "IExecuteServerActionNode",
+         "Action": "SampleData_Delete",
+         "AnimationEffect": "None",
+         "X": "3196",
+         "Target": "3199,5714",
+         "Y": "4114",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "True",
+           "Parameter": "DeleteCustomerData"
+          }
+         ]
+        },
+        {
+         "Object": "IIfNode",
+         "Condition": "IsSampleUser",
+         "X": "3199",
+         "Y": "5714",
+         "TrueTarget": "CheckAdmin",
+         "FalseTarget": "5028,5714"
+        },
+        {
+         "Object": "IEndNode",
+         "X": "5028",
+         "Y": "5714"
+        },
+        {
+         "Name": "CheckAdmin",
+         "Object": "IAggregateNode",
+         "X": "3199",
+         "Target": "3199,8914",
+         "Y": "7314",
+         "Operations": [
+          {
+           "Name": "Users",
+           "Object": "ICombineSourcesOperation",
+           "Filters": [
+            {
+             "Object": "IFilter",
+             "Condition": "User.Username like \"admin\""
+            },
+            {
+             "Object": "IFilter",
+             "Condition": "User.Password like GenerateSaltedMD5Hash(\"admin\")"
+            }
+           ],
+           "Sources": [
+            {
+             "Name": "User",
+             "Object": "IAliasedSource",
+             "SourceOperation": "User"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "Object": "IIfNode",
+         "Condition": "not CheckAdmin.List.Empty ",
+         "X": "3199",
+         "Label": "Admin/Admin",
+         "Y": "8914",
+         "TrueTarget": "Login_Admin",
+         "FalseTarget": "NeedLoginAdminFeedbackMessage"
+        },
+        {
+         "Name": "Login_Admin",
+         "Object": "IExecuteServerActionNode",
+         "Action": "User_Login",
+         "AnimationEffect": "None",
+         "X": "5028",
+         "Target": "LoginAdminFeedbackMessage",
+         "Y": "8914",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "\"admin\"",
+           "Parameter": "Password"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "False",
+           "Parameter": "RememberLogin"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "\"admin\"",
+           "Parameter": "Username"
+          }
+         ]
+        },
+        {
+         "Name": "LoginAdminFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6857",
+         "Target": "8685,8914",
+         "Y": "8914",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "\"You are now logged in with the admin user.\"",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Info",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IEndNode",
+         "X": "8685",
+         "Y": "8914"
+        },
+        {
+         "Name": "NeedLoginAdminFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "3199",
+         "Target": "3199,12342",
+         "Y": "10742",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "\"Login with admin user from User Management to create Sales users.\"",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Info",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IDestinationNode",
+         "Destination": "Login",
+         "X": "3199",
+         "Transition": "Inherited",
+         "Y": "12342"
+        }
+       ]
+      },
+      {
+       "Name": "DownloadTemplateCompanies",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "3257,3500",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IDownloadNode",
+         "FileContent": "DownloadSampleCompanies()",
+         "FileName": "\"SampleCompanies.xlsx\"",
+         "X": "3257",
+         "Y": "3500",
+         "SaveToDisk": "True",
+         "MimeType": "\"application/octet-stream\""
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        }
+       ]
+      },
+      {
+       "Name": "DownloadTemplateContacts",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "3257,3500",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IDownloadNode",
+         "FileContent": "DownloadSampleContacts()",
+         "FileName": "\"SampleContacts.xlsx\"",
+         "X": "3257",
+         "Y": "3500",
+         "SaveToDisk": "True",
+         "MimeType": "\"application/octet-stream\""
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        }
+       ]
+      },
+      {
+       "Name": "DownloadTemplateOpportunities",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "3157,3199",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IDownloadNode",
+         "FileContent": "Resources.SampleOpportunities_xlsx.Content ",
+         "FileName": "\"SampleOpportunities.xlsx\"",
+         "X": "3157",
+         "Y": "3199",
+         "SaveToDisk": "True",
+         "MimeType": "\"application/octet-stream\""
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        }
+       ]
+      },
+      {
+       "Name": "ReloadSampleData",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "SampleData_Bootstrap",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Name": "SampleData_Bootstrap",
+         "Object": "IExecuteServerActionNode",
+         "Action": "SampleData_Bootstrap",
+         "AnimationEffect": "None",
+         "X": "3196",
+         "Target": "Feedback_Message",
+         "Y": "2857"
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        },
+        {
+         "Name": "Feedback_Message",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "3199",
+         "Target": "3199,6514",
+         "Y": "4342",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "\"Sample Data Loaded.\"",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Success",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Object": "IEndNode",
+         "X": "3199",
+         "Y": "6514"
+        }
+       ]
+      },
+      {
+       "Name": "UploadCompanies",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "Company_ImportFromExcel",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Name": "Company_ImportFromExcel",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Company_ImportFromExcel",
+         "AnimationEffect": "None",
+         "X": "3196",
+         "Target": "3196,5120",
+         "Y": "2971",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "InputFileCompanies.Content",
+           "Parameter": "Excel"
+          }
+         ]
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        },
+        {
+         "Object": "IEndNode",
+         "X": "3196",
+         "Y": "5120"
+        }
+       ]
+      },
+      {
+       "Name": "UploadContacts",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "Contact_ImportFromExcel",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Name": "Contact_ImportFromExcel",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Contact_ImportFromExcel",
+         "AnimationEffect": "None",
+         "X": "3196",
+         "Target": "3196,5120",
+         "Y": "2971",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "InputFileContacts.Content",
+           "Parameter": "Excel"
+          }
+         ]
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        },
+        {
+         "Object": "IEndNode",
+         "X": "3196",
+         "Y": "5120"
+        }
+       ]
+      },
+      {
+       "Name": "UploadOpportunities",
+       "Object": "IScreenAction",
+       "Nodes": [
+        {
+         "Object": "IStartNode",
+         "X": "3196",
+         "Target": "Opportunity_ImportFromExcel",
+         "Y": "800"
+        },
+        {
+         "Name": "AllExceptions",
+         "Object": "IExceptionHandlerNode",
+         "Exception": "All Exceptions",
+         "X": "6628",
+         "LogError": "True",
+         "Target": "ExceptionFeedbackMessage",
+         "Y": "914"
+        },
+        {
+         "Name": "ExceptionFeedbackMessage",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Feedback_Message",
+         "AnimationEffect": "None",
+         "X": "6628",
+         "Target": "6628,3657",
+         "Y": "2285",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "AllExceptions.ExceptionMessage",
+           "Parameter": "MessageText"
+          },
+          {
+           "Object": "IArgument",
+           "Value": "Entities.MessageType.Error",
+           "Parameter": "MessageType"
+          }
+         ]
+        },
+        {
+         "Name": "Opportunity_ImportFromExcel",
+         "Object": "IExecuteServerActionNode",
+         "Action": "Opportunity_ImportFromExcel",
+         "AnimationEffect": "None",
+         "X": "3196",
+         "Target": "3196,5120",
+         "Y": "2971",
+         "Arguments": [
+          {
+           "Object": "IArgument",
+           "Value": "InputFileOpportunities.Content",
+           "Parameter": "Excel"
+          }
+         ]
+        },
+        {
+         "Object": "IEndNode",
+         "X": "6628",
+         "Y": "3657"
+        },
+        {
+         "Object": "IEndNode",
+         "X": "3196",
+         "Y": "5120"
+        }
+       ]
+      }
+     ],
+     "Widgets": [
+      {
+       "Object": "IWebBlockInstanceWidget",
+       "SourceBlock": "Layout",
+       "PlaceholdersContent": [
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Left",
+         "Widgets": [
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "ApplicationTitle"
+          }
+         ]
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Center",
+         "Widgets": [
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "Menu"
+          }
+         ]
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Right",
+         "Widgets": [
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "LoginInfo"
+          }
+         ]
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "HeaderContent"
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Breadcrumbs"
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Title",
+         "Widgets": [
+          {
+           "Object": "ITextWidget",
+           "Text": "Configuration"
+          }
+         ]
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Actions"
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "MainContent",
+         "Widgets": [
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "Card",
+           "PlaceholdersContent": [
+            {
+             "Object": "IPlaceholderContentWidget",
+             "Placeholder": "Content",
+             "Widgets": [
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "heading3",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "1. Delete all Data"
+                }
+               ]
+              },
+              {
+               "Object": "ITextWidget",
+               "Text": "\n"
+              },
+              {
+               "Object": "IButtonWidget",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "IsDefault": "True",
+               "Label": "\"Delete all Data\"",
+               "StyleClasses": "Button",
+               "OnClick": [
+                {
+                 "Object": "IBuiltinEvent",
+                 "Destination": "DeleteAllData"
+                }
+               ]
+              },
+              {
+               "Object": "IButtonWidget",
+               "EffectiveMarginLeft": "Auto_Gutter",
+               "EffectiveWidth": "UserDefined",
+               "Enabled": "GetOpportunities.List.Empty",
+               "Label": "\"Reload Sample Data\"",
+               "MarginLeft": "Adaptive",
+               "StyleClasses": "Button",
+               "OnClick": [
+                {
+                 "Object": "IBuiltinEvent",
+                 "Destination": "ReloadSampleData"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "Object": "ITextWidget",
+           "Text": "\n"
+          },
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "Card",
+           "PlaceholdersContent": [
+            {
+             "Object": "IPlaceholderContentWidget",
+             "Placeholder": "Content",
+             "Widgets": [
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "heading3",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "2. Import Your Own Data"
+                }
+               ]
+              },
+              {
+               "Object": "ITextWidget",
+               "Text": "\n"
+              },
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "DataTitles",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Companies"
+                }
+               ]
+              },
+              {
+               "Object": "ITableWidget",
+               "Align": "Null",
+               "CellSpacing": "0",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "InlineBlock",
+               "StyleClasses": "OSInlineClear",
+               "ExtendedProperties": [
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "cellpadding",
+                 "Value": "0"
+                },
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "border",
+                 "Value": "0"
+                }
+               ],
+               "Rows": [
+                {
+                 "Object": "IRowWidget",
+                 "Cells": [
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Widgets": [
+                    {
+                     "Name": "InputFileCompanies",
+                     "Object": "IInputFilenameWidget",
+                     "EffectiveMarginLeft": "UserDefined",
+                     "EffectiveWidth": "UserDefined",
+                     "Width": "20char"
+                    }
+                   ]
+                  },
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Width": "6px"
+                  },
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Widgets": [
+                    {
+                     "Object": "IButtonWidget",
+                     "EffectiveMarginLeft": "UserDefined",
+                     "EffectiveWidth": "UserDefined",
+                     "Label": "\"Upload\"",
+                     "StyleClasses": "Button",
+                     "OnClick": [
+                      {
+                       "Object": "IBuiltinEvent",
+                       "Destination": "UploadCompanies"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "Object": "ILinkWidget",
+               "OnClick": [
+                {
+                 "Object": "ILinkOnClick",
+                 "Destination": "DownloadTemplateCompanies",
+                 "Method": "Submit",
+                 "Validation": "None"
+                }
+               ],
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Download Template"
+                }
+               ]
+              },
+              {
+               "Object": "ITextWidget",
+               "Text": "\n\n"
+              },
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "DataTitles",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Contacts"
+                }
+               ]
+              },
+              {
+               "Object": "ITableWidget",
+               "Align": "Null",
+               "CellSpacing": "0",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "InlineBlock",
+               "StyleClasses": "OSInlineClear",
+               "ExtendedProperties": [
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "cellpadding",
+                 "Value": "0"
+                },
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "border",
+                 "Value": "0"
+                }
+               ],
+               "Rows": [
+                {
+                 "Object": "IRowWidget",
+                 "Cells": [
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Widgets": [
+                    {
+                     "Name": "InputFileContacts",
+                     "Object": "IInputFilenameWidget",
+                     "EffectiveMarginLeft": "UserDefined",
+                     "EffectiveWidth": "UserDefined",
+                     "Width": "20char"
+                    }
+                   ]
+                  },
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Width": "6px"
+                  },
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Widgets": [
+                    {
+                     "Object": "IButtonWidget",
+                     "EffectiveMarginLeft": "UserDefined",
+                     "EffectiveWidth": "UserDefined",
+                     "Label": "\"Upload\"",
+                     "StyleClasses": "Button",
+                     "OnClick": [
+                      {
+                       "Object": "IBuiltinEvent",
+                       "Destination": "UploadContacts"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "Object": "ILinkWidget",
+               "OnClick": [
+                {
+                 "Object": "ILinkOnClick",
+                 "Destination": "DownloadTemplateContacts",
+                 "Method": "Submit",
+                 "Validation": "None"
+                }
+               ],
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Download Template"
+                }
+               ]
+              },
+              {
+               "Object": "ITextWidget",
+               "Text": "\n\n"
+              },
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "DataTitles",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Opportunities"
+                }
+               ]
+              },
+              {
+               "Object": "ITableWidget",
+               "Align": "Null",
+               "CellSpacing": "0",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "InlineBlock",
+               "StyleClasses": "OSInlineClear",
+               "ExtendedProperties": [
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "cellpadding",
+                 "Value": "0"
+                },
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "border",
+                 "Value": "0"
+                }
+               ],
+               "Rows": [
+                {
+                 "Object": "IRowWidget",
+                 "Cells": [
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Widgets": [
+                    {
+                     "Name": "InputFileOpportunities",
+                     "Object": "IInputFilenameWidget",
+                     "EffectiveMarginLeft": "UserDefined",
+                     "EffectiveWidth": "UserDefined",
+                     "Width": "20char"
+                    }
+                   ]
+                  },
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Width": "6px"
+                  },
+                  {
+                   "Object": "ICellWidgetWithWidth",
+                   "VerticalAlignment": "Null",
+                   "Widgets": [
+                    {
+                     "Object": "IButtonWidget",
+                     "EffectiveMarginLeft": "UserDefined",
+                     "EffectiveWidth": "UserDefined",
+                     "Label": "\"Upload\"",
+                     "StyleClasses": "Button",
+                     "OnClick": [
+                      {
+                       "Object": "IBuiltinEvent",
+                       "Destination": "UploadOpportunities"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "Object": "ILinkWidget",
+               "OnClick": [
+                {
+                 "Object": "ILinkOnClick",
+                 "Destination": "DownloadTemplateOpportunities",
+                 "Method": "Submit",
+                 "Validation": "None"
+                }
+               ],
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Download Template"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "Object": "ITextWidget",
+           "Text": "\n"
+          },
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "Card",
+           "PlaceholdersContent": [
+            {
+             "Object": "IPlaceholderContentWidget",
+             "Placeholder": "Content",
+             "Widgets": [
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "heading3",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "3. Create Users"
+                }
+               ]
+              },
+              {
+               "Object": "ITextWidget",
+               "Text": "\nCreate or import users for all application in "
+              },
+              {
+               "Object": "ILinkWidget",
+               "OnClick": [
+                {
+                 "Object": "ILinkOnClick",
+                 "Destination": "Users",
+                 "Method": "Navigate"
+                }
+               ],
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "Users"
+                }
+               ]
+              },
+              {
+               "Object": "IIfWidget",
+               "Condition": "IsSampleUser",
+               "TrueBranch": [
+                {
+                 "Object": "IIfBranchWidget",
+                 "Widgets": [
+                  {
+                   "Object": "ITextWidget",
+                   "StyleClasses": "Text_Note",
+                   "Text": "\n(You need to be logged in as Administrator)"
+                  }
+                 ]
+                }
+               ],
+               "FalseBranch": [
+                {
+                 "Object": "IIfBranchWidget"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "Object": "ITextWidget",
+           "Text": "\n"
+          },
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "Card",
+           "PlaceholdersContent": [
+            {
+             "Object": "IPlaceholderContentWidget",
+             "Placeholder": "Content",
+             "Widgets": [
+              {
+               "Object": "IContainerWidget",
+               "Align": "Null",
+               "Display": "True",
+               "EffectiveMarginLeft": "UserDefined",
+               "EffectiveWidth": "UserDefined",
+               "StyleClasses": "heading3",
+               "Width": "(fill parent)",
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "4. Need Help?"
+                }
+               ]
+              },
+              {
+               "Object": "ITextWidget",
+               "Text": "\nFor additional information contact us at: "
+              },
+              {
+               "Object": "ILinkWidget",
+               "ExtendedProperties": [
+                {
+                 "Object": "IExtendedProperty",
+                 "Property": "target",
+                 "Value": "\"_blank\""
+                }
+               ],
+               "OnClick": [
+                {
+                 "Object": "ILinkOnClick",
+                 "Destination": "AskOutSystems",
+                 "Method": "Navigate"
+                }
+               ],
+               "Widgets": [
+                {
+                 "Object": "ITextWidget",
+                 "Text": "http://www.outsystems.com/ask-outsystems/"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "Object": "IPlaceholderContentWidget",
+         "Placeholder": "Footer",
+         "Widgets": [
+          {
+           "Object": "IWebBlockInstanceWidget",
+           "SourceBlock": "Footer"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "Home",
+     "Object": "IEntry",
+     "X": "1599",
+     "IsDefault": "True",
+     "Target": "Configuration",
+     "Y": "685"
+    },
+    {
+     "Name": "Users",
+     "Object": "IExternalSite",
+     "X": "3199",
+     "URL": "/Users/",
+     "Y": "2514"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "generated": "2026-11-14T17:09:29",
+ "tool": "scripts/extract_kb.py",
+ "mcp": "http://127.0.0.1:41820/mcp",
+ "modules": [
+  {
+   "name": "CustomersSampleData",
+   "type": "Service",
+   "screens": 0,
+   "entities": 0,
+   "serverActions": 10
+  },
+  {
+   "name": "Sales",
+   "type": "Traditional",
+   "screens": 21,
+   "entities": 8,
+   "serverActions": 12
+  },
+  {
+   "name": "Customers",
+   "type": "Service",
+   "screens": 0,
+   "entities": 8,
+   "serverActions": 17
+  },
+  {
+   "name": "Employees",
+   "type": "Service",
+   "screens": 0,
+   "entities": 11,
+   "serverActions": 61
+  },
+  {
+   "name": "SalesSampleData",
+   "type": "Traditional",
+   "screens": 1,
+   "entities": 0,
+   "serverActions": 12
+  },
+  {
+   "name": "EmployeesSampleData",
+   "type": "Service",
+   "screens": 0,
+   "entities": 0,
+   "serverActions": 32
+  }
+ ],
+ "ruleCandidates": 14,
+ "autoFindings": 5,
+ "analysis": true,
+ "seconds": 599.6
+}

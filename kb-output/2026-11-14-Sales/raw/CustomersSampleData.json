@@ -1,0 +1,7137 @@
+{
+ "Name": "CustomersSampleData",
+ "Object": "IESpace",
+ "DBMS": "All",
+ "DefaultTransition": "SlideFromRight",
+ "InvalidCurrency": "Currency expected!",
+ "InvalidDate": "Date expected!",
+ "InvalidDateTime": "DateTime expected!",
+ "InvalidDecimal": "Decimal expected!",
+ "InvalidEmail": "Email expected!",
+ "InvalidInteger": "Integer expected!",
+ "InvalidNumericPassword": "Numeric Password expected!",
+ "InvalidPhone": "Phone Number expected!",
+ "InvalidText": "Text expected!",
+ "InvalidTime": "Time expected!",
+ "MandatoryInput": "Required field!",
+ "UpgradeFailed": "An error occurred while trying to update the app. If you want to retry the update, restart the app.",
+ "UpgradeFailedOnDataModel": "An error occurred while trying to update the app. If you want to retry the update, restart the app. If the problem persists you can reinstall, but all local data will be lost.",
+ "UpgradeFailedOnResources": "An error occurred while trying to update the app. If you want to retry the update, restart the app.",
+ "UpgradeRequired": "Your application needs to be updated. Tap here to update.",
+ "UpgradeRequiredWithDataLoss": "Your application needs to be updated. Unsaved data will be lost. Tap here to update.",
+ "UseCookies": "True",
+ "References": [
+  {
+   "Name": "(System)",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "Activity",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Activity",
+     "LabelPlural": "Activities",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Espace",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Espace",
+     "LabelPlural": "Espaces",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Group",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Group",
+     "LabelPlural": "Groups",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Process",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Process",
+     "LabelPlural": "Process",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Role",
+     "Object": "IServerEntitySignature",
+     "ExposeProcessEvents": "True",
+     "IdentifierAttribute": "Id",
+     "IsActiveAttribute": "Is_Active",
+     "IsMultiTenant": "No",
+     "Label": "Role",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Roles",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "CreateOrUpdateRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateSomeRoles",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "CreateRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllRoles",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetRoleForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Role Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateRole",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "Role Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Name",
+       "Length": "50"
+      },
+      {
+       "Name": "Persistent",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Persistent"
+      },
+      {
+       "Name": "SS_Key",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "SS Key",
+       "Length": "100"
+      },
+      {
+       "Name": "Espace_Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Espace Identifier",
+       "DeleteRule": "Delete",
+       "IsMandatory": "True",
+       "Label": "Espace"
+      },
+      {
+       "Name": "Is_Active",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Is Active"
+      },
+      {
+       "Name": "Description",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Description",
+       "Length": "2000"
+      }
+     ]
+    },
+    {
+     "Name": "RuntimeKind",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Runtime Kind",
+     "LabelPlural": "Runtime Kinds",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Sent_Email",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Sent Email",
+     "LabelPlural": "Sent Emails",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Tenant",
+     "Object": "IServerEntitySignature",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Tenant",
+     "LabelPlural": "Tenants",
+     "UpdateBehavior": "Full",
+     "Hidden": "True",
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "User",
+     "Object": "IServerEntitySignature",
+     "ExposeProcessEvents": "True",
+     "IdentifierAttribute": "Id",
+     "IsActiveAttribute": "Is_Active",
+     "IsMultiTenant": "Yes",
+     "Label": "User",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Users",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "CreateOrUpdateSomeUsers",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "SourceList",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record List",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "CreateOrUpdateUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "CreateUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ]
+      },
+      {
+       "Name": "DeleteAllUsers",
+       "Object": "IEntityActionSignature"
+      },
+      {
+       "Name": "DeleteUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "GetUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Record"
+        }
+       ]
+      },
+      {
+       "Name": "GetUserForUpdate",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "User Record"
+        }
+       ]
+      },
+      {
+       "Name": "UpdateUser",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Source",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Record",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Name",
+       "Length": "256"
+      },
+      {
+       "Name": "Username",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Username",
+       "Length": "250"
+      },
+      {
+       "Name": "Password",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Password",
+       "Length": "256"
+      },
+      {
+       "Name": "Email",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Email",
+       "DeleteRule": "Protect",
+       "Label": "Email",
+       "Length": "250"
+      },
+      {
+       "Name": "MobilePhone",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Mobile Phone",
+       "Length": "20"
+      },
+      {
+       "Name": "External_Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "External",
+       "Length": "36"
+      },
+      {
+       "Name": "Creation_Date",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date Time",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Creation Date"
+      },
+      {
+       "Name": "Last_Login",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Date Time",
+       "DeleteRule": "Protect",
+       "Label": "Last Login"
+      },
+      {
+       "Name": "Is_Active",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DefaultValue": "True",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Is Active"
+      }
+     ]
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "AbortTransaction",
+     "Object": "IServerActionSignature"
+    },
+    {
+     "Name": "CommitTransaction",
+     "Object": "IServerActionSignature"
+    },
+    {
+     "Name": "ListAppend",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "List",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "Element",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "ListAppendAll",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "List",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "SourceList",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "ListClear",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "List",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "ListDuplicate",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "InputParameters": [
+      {
+       "Name": "SourceList",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "DuplicatedList",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Generic Record List"
+      }
+     ]
+    },
+    {
+     "Name": "ListInsert",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "List",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "Element",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "Position",
+       "Object": "IInputParameterSignature",
+       "DataType": "Integer",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "ListRemove",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "List",
+       "Object": "IInputParameterSignature",
+       "DataType": "Generic Record List",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "Position",
+       "Object": "IInputParameterSignature",
+       "DataType": "Integer",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "LogMessage",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Message",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "ModuleName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      }
+     ]
+    },
+    {
+     "Name": "Notify",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Message",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      }
+     ]
+    },
+    {
+     "Name": "NotifyGetMessage",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "OutputParameters": [
+      {
+       "Name": "Message",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Text"
+      }
+     ]
+    },
+    {
+     "Name": "SetCurrentLocale",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Locale",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "Customers",
+   "Object": "IReference",
+   "Entities": [
+    {
+     "Name": "Company",
+     "Object": "IServerEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Company",
+     "LabelAttribute": "CompanyName",
+     "LabelPlural": "Companies",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "GetCompany",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Company Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Company Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "CompanyName",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Company Name",
+       "Length": "50"
+      },
+      {
+       "Name": "CompanyType",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "CompanyType Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Company Type"
+      },
+      {
+       "Name": "Phone",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Phone",
+       "Length": "20"
+      },
+      {
+       "Name": "Email",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Email",
+       "Length": "50"
+      },
+      {
+       "Name": "Fax",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Fax",
+       "Length": "20"
+      },
+      {
+       "Name": "Website",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Website",
+       "Length": "50"
+      },
+      {
+       "Name": "Address",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Address",
+       "Length": "50"
+      },
+      {
+       "Name": "PostalCode",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Postal Code",
+       "Length": "50"
+      },
+      {
+       "Name": "City",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "City",
+       "Length": "50"
+      },
+      {
+       "Name": "CountryId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Country Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Country"
+      }
+     ]
+    },
+    {
+     "Name": "CompanyType",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Company Type",
+     "LabelAttribute": "Label",
+     "LabelPlural": "Company Types",
+     "OrderByAttribute": "Order",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "GetCompanyType",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "CompanyType Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "CompanyType Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Label",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Label",
+       "Length": "50"
+      },
+      {
+       "Name": "Order",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Order"
+      }
+     ],
+     "Records": [
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Customer",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Customer\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "1"
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Prospect",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Label",
+         "Value": "\"Prospect\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Order",
+         "Value": "3"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Name": "Contact",
+     "Object": "IServerEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Contact",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Contacts",
+     "UpdateBehavior": "Optimized",
+     "EntityActions": [
+      {
+       "Name": "GetContact",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Contact Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Contact Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Protect",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "IsMandatory": "True",
+       "Label": "Name",
+       "Length": "100"
+      },
+      {
+       "Name": "JobTitle",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Job Title",
+       "Length": "50"
+      },
+      {
+       "Name": "Phone",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Phone",
+       "Length": "20"
+      },
+      {
+       "Name": "Mobile",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Phone Number",
+       "DeleteRule": "Protect",
+       "Label": "Mobile",
+       "Length": "20"
+      },
+      {
+       "Name": "Email",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Email",
+       "Length": "250"
+      },
+      {
+       "Name": "CompanyId",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Company Identifier",
+       "DeleteRule": "Protect",
+       "Label": "Company"
+      },
+      {
+       "Name": "SecondaryEmail",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Protect",
+       "Label": "Secondary Email",
+       "Length": "250"
+      }
+     ]
+    },
+    {
+     "Name": "Country",
+     "Object": "IStaticEntitySignature",
+     "ExposeReadOnly": "True",
+     "IdentifierAttribute": "Id",
+     "IsMultiTenant": "No",
+     "Label": "Country",
+     "LabelAttribute": "Name",
+     "LabelPlural": "Countries",
+     "OrderByAttribute": "Name",
+     "UpdateBehavior": "Full",
+     "EntityActions": [
+      {
+       "Name": "GetCountry",
+       "Object": "IEntityActionSignature",
+       "InputParameters": [
+        {
+         "Name": "Id",
+         "Object": "IInputParameterSignature",
+         "DataType": "Country Identifier",
+         "IsMandatory": "True"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "Record",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Country Record"
+        }
+       ]
+      }
+     ],
+     "Attributes": [
+      {
+       "Name": "Id",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Integer",
+       "DeleteRule": "Ignore",
+       "IsAutoNumber": "Yes",
+       "IsMandatory": "True",
+       "Label": "Id"
+      },
+      {
+       "Name": "Name",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "IsMandatory": "True",
+       "Label": "Name",
+       "Length": "100"
+      },
+      {
+       "Name": "Code",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Text",
+       "DeleteRule": "Ignore",
+       "Label": "Code",
+       "Length": "50"
+      },
+      {
+       "Name": "HasStates",
+       "Object": "IEntityAttributeSignature",
+       "DataType": "Boolean",
+       "DeleteRule": "Ignore",
+       "Label": "Has States"
+      }
+     ],
+     "Records": [
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Afghanistan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AF\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Afghanistan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Albania",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Albania\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Algeria",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"DZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Algeria\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Andorra",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AD\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Andorra\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Angola",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Angola\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Anguilla",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Anguilla\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Antarctica",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AQ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Antarctica\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "AntiguaBarbuda",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Antigua & Barbuda\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Argentina",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Argentina\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Armenia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Armenia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Australia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Australia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Austria",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Austria\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Azerbaijan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Azerbaijan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Bahama",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BS\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bahama\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Bahrain",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bahrain\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Bangladesh",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BD\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bangladesh\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Barbados",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BB\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Barbados\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Belarus",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Belarus\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Belgium",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Belgium\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Belize",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Belize\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Benin",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BJ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Benin\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Bhutan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bhutan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Bolivia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bolivia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "BosniaandHerzegovina",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bosnia and Herzegovina\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Botswana",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Botswana\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Brazil",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Brazil\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "BruneiDarussalam",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Brunei Darussalam\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Bulgaria",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Bulgaria\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "BurkinaFaso",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BF\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Burkina Faso\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Burundi",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"BI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Burundi\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Cambodia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Cambodia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Cameroon",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Cameroon\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Canada",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Canada\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "CapeVerde",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CV\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Cape Verde\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "CentralAfricanRepublic",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CF\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Central African Republic\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Chad",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TD\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Chad\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Chile",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Chile\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "China",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"China\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Colombia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Colombia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Comoros",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Comoros\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Congo",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Congo\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "CostaRica",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Costa Rica\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "CoteD_ivoire_IvoryCoast_",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Côte D'ivoire (Ivory Coast)\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Croatia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"HR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Croatia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Cuba",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Cuba\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Cyprus",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Cyprus\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "CzechRepublic",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Czech Republic\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Denmark",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"DK\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Denmark\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Djibouti",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"DJ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Djibouti\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Dominica",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"DM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Dominica\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "DominicanRepublic",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"DO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Dominican Republic\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "EastTimor",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TP\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"East Timor\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Ecuador",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"EC\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Ecuador\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Egypt",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"EG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Egypt\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "ElSalvador",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SV\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"El Salvador\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "EquatorialGuinea",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GQ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Equatorial Guinea\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Eritrea",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ER\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Eritrea\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Estonia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"EE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Estonia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Ethiopia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ET\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Ethiopia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Fiji",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"FJ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Fiji\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Finland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"FI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Finland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "France",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"FR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"France\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "France_Metropolitan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"FX\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"France, Metropolitan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "FrenchGuiana",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GF\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"French Guiana\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "FrenchPolynesia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PF\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"French Polynesia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Gabon",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Gabon\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Gambia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Gambia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Georgia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Georgia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Germany",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"DE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Germany\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Ghana",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Ghana\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Greece",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Greece\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Greenland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Greenland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Grenada",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GD\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Grenada\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Guatemala",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Guatemala\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Guinea",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Guinea\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "GuineaBissau",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Guinea-Bissau\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Guyana",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Guyana\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Haiti",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"HT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Haiti\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Honduras",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"HN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Honduras\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "HongKong",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"HK\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Hong Kong\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Hungary",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"HU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Hungary\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Iceland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IS\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Iceland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "India",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"India\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Indonesia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ID\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Indonesia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Iraq",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IQ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Iraq\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Ireland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Ireland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "IslamicRepublicofIran",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Islamic Republic of Iran\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Israel",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Israel\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Italy",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"IT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Italy\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Jamaica",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"JM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Jamaica\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Japan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"JP\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Japan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Jordan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"JO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Jordan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Kazakhstan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Kazakhstan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Kenya",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Kenya\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Kiribati",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Kiribati\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Korea_DemocraticPeople_sRepublicof",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KP\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Korea, Democratic People's Republic of\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Korea_Republicof",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Korea, Republic of\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Kuwait",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Kuwait\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Kyrgyzstan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Kyrgyzstan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "LaoPeople_sDemocraticRepublic",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Lao People's Democratic Republic\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Latvia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LV\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Latvia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Lebanon",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LB\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Lebanon\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Lesotho",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LS\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Lesotho\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Liberia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Liberia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "LibyanArabJamahiriya",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Libyan Arab Jamahiriya\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Liechtenstein",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Liechtenstein\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Lithuania",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Lithuania\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Luxembourg",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Luxembourg\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Macau",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Macau\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Madagascar",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Madagascar\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Malawi",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Malawi\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Malaysia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Malaysia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Maldives",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MV\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Maldives\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Mali",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ML\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Mali\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Malta",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Malta\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "MarshallIslands",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Marshall Islands\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Mauritania",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Mauritania\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Mauritius",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Mauritius\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Mexico",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MX\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Mexico\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Moldova_Republicof",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MD\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Moldova, Republic of\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Monaco",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MC\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Monaco\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Mongolia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Mongolia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Morocco",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Morocco\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Mozambique",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Mozambique\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Myanmar",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"MM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Myanmar\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Namibia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Namibia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Nauru",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Nauru\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Nepal",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NP\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Nepal\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Netherlands",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Netherlands\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "NewCaledonia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NC\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"New Caledonia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "NewZealand",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"New Zealand\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Nicaragua",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Nicaragua\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Niger",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Niger\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Nigeria",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Nigeria\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Norway",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"NO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Norway\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Oman",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"OM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Oman\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Pakistan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PK\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Pakistan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Palau",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Palau\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Panama",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Panama\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "PapuaNewGuinea",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Papua New Guinea\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Paraguay",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Paraguay\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Peru",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Peru\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Philippines",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Philippines\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Poland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Poland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Portugal",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Portugal\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "PuertoRico",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"PR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Puerto Rico\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Qatar",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"QA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Qatar\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Reunion",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"RE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Réunion\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Romania",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"RO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Romania\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "RussianFederation",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"RU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Russian Federation\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Rwanda",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"RW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Rwanda\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SaintLucia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LC\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Saint Lucia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Samoa",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"WS\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Samoa\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SanMarino",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"San Marino\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SaoTomePrincipe",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ST\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Sao Tome & Principe\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SaudiArabia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Saudi Arabia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Senegal",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Senegal\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Seychelles",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SC\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Seychelles\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SierraLeone",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SL\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Sierra Leone\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Singapore",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Singapore\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Slovakia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SK\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Slovakia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Slovenia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SI\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Slovenia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SolomonIslands",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SB\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Solomon Islands\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Somalia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Somalia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SouthAfrica",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ZA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"South Africa\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Spain",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ES\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Spain\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SriLanka",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"LK\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Sri Lanka\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "St_KittsandNevis",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"KN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"St. Kitts and Nevis\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "St_VincenttheGrenadines",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"VC\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"St. Vincent & the Grenadines\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Sudan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SD\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Sudan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Suriname",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Suriname\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Swaziland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Swaziland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Sweden",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Sweden\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Switzerland",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"CH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Switzerland\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "SyrianArabRepublic",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"SY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Syrian Arab Republic\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Taiwan_ProvinceofChina",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Taiwan, Province of China\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Tajikistan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TJ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Tajikistan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Tanzania_UnitedRepublicof",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Tanzania, United Republic of\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Thailand",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Thailand\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Togo",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Togo\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Tonga",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TO\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Tonga\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "TrinidadTobago",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TT\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Trinidad & Tobago\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Tunisia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Tunisia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Turkey",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Turkey\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Turkmenistan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Turkmenistan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Tuvalu",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"TV\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Tuvalu\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Uganda",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"UG\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Uganda\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Ukraine",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"UA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Ukraine\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "UnitedArabEmirates",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"AE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"United Arab Emirates\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "UnitedKingdom_GreatBritain_",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"GB\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"United Kingdom (Great Britain)\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "UnitedStatesofAmerica",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"US\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates",
+         "Value": "True"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"United States of America\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Uruguay",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"UY\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Uruguay\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Uzbekistan",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"UZ\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Uzbekistan\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Vanuatu",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"VU\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Vanuatu\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "VaticanCityState_HolySee_",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"VA\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Vatican City State (Holy See)\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Venezuela",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"VE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Venezuela\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "VietNam",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"VN\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Viet Nam\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "WesternSahara",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"EH\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Western Sahara\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Yemen",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"YE\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Yemen\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Zaire",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ZR\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Zaire\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Zambia",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ZM\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Zambia\""
+        }
+       ]
+      },
+      {
+       "Object": "IStaticEntityRecordSignature",
+       "Identifier": "Zimbabwe",
+       "AttributeValues": [
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Code",
+         "Value": "\"ZW\""
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "HasStates"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Id"
+        },
+        {
+         "Object": "IRecordAttributeValueSignature",
+         "Attribute": "Name",
+         "Value": "\"Zimbabwe\""
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ServerActions": [
+    {
+     "Name": "Company_Create",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Source",
+       "Object": "IInputParameterSignature",
+       "DataType": "Company Record",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "Id",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Company Identifier"
+      }
+     ]
+    },
+    {
+     "Name": "Company_DeleteAllCompanies",
+     "Object": "IServerActionSignature"
+    },
+    {
+     "Name": "Contact_Create",
+     "Object": "IServerActionSignature",
+     "InputParameters": [
+      {
+       "Name": "Source",
+       "Object": "IInputParameterSignature",
+       "DataType": "Contact Record",
+       "IsMandatory": "True"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "Id",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Contact Identifier"
+      }
+     ]
+    },
+    {
+     "Name": "Contact_DeleteAllContacts",
+     "Object": "IServerActionSignature"
+    }
+   ]
+  },
+  {
+   "Name": "HTTPRequestHandler",
+   "Object": "IReference",
+   "ServerActions": [
+    {
+     "Name": "GetEntryURL",
+     "Object": "IServerActionSignature",
+     "Function": "True",
+     "InputParameters": [
+      {
+       "Name": "EntryName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text",
+       "IsMandatory": "True"
+      },
+      {
+       "Name": "eSpaceName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "FirstParameterName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "FirstParameterValue",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "SecondParameterName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "SecondParameterValue",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "ThirdParameterName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "ThirdParameterValue",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "FourthParameterName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "FourthParameterValue",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "FifthParameterName",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      },
+      {
+       "Name": "FifthParameterValue",
+       "Object": "IInputParameterSignature",
+       "DataType": "Text"
+      }
+     ],
+     "OutputParameters": [
+      {
+       "Name": "URL",
+       "Object": "IOutputParameterSignature",
+       "DataType": "Text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Name": "Users",
+   "Object": "IReference",
+   "Roles": [
+    {
+     "Name": "UserManager",
+     "Object": "IAppRoleSignature",
+     "IsPersistent": "True",
+     "RoleActions": [
+      {
+       "Name": "CheckUserManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier"
+        }
+       ],
+       "OutputParameters": [
+        {
+         "Name": "HasRole",
+         "Object": "IOutputParameterSignature",
+         "DataType": "Boolean"
+        }
+       ]
+      },
+      {
+       "Name": "GrantUserManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      },
+      {
+       "Name": "RevokeUserManagerRole",
+       "Object": "IActionSignature",
+       "InputParameters": [
+        {
+         "Name": "UserId",
+         "Object": "IInputParameterSignature",
+         "DataType": "User Identifier",
+         "IsMandatory": "True"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "Resources": [
+  {
+   "Name": "SampleCompanies.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  },
+  {
+   "Name": "SampleContacts.xlsx",
+   "Object": "IResource",
+   "DeployAction": "Ignore"
+  }
+ ],
+ "RoleExceptions": [
+  {
+   "Object": "IRoleException"
+  }
+ ],
+ "ServerActions": [
+  {
+   "Name": "Company_GetIdFromName",
+   "Object": "IServerAction",
+   "Function": "True",
+   "Public": "True",
+   "Shareable": "True",
+   "InputParameters": [
+    {
+     "Name": "CompanyName",
+     "Object": "IInputParameter",
+     "DataType": "Text",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetCompanyFromName",
+     "Y": "800"
+    },
+    {
+     "Name": "GetCompanyFromName",
+     "Object": "IAggregateNode",
+     "X": "3196",
+     "Target": "3196,3957",
+     "Y": "2514",
+     "Operations": [
+      {
+       "Name": "Companies",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "Company.CompanyName = CompanyName"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "Company",
+         "Object": "IAliasedSource",
+         "SourceOperation": "Company"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5485",
+     "Y": "3957",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "GetCompanyFromName.List.Current.Company.Id",
+       "Variable": "CompanyId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5485"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "CompanyId",
+     "Object": "IOutputParameter",
+     "DataType": "Company Identifier"
+    }
+   ]
+  },
+  {
+   "Name": "Company_ImportFromExcel",
+   "Object": "IServerAction",
+   "Public": "True",
+   "Shareable": "True",
+   "InputParameters": [
+    {
+     "Name": "Excel",
+     "Object": "IInputParameter",
+     "DataType": "Binary Data",
+     "IsMandatory": "True"
+    }
+   ],
+   "LocalVariables": [
+    {
+     "Name": "CompanyRecord",
+     "Object": "ILocalVariable",
+     "DataType": "Company Record"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "CompaniesExcel",
+     "Y": "800"
+    },
+    {
+     "Name": "CompaniesExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_Company Record List",
+     "FileContent": "Excel",
+     "X": "3199",
+     "SheetName": "\"Companies\"",
+     "Target": "3199,5942",
+     "Y": "2742"
+    },
+    {
+     "Name": "GetCountryByName",
+     "Object": "IAggregateNode",
+     "X": "4714",
+     "MaxRecords": "1",
+     "Target": "6171,4342",
+     "Y": "4342",
+     "Operations": [
+      {
+       "Name": "Countries",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "Country.Name like CompaniesExcel.Current.Excel_Company.Country"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "Country",
+         "Object": "IAliasedSource",
+         "SourceOperation": "Country"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "6171",
+     "Label": "Assign CompanyRecord",
+     "Target": "Company_Create",
+     "Y": "4342",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.CompanyName",
+       "Variable": "CompanyRecord.Company.CompanyName"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompanyType_GetIdFromLabel(CompaniesExcel.Current.Excel_Company.CompanyType) ",
+       "Variable": "CompanyRecord.Company.CompanyType"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.Phone",
+       "Variable": "CompanyRecord.Company.Phone"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.Email",
+       "Variable": "CompanyRecord.Company.Email"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.Fax ",
+       "Variable": "CompanyRecord.Company.Fax"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.Website",
+       "Variable": "CompanyRecord.Company.Website"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.Address",
+       "Variable": "CompanyRecord.Company.Address"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.PostalCode",
+       "Variable": "CompanyRecord.Company.PostalCode"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "CompaniesExcel.Current.Excel_Company.City",
+       "Variable": "CompanyRecord.Company.City"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "GetCountryByName.List.Current.Country.Id",
+       "Variable": "CompanyRecord.Company.CountryId"
+      }
+     ]
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3199",
+     "RecordList": "CompaniesExcel",
+     "Y": "5942",
+     "Target": "3199,7771",
+     "CycleTarget": "GetCountryByName"
+    },
+    {
+     "Name": "Company_Create",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Company_Create",
+     "AnimationEffect": "None",
+     "X": "6171",
+     "Target": "3199,5942",
+     "Y": "5942",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "CompanyRecord",
+       "Parameter": "Source"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "7771"
+    }
+   ]
+  },
+  {
+   "Name": "CompanyType_GetIdFromLabel",
+   "Object": "IServerAction",
+   "Function": "True",
+   "InputParameters": [
+    {
+     "Name": "CompanyTypeLabel",
+     "Object": "IInputParameter",
+     "DataType": "Text",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetCompanyTypeFomLabel",
+     "Y": "800"
+    },
+    {
+     "Name": "GetCompanyTypeFomLabel",
+     "Object": "IAggregateNode",
+     "X": "3196",
+     "Target": "3196,3885",
+     "Y": "2514",
+     "Operations": [
+      {
+       "Name": "CompanyTypes",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "CompanyType.Label = CompanyTypeLabel"
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "CompanyType",
+         "Object": "IAliasedSource",
+         "SourceOperation": "CompanyType"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5485",
+     "Y": "3885",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "GetCompanyTypeFomLabel.List.Current.CompanyType.Id",
+       "Variable": "CompanyTypeId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5485"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "CompanyTypeId",
+     "Object": "IOutputParameter",
+     "DataType": "CompanyType Identifier"
+    }
+   ]
+  },
+  {
+   "Name": "Contact_GetIdFromName",
+   "Object": "IServerAction",
+   "Function": "True",
+   "Public": "True",
+   "Shareable": "True",
+   "InputParameters": [
+    {
+     "Name": "ContactName",
+     "Object": "IInputParameter",
+     "DataType": "Text",
+     "IsMandatory": "True"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetContactsByName",
+     "Y": "800"
+    },
+    {
+     "Name": "GetContactsByName",
+     "Object": "IAggregateNode",
+     "X": "3196",
+     "Target": "3196,3885",
+     "Y": "2614",
+     "Operations": [
+      {
+       "Name": "Contacts",
+       "Object": "ICombineSourcesOperation",
+       "Filters": [
+        {
+         "Object": "IFilter",
+         "Condition": "Contact.Name = ContactName "
+        }
+       ],
+       "Sources": [
+        {
+         "Name": "Contact",
+         "Object": "IAliasedSource",
+         "SourceOperation": "Contact"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5485",
+     "Y": "3885",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "GetContactsByName.List.Current.Contact.Id",
+       "Variable": "ContactId"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5485"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "ContactId",
+     "Object": "IOutputParameter",
+     "DataType": "Contact Identifier"
+    }
+   ]
+  },
+  {
+   "Name": "Contact_ImportFromExcel",
+   "Object": "IServerAction",
+   "Public": "True",
+   "Shareable": "True",
+   "InputParameters": [
+    {
+     "Name": "Excel",
+     "Object": "IInputParameter",
+     "DataType": "Binary Data",
+     "IsMandatory": "True"
+    }
+   ],
+   "LocalVariables": [
+    {
+     "Name": "ContactRecord",
+     "Object": "ILocalVariable",
+     "DataType": "Contact Record"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "ContactsExcel",
+     "Y": "800"
+    },
+    {
+     "Name": "ContactsExcel",
+     "Object": "IExcelToRecordListNode",
+     "DataType": "Excel_Contacts Record List",
+     "FileContent": "Excel",
+     "X": "3199",
+     "SheetName": "\"Contacts\"",
+     "Target": "3199,4342",
+     "Y": "2742"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "5028",
+     "Label": "Assign ContactRecord",
+     "Target": "Contact_Create",
+     "Y": "2742",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "ContactsExcel.Current.Excel_Contacts.Name",
+       "Variable": "ContactRecord.Contact.Name"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "ContactsExcel.Current.Excel_Contacts.JobTitle",
+       "Variable": "ContactRecord.Contact.JobTitle"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "ContactsExcel.Current.Excel_Contacts.Phone",
+       "Variable": "ContactRecord.Contact.Phone"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "ContactsExcel.Current.Excel_Contacts.Mobile",
+       "Variable": "ContactRecord.Contact.Mobile"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "ToLower(ContactsExcel.Current.Excel_Contacts.Email)",
+       "Variable": "ContactRecord.Contact.Email"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "Company_GetIdFromName(ContactsExcel.Current.Excel_Contacts.Company) ",
+       "Variable": "ContactRecord.Contact.CompanyId"
+      },
+      {
+       "Object": "IAssignment",
+       "Value": "ContactsExcel.Current.Excel_Contacts.SecondaryEmail",
+       "Variable": "ContactRecord.Contact.SecondaryEmail"
+      }
+     ]
+    },
+    {
+     "Object": "IForEachNode",
+     "X": "3199",
+     "RecordList": "ContactsExcel",
+     "Y": "4342",
+     "Target": "3196,5942",
+     "CycleTarget": "5028,2742"
+    },
+    {
+     "Name": "Contact_Create",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Contact_Create",
+     "AnimationEffect": "None",
+     "X": "5028",
+     "Target": "3199,4342",
+     "Y": "4342",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "ContactRecord",
+       "Parameter": "Source"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5942"
+    }
+   ]
+  },
+  {
+   "Name": "DownloadSampleCompanies",
+   "Object": "IServerAction",
+   "Function": "True",
+   "Public": "True",
+   "Shareable": "True",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "3196,2829",
+     "Y": "800"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5120",
+     "Y": "2829",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "Resources.SampleCompanies_xlsx.Content",
+       "Variable": "BinaryData"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5120"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "BinaryData",
+     "Object": "IOutputParameter",
+     "DataType": "Binary Data"
+    }
+   ]
+  },
+  {
+   "Name": "DownloadSampleContacts",
+   "Object": "IServerAction",
+   "Function": "True",
+   "Public": "True",
+   "Shareable": "True",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "3196,2829",
+     "Y": "800"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3196",
+     "Target": "3196,5120",
+     "Y": "2829",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "Resources.SampleContacts_xlsx.Content",
+       "Variable": "BinaryData"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5120"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "BinaryData",
+     "Object": "IOutputParameter",
+     "DataType": "Binary Data"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_Bootstrap",
+   "Object": "IServerAction",
+   "Public": "True",
+   "Shareable": "True",
+   "LocalVariables": [
+    {
+     "Name": "ContactRecord",
+     "Object": "ILocalVariable",
+     "DataType": "Contact Record"
+    },
+    {
+     "Name": "CompanyRecord",
+     "Object": "ILocalVariable",
+     "DataType": "Company Record"
+    }
+   ],
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3199",
+     "Target": "3208,2514",
+     "Y": "800"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "SampleData_BootstrapDone() = True",
+     "X": "3208",
+     "Label": "Bootstrap Done?",
+     "Y": "2514",
+     "TrueTarget": "4991,2514",
+     "FalseTarget": "Mutex"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "4991",
+     "Y": "2514"
+    },
+    {
+     "Name": "Mutex",
+     "Object": "IExecuteServerActionNode",
+     "Action": "GetRoleForUpdate",
+     "AnimationEffect": "None",
+     "X": "3205",
+     "Target": "Company_ImportFromExcel",
+     "Y": "3885",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "Roles.UserManager",
+       "Parameter": "Id"
+      }
+     ]
+    },
+    {
+     "Name": "Company_ImportFromExcel",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Company_ImportFromExcel",
+     "AnimationEffect": "None",
+     "X": "3205",
+     "Target": "Contact_ImportFromExcel",
+     "Y": "5485",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "Resources.SampleCompanies_xlsx.Content ",
+       "Parameter": "Excel"
+      }
+     ]
+    },
+    {
+     "Name": "Contact_ImportFromExcel",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Contact_ImportFromExcel",
+     "AnimationEffect": "None",
+     "X": "3205",
+     "Target": "3205,8914",
+     "Y": "7314",
+     "Arguments": [
+      {
+       "Object": "IArgument",
+       "Value": "Resources.SampleContacts_xlsx.Content",
+       "Parameter": "Excel"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3205",
+     "Y": "8914"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_BootstrapDone",
+   "Object": "IServerAction",
+   "Function": "True",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "GetCompanies",
+     "Y": "800"
+    },
+    {
+     "Name": "GetCompanies",
+     "Object": "IAggregateNode",
+     "X": "3199",
+     "Target": "3199,3657",
+     "Y": "2285"
+    },
+    {
+     "Object": "IIfNode",
+     "Condition": "not GetCompanies.List.Empty",
+     "X": "3199",
+     "Label": "Has Companies?",
+     "Y": "3657",
+     "TrueTarget": "5028,3657",
+     "FalseTarget": "3157,5257"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "5028",
+     "Y": "3657"
+    },
+    {
+     "Object": "IAssignNode",
+     "X": "3157",
+     "Label": "Bootstrap not done",
+     "Target": "3199,6857",
+     "Y": "5257",
+     "Assignments": [
+      {
+       "Object": "IAssignment",
+       "Value": "False",
+       "Variable": "BootstrapDone"
+      }
+     ]
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3199",
+     "Y": "6857"
+    }
+   ],
+   "OutputParameters": [
+    {
+     "Name": "BootstrapDone",
+     "Object": "IOutputParameter",
+     "DataType": "Boolean",
+     "DefaultValue": "True"
+    }
+   ]
+  },
+  {
+   "Name": "SampleData_Delete",
+   "Object": "IServerAction",
+   "Public": "True",
+   "Shareable": "True",
+   "Nodes": [
+    {
+     "Object": "IStartNode",
+     "X": "3196",
+     "Target": "Contact_DeleteAllContacts",
+     "Y": "800"
+    },
+    {
+     "Name": "Contact_DeleteAllContacts",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Contact_DeleteAllContacts",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "Company_DeleteAllCompanies",
+     "Y": "2514"
+    },
+    {
+     "Name": "Company_DeleteAllCompanies",
+     "Object": "IExecuteServerActionNode",
+     "Action": "Company_DeleteAllCompanies",
+     "AnimationEffect": "None",
+     "X": "3199",
+     "Target": "3196,5485",
+     "Y": "3885"
+    },
+    {
+     "Object": "IEndNode",
+     "X": "3196",
+     "Y": "5485"
+    }
+   ]
+  }
+ ],
+ "Settings": [
+  {
+   "Name": "TenantId",
+   "Object": "ISiteProperty",
+   "DataType": "Tenant Identifier"
+  },
+  {
+   "Name": "TenantName",
+   "Object": "ISiteProperty",
+   "DataType": "Text"
+  }
+ ],
+ "Structures": [
+  {
+   "Name": "Excel_Company",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "CompanyName",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Company Name",
+     "Length": "50"
+    },
+    {
+     "Name": "CompanyType",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Company Type",
+     "Length": "50"
+    },
+    {
+     "Name": "Phone",
+     "Object": "IStructureAttribute",
+     "DataType": "Phone Number",
+     "Label": "Phone"
+    },
+    {
+     "Name": "Email",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Email",
+     "Length": "500"
+    },
+    {
+     "Name": "Fax",
+     "Object": "IStructureAttribute",
+     "DataType": "Phone Number",
+     "Label": "Fax"
+    },
+    {
+     "Name": "Website",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Website",
+     "Length": "50"
+    },
+    {
+     "Name": "Address",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Address",
+     "Length": "50"
+    },
+    {
+     "Name": "PostalCode",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Postal Code",
+     "Length": "50"
+    },
+    {
+     "Name": "City",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "City",
+     "Length": "50"
+    },
+    {
+     "Name": "Country",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Country",
+     "Length": "50"
+    }
+   ]
+  },
+  {
+   "Name": "Excel_Contacts",
+   "Object": "IStructure",
+   "Attributes": [
+    {
+     "Name": "Name",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "IsMandatory": "True",
+     "Label": "Name",
+     "Length": "50"
+    },
+    {
+     "Name": "JobTitle",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "IsMandatory": "True",
+     "Label": "Job Title",
+     "Length": "50"
+    },
+    {
+     "Name": "Phone",
+     "Object": "IStructureAttribute",
+     "DataType": "Phone Number",
+     "Label": "Phone"
+    },
+    {
+     "Name": "Mobile",
+     "Object": "IStructureAttribute",
+     "DataType": "Phone Number",
+     "Label": "Mobile"
+    },
+    {
+     "Name": "Email",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Email",
+     "Length": "250"
+    },
+    {
+     "Name": "Company",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Company",
+     "Length": "50"
+    },
+    {
+     "Name": "SecondaryEmail",
+     "Object": "IStructureAttribute",
+     "DataType": "Text",
+     "Label": "Secondary Email",
+     "Length": "250"
+    }
+   ]
+  }
+ ],
+ "Timers": [
+  {
+   "Name": "SampleData_Bootstrap",
+   "Object": "ITimer",
+   "Action": "SampleData_Bootstrap",
+   "IsMultiTenant": "Inherited",
+   "Priority": "Normal",
+   "TimeoutInMinutes": "20",
+   "CronSchedule": "WhenPublished",
+   "ScheduleConfiguration": "WhenPublished",
+   "TimerActions": [
+    {
+     "Name": "WakeSampleData_Bootstrap",
+     "Object": "IActionSignature"
+    }
+   ]
+  }
+ ],
+ "ValidationErrorsAndWarnings": [
+  {
+   "Type": "Warning",
+   "Object": "I/ServerActions/ServerAction[@Name=SampleData_Bootstrap]/LocalVariables/LocalVariable[@Name=CompanyRecord]",
+   "Properties": [],
+   "Message": "Unused Element",
+   "Detail": "Local Variable 'CompanyRecord' is never used in Server Action 'SampleData_Bootstrap'. Consider deleting it.",
+   "WasHiddenByUser": "No"
+  },
+  {
+   "Type": "Warning",
+   "Object": "I/ServerActions/ServerAction[@Name=SampleData_Bootstrap]/LocalVariables/LocalVariable[@Name=ContactRecord]",
+   "Properties": [],
+   "Message": "Unused Element",
+   "Detail": "Local Variable 'ContactRecord' is never used in Server Action 'SampleData_Bootstrap'. Consider deleting it.",
+   "WasHiddenByUser": "No"
+  }
+ ]
+}

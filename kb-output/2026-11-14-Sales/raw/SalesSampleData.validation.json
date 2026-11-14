@@ -1,0 +1,11 @@
+[
+ {
+  "ownerPath": "/ApplicationName",
+  "ownerType": "ISiteProperty",
+  "id": "UnusedElement",
+  "type": "Warning",
+  "message": "Unused Element",
+  "detail": "Site Property 'ApplicationName' is never used in Module 'SalesSampleData'. Consider deleting it.",
+  "ownerKey": "znGFFSbEWdH_BpFQCWDe6Q"
+ }
+]

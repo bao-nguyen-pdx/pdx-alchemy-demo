@@ -1,0 +1,29 @@
+[
+ {
+  "ownerPath": "/Common/SampleUsersLogin/Login/Login",
+  "ownerType": "IExecuteServerActionNode",
+  "id": "LoginSecurity",
+  "type": "Warning",
+  "message": "Unexpected Login",
+  "detail": "Please consider using login actions from the app 'Users'.",
+  "ownerKey": "V2DE8+WcJku3ZUUNpnU8WQ"
+ },
+ {
+  "ownerPath": "/CompanyName",
+  "ownerType": "ISiteProperty",
+  "id": "UnusedElement",
+  "type": "Warning",
+  "message": "Unused Element",
+  "detail": "Site Property 'CompanyName' is never used in Module 'Sales'. Consider deleting it.",
+  "ownerKey": "HNRLpEpF1TIMpVIeEP5QjA"
+ },
+ {
+  "ownerPath": "/QuotaChartColor",
+  "ownerType": "ISiteProperty",
+  "id": "UnusedElement",
+  "type": "Warning",
+  "message": "Unused Element",
+  "detail": "Site Property 'QuotaChartColor' is never used in Module 'Sales'. Consider deleting it.",
+  "ownerKey": "uSsem549YkiqWBdoNbVxrw"
+ }
+]

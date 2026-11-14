@@ -1,0 +1,38 @@
+[
+ {
+  "ownerPath": "/CreateOrUpdateEmployeeLocationFromAddress_SA/CreateOrUpdateEmployeeLocationFromAddress/APIKey",
+  "ownerType": "IArgument",
+  "id": "UnusedArgument",
+  "type": "Warning",
+  "message": "Unused Argument",
+  "detail": "Unused argument 'APIKey' to non-existing parameter 'APIKey' in 'CreateOrUpdateEmployeeLocationFromAddress' Run Server Action. Consider deleting it.",
+  "ownerKey": "oYn8xzs2U0qYfcMY9OZMew"
+ },
+ {
+  "ownerPath": "/EmployeeCV_Delete/GetEmployeeCVById",
+  "ownerType": "IAggregateNode",
+  "id": "UnusedScreenData",
+  "type": "Warning",
+  "message": "Unused Aggregate",
+  "detail": "'GetEmployeeCVById' aggregate is never used in EmployeeCV_Delete. Consider deleting it.",
+  "ownerKey": "Ie3k24vkDUCqeX6b3jh_Vw"
+ },
+ {
+  "ownerPath": "/Employee_Delete/GetUserById",
+  "ownerType": "IAggregateNode",
+  "id": "UnusedScreenData",
+  "type": "Warning",
+  "message": "Unused Aggregate",
+  "detail": "'GetUserById' aggregate is never used in Employee_Delete. Consider deleting it.",
+  "ownerKey": "avbB7wTmxRicaYrnKsZHtA"
+ },
+ {
+  "ownerPath": "/EmployeeLocation_Delete/GetEmployeeLocationById",
+  "ownerType": "IAggregateNode",
+  "id": "UnusedScreenData",
+  "type": "Warning",
+  "message": "Unused Aggregate",
+  "detail": "'GetEmployeeLocationById' aggregate is never used in EmployeeLocation_Delete. Consider deleting it.",
+  "ownerKey": "aV4YoUM4UUqJvWiq+yGioA"
+ }
+]

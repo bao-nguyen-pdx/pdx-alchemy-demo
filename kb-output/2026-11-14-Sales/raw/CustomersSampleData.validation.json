@@ -1,0 +1,20 @@
+[
+ {
+  "ownerPath": "/SampleData_Bootstrap/ContactRecord",
+  "ownerType": "ILocalVariable",
+  "id": "UnusedElement",
+  "type": "Warning",
+  "message": "Unused Element",
+  "detail": "Local Variable 'ContactRecord' is never used in Server Action 'SampleData_Bootstrap'. Consider deleting it.",
+  "ownerKey": "u9JyuJMPuEePiQDSgdMjyA"
+ },
+ {
+  "ownerPath": "/SampleData_Bootstrap/CompanyRecord",
+  "ownerType": "ILocalVariable",
+  "id": "UnusedElement",
+  "type": "Warning",
+  "message": "Unused Element",
+  "detail": "Local Variable 'CompanyRecord' is never used in Server Action 'SampleData_Bootstrap'. Consider deleting it.",
+  "ownerKey": "G7QpfTcNJ0WGxIi15JUyYg"
+ }
+]
